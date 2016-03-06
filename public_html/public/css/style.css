@@ -1,0 +1,191 @@
+body {
+	background-color: #1a1c1b;
+	padding: 0;
+	margin: 0;
+}
+
+div.navigationBar {
+	background-color: #d88e1f;
+	color: white;
+	padding: 0;
+	padding-left: 2em;
+	padding-top: 0.2em;
+	font-size: x-large;
+	font-family: Segoe UI;
+	height: 1.8em;
+}
+
+div.gameContainer {
+	float:left;
+	font-size: x-large;
+	background-color: #3b3835;
+	margin-left: 1em;
+	margin-top:1em;
+	padding: 0.5em;
+}
+
+div.gameContainer:hover {
+	background-color: #45413c;
+}
+
+img.gameImage {
+	float: left;
+	width: 9em;
+	height: 9em;
+}
+
+div.gameTitle{
+	margin-left: 0.5em;
+	float:left;
+	font-size: x-large;
+	max-width: 9em;
+	min-width: 9em;
+	color: #FFFFFF;
+}
+
+div.gameDescription{
+	margin-left:1em;
+	float: left;
+	font-size: 50%;
+	max-width: 17em;
+	color: #FFFFFF;
+}
+
+div.gameRating{
+	margin-left: 0.5em;
+	float: left;
+	max-width: 9em;
+	min-width: 9em;
+	color: #FFFFFF;
+}
+
+div.mainContainer{
+	margin: 0 auto;
+	width: 90%;
+}
+
+div.reviewPageTitle {
+	background-color: #d88e1f;
+	color: white;
+	padding: 0;
+	padding-left: 2em;
+	font-size: x-large;
+	font-family: Segoe UI;
+}
+
+div.reviewPageContainer {
+	margin-top: 2em;
+	background-color: #3b3835;
+	font-size: medium;
+	color: white;
+}
+
+div.reviewMain {
+	clear: left;
+	margin-left: 2.5%;
+	margin-top: 2em;
+	margin-right: 2.5%;
+}
+
+div.reviewPageDescription {
+	float: left;
+	width: 35%;
+	margin-top: 2em;
+	padding-right: 2em;
+}
+
+div.reviewPageLargeScreenshotContainer {
+	float: left;
+	width: 60%;
+}
+
+img.reviewPageLargeScreenshot {
+	max-width: 95%;
+	margin-left: 2.5%;
+	margin-top: 2em;
+}
+
+
+
+div.clearFloat {
+	clear: left;
+}
+
+hr {
+	background-color: #d88e1f;
+	border: solid 0.1em;
+	color: #d88e1f;
+}
+
+label {
+	color: #FFFFFF;
+}
+
+textarea {
+	background-color: #1a1c1b;
+	color: #FFFFFF;
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 0.2em;
+	width: 90%;
+	max-width: 90%;
+	font-size: 120%;
+	height: 20em;
+}
+
+textarea:focus {
+	border-color: #d88e1f;
+	border-style: solid;
+	border-width: 0.2em;
+}
+
+select {
+	background-color: #1a1c1b;
+	color: #FFFFFF;
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 0.1em;
+	font-size: 120%;
+}
+
+.button{
+	background-color: #d88e1f;
+	color: #FFFFFF;
+	border: none;
+	font-size: 120%;
+}
+
+.button:focus{
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 0.1em;
+	font-size: 120%;
+}
+
+.button:hover{
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 0.1em;
+	font-size: 120%;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+a:focus {
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+input.searchBox{
+	background-color: #1a1c1b;
+	color: #FFFFFF;
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 0.1em;
+}

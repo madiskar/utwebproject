@@ -1,0 +1,26 @@
+[27-Feb-2016 12:10:30 Europe/Tallinn] PHP Fatal error:  Call to a member function get_user() on null in /webpages/wasdreviewscsut/public_html/application/views/games/view.php on line 28
+[27-Feb-2016 12:44:25 Europe/Tallinn] PHP Fatal error:  Call to a member function get_user() on null in /webpages/wasdreviewscsut/public_html/application/views/games/view.php on line 28
+[27-Feb-2016 15:55:52 Europe/Tallinn] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /webpages/wasdreviewscsut/public_html/application/views/games/view.php on line 34
+[27-Feb-2016 16:14:51 Europe/Tallinn] PHP Fatal error:  Cannot use object of type CI_DB_mysqli_result as array in /webpages/wasdreviewscsut/public_html/application/views/games/view.php on line 34
+[27-Feb-2016 16:32:41 Europe/Tallinn] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /webpages/wasdreviewscsut/public_html/application/views/games/view.php on line 36
+[27-Feb-2016 16:34:33 Europe/Tallinn] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /webpages/wasdreviewscsut/public_html/application/views/games/view.php on line 36
+[27-Feb-2016 16:51:03 Europe/Tallinn] PHP Fatal error:  Cannot use object of type stdClass as array in /webpages/wasdreviewscsut/public_html/application/views/games/view.php on line 35
+[02-Mar-2016 14:52:55 Europe/Tallinn] PHP Fatal error:  Call to undefined function sum() in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:54 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:54 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:54 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:55 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:55 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:55 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:55 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:55 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:55 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:55 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:56 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:57 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 14:59:58 Europe/Tallinn] PHP Fatal error:  Cannot use [] for reading in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 15:00:23 Europe/Tallinn] PHP Fatal error:  Function name must be a string in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 15:00:23 Europe/Tallinn] PHP Fatal error:  Function name must be a string in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 15:00:24 Europe/Tallinn] PHP Fatal error:  Function name must be a string in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[02-Mar-2016 15:00:24 Europe/Tallinn] PHP Fatal error:  Function name must be a string in /webpages/wasdreviewscsut/public_html/application/views/games/index.php on line 21
+[06-Mar-2016 16:19:53 Europe/Tallinn] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN) in /webpages/wasdreviewscsut/public_html/application/models/Games_model.php on line 19

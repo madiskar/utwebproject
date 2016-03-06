@@ -37,5 +37,6 @@ class Games_model extends CI_Model {
 
 		    return $this->db->query("INSERT INTO reviews (review, rating, user_id, game_id) VALUES ('" . $data['review'] . "', " . $data['rating'] . ", " . $data['user_id'] . ", " . $data['game_id'] . ")"); 
 		}
+		
 
 }

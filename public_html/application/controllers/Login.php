@@ -14,8 +14,8 @@ class Login extends CI_Controller {
                 $this->load->helper('form');
                 $this->load->library('form_validation');
                 
-                $this->form_validation->set_rules('username', 'Kasutajanimi', 'required');
-                $this->form_validation->set_rules('password', 'Parool', 'required');
+                $this->form_validation->set_rules('username', 'Kasutajanimi', 'trim|required');
+                $this->form_validation->set_rules('password', 'Parool', 'trim|required');
                 
                 $data['base_url'] = base_url();
                 
@@ -30,7 +30,13 @@ class Login extends CI_Controller {
                 	$password = $this->input->post('password');
                 	if(password_verify($password, $this->login_model->get_user())) {
                 		
-                		echo "parool klapib";
+                		$data = array(
+                				'username' => $this->input->post('username'),
+                				'is_logged_in' => true
+                		);
+                		
+                		$this->session->set_userdata($data);
+                		redirect(games);
                 		
                 	} else {
                 		echo "sisetatud kasutajatunnus ja/või parool on vale(d)";

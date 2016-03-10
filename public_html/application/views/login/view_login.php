@@ -5,10 +5,10 @@
 
 					<?php echo form_open('login'); ?>
 					<div class="logInnerContainer">
-						<h3>Kasutajanimi</h3>
+						<label for="username">Kasutajanimi</label><br>
 						<?php echo form_input('username'); ?>
-					
-						<h3>Parool</h3>
+						<br/>
+						<label for="password">Parool</label><br>
 						<?php echo form_password('password',''); ?>
 						<br>
 						<?php echo form_submit('submit', 'MELDI SISSE')?>

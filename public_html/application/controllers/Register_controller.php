@@ -33,18 +33,52 @@ class Register_controller extends CI_Controller {
                 		$data['info'] = 'Kasutaja loomine õnnestus!';
                 		
                 		$this->load->view('templates/header', $data);
-                		$this->load->view('registration/reg_info');
-                		$this->load->view('registration/register');
+                		$this->load->view('login/view_regsuccess', $data);
+                		$this->load->view('login/view_login');
                 		$this->load->view('templates/footer');
                 	}
                 	else {
-                		$data['info'] = 'Kasutaja loomine ebaõnnestus<br/><br/>Soovitud kasutajatunnus ja/või e-posti konto on juba kasutuses.';
+                		$user = $this->input->post('username');
+                		$email = $this->input->post('email');
+                		
+                		if (! $this->callback_checkusername($user)) {
+                			if (! $this->callback_checkemail($email)) {
+                				$data['info'] = 'Kasutaja loomine ebaõnnestus.<br/>Soovitud kasutajatunnus ja e-posti aadress on juba kasutuses.';
+                			}
+                			else {
+                				$data['info'] = 'Kasutaja loomine ebaõnnestus.<br/>Soovitud kasutajatunnus on juba kasutuses.';
+                			}	
+                		}
+                		elseif (! $this->callback_checkemail($email)) {
+                			$data['info'] = 'Kasutaja loomine ebaõnnestus.<br/>Soovitud e-posti aadress on juba kasutuses.';
+                		}
+                		
                 		$this->load->view('templates/header', $data);
-                		$this->load->view('registration/reg_info');
+                		$this->load->view('registration/view_reginfo', $data);
                 		$this->load->view('registration/register');
                 		$this->load->view('templates/footer');
                 	}
                 }
+        }
+        
+        function callback_checkusername($username) {
+        	$possible_user = $this->register_model->get_user($username);
+        	if ($possible_user) {
+        		return TRUE;
+        	}
+        	else {
+        		return FALSE;
+        	}
+        }
+        
+        function callback_checkemail($email) {
+        	$possible_email = $this->register_model->get_email($email);
+        	if ($possible_email) {
+        		return TRUE;
+        	}
+        	else {
+        		return FALSE;
+        	}
         }
 }
 ?>

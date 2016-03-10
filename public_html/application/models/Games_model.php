@@ -14,6 +14,7 @@ class Games_model extends CI_Model {
 						return $query->result_array();
 				}
 
+				/*$query = $this->db->query("SELECT * FROM games WHERE slug = '" . $slug . "'"); $this->db->get_where('games', array('slug' => $slug));*/
 				$query = $this->db->query("SELECT games.id, mainrev, mainrating, slug, title, description, ROUND((SUM(rating)+mainrating)/(COUNT(*)+1),2) AS average_rating FROM games JOIN reviews ON reviews.game_id = games.id WHERE games.slug='" .$slug. "'");
 				return $query->row_array();
 		}
@@ -35,8 +36,7 @@ class Games_model extends CI_Model {
 		        'game_id' => $this->input->post('game_id')
 		    );
 
-		    return $this->db->query("INSERT INTO reviews (review, rating, user_id, game_id) VALUES ('" . $data['review'] . "', " . $data['rating'] . ", " . $data['user_id'] . ", " . $data['game_id'] . ")"); 
+		    return $this->db->query("INSERT INTO reviews (review, rating, user_id, game_id) VALUES ('" . $data['review'] . "', " . $data['rating'] . ", " . $data['user_id'] . ", " . $data['game_id'] . ")"); /*$this->db->insert('reviews', $data);*/
 		}
-		
 
 }

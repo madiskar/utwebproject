@@ -30,22 +30,33 @@ class Login extends CI_Controller {
                 	$password = $this->input->post('password');
                 	if(password_verify($password, $this->login_model->get_user())) {
                 		
-                		$data = array(
+                		$this->session->set_userdata(array(
                 				'username' => $this->input->post('username'),
                 				'is_logged_in' => true
-                		);
+                		));
                 		
-                		$this->session->set_userdata($data);
-                		redirect(games);
+                		$this->load->model('games_model');
+                		$data['games'] = $this->games_model->get_games();
+                		$data['title'] = 'Pelade arhiiv';
+                		$data['base_url'] = base_url();
+						
+                		$this->load->view('templates/header', $data);
+                		$this->load->view('games/index', $data);
+                		$this->load->view('templates/footer');
+                		
+                		
                 		
                 	} else {
+                		
+                		
+                		
                 		echo "sisetatud kasutajatunnus ja/või parool on vale(d)";
                 	}
-                	
-                	$this->load->view('templates/header', $data);
-                	$this->load->view('registration/register');
-                	$this->load->view('templates/footer');
                 }
+        }
+        public function logout() {
+        	$this->session->sess_destroy();
+        	redirect(games);
         }
 }
 ?>

@@ -15,7 +15,7 @@ class Games extends CI_Controller {
 
                 $data['title'] = 'Pelade arhiiva';
                 $data['base_url'] = base_url();
-
+                
                 $this->load->view('templates/header', $data);
                 $this->load->view('games/index', $data);
                 $this->load->view('templates/footer');

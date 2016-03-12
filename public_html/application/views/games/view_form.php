@@ -1,7 +1,11 @@
 					<hr>
+					
+					<?php if($this->session->userdata('username') == FALSE) { ?>
+					<h2>Oma arvustuse jätmiseks 
+					<a href="<?php echo  $base_url; ?>index.php/login">meldi sisse</a></h2>
+					<?php } else {?>
 					<h2>Jäta oma arvustus</h2>
 					
-
 					<?php echo validation_errors(); ?>
 
 					<?php echo form_open('games/view/'.$games_item['slug']); ?>
@@ -31,4 +35,6 @@
 					    <input class="button" type="submit" name="submit" value="Lisa arvustus" />
 
 					</form>
+					<?php }?>
+					
 					<hr>

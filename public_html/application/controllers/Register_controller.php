@@ -33,7 +33,7 @@ class Register_controller extends CI_Controller {
                 		$data['info'] = 'Kasutaja loomine õnnestus!';
                 		
                 		$this->load->view('templates/header', $data);
-                		$this->load->view('login/view_regsuccess', $data);
+                		$this->load->view('registration/view_reginfo', $data);
                 		$this->load->view('login/view_login');
                 		$this->load->view('templates/footer');
                 	}

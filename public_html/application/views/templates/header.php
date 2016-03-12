@@ -15,5 +15,8 @@
 			else {?>
 				| <a href="<?php echo $base_url; ?>index.php/login/logout">LOGI VÄLJA</a>
 			<?php }?>
+			<?php if($this->session->userdata('is_admin') == TRUE) { ?>
+				| <a href="<?php echo $base_url; ?>index.php/management">HALDA KASUTAJAID</a>
+			<?php } ?>
 			<div class="clearFloat"></div>
 		</div>

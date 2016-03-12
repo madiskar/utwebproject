@@ -32,6 +32,7 @@ class Login extends CI_Controller {
                 		
                 		$this->session->set_userdata(array(
                 				'username' => $this->input->post('username'),
+                				'is_admin' => $this->login_model->check_if_admin(),
                 				'is_logged_in' => true
                 		));
                 		
@@ -48,9 +49,11 @@ class Login extends CI_Controller {
                 		
                 	} else {
                 		
-                		
-                		
-                		echo "sisetatud kasutajatunnus ja/või parool on vale(d)";
+                		$data['info'] = "sisetatud kasutajatunnus ja/või parool on vale(d)";
+                		$this->load->view('templates/header', $data);
+                		$this->load->view('login/view_loginfo', $data);
+                		$this->load->view('login/view_login');
+                		$this->load->view('templates/footer');
                 	}
                 }
         }

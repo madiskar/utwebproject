@@ -18,5 +18,18 @@ class login_model extends CI_Model {
         		return "";
         	}
         }
+        
+        public function check_if_admin() {
+        	
+        	$username = $this->input->post('username');
+        	
+        	$query = $this->db->query("SELECT admin FROM users WHERE username='" . $username . "'");
+        	if($query->row('admin') == 1) {
+        		return TRUE;
+        	}
+        	else {
+        		return FALSE;
+        	}
+        }
 }
 ?>

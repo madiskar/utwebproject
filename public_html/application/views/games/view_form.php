@@ -2,7 +2,11 @@
 					
 					<?php if($this->session->userdata('username') == FALSE) { ?>
 					<h2>Oma arvustuse jätmiseks 
-					<a href="<?php echo  $base_url; ?>index.php/login">meldi sisse</a></h2>
+					<a class="orange" href="<?php echo  $base_url; ?>index.php/login">meldi sisse</a></h2>
+					<?php } else if($this->session->userdata('allowed') == 0) {?>
+					<div class="formValidationErrorText"><br>
+					<h2>Arvustuste jätmine on sinu jaoks keelatud :(</h2><br>
+					</div>
 					<?php } else {?>
 					<h2>Jäta oma arvustus</h2>
 					
@@ -28,7 +32,7 @@
 						</select>
 
 
-					    <input type="hidden" name="user_id" value="1">
+					    <input type="hidden" name="user_id" value="<?php echo $this->session->userdata('user_id'); ?>">
 
 					    <input type="hidden" name="game_id" value="<?php echo $games_item['id']; ?>">
 

@@ -5,12 +5,24 @@
 					<?php echo $games_item['title']; ?>
 				</div>
 				<div class="reviewPageLargeScreenshotContainer">
-					<img alt="Ekraanipilt" src="<?php echo $base_url; ?>public/images/TEMP_screenshot.png" class="reviewPageLargeScreenshot">
+					<img alt="Ekraanipilt" id="reviewPageGameImage" src="<?php
+						$pieces = explode(" ", $games_item['scrsht_extensions']);
+						echo $base_url.'public/images/'.$games_item['slug'].'/screenshot1'.$pieces[0];
+					?>" class="reviewPageLargeScreenshot">
 				</div>
 				<div class="reviewPageDescription">
 					<?php echo $games_item['description']; ?>
 					<hr>
-					muud skriinshotid siia
+					<?php
+						$pieces = explode(" ", $games_item['scrsht_extensions']);
+						$i = 1;
+						foreach ($pieces as $piece){
+							echo '<a href="#void" onclick="changeLargeImage(\''.$base_url.'public/images/'.$games_item['slug'].'/screenshot'.$i.''.$piece.'\');">';
+							echo '<img alt="Ekraanipilt" src="'.$base_url.'public/images/'.$games_item['slug'].'/screenshot'.$i.''.$piece.'" class="reviewPageSmallScreenshot">';
+							echo '</a>';
+							$i += 1;
+						}
+					?>
 				</div>
 				
 				<div class="reviewMain">

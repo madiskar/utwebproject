@@ -1,19 +1,25 @@
-			
+<div class="logOuterContainer">
+					
+					
+
+	<div class="logInnerContainer" align=center>
 			<?php if ($eksisteerib) {?>
-				<h1>Kasutajanimi: <?php echo $username; ?></h1>
-				<h1>E-Posti aadress: <?php echo $email; ?></h1>
+				<div class="medText">Kasutajanimi: <?php echo $username; ?><br>
+				E-Posti aadress: <?php echo $email; ?></div>
 				<br/>
-				<label for="allowed">Luba postitada</label>
+				<label class="largeLabel" for="allowed">Luba postitada</label>
 				<br/>
 				<input type="checkbox" name="allowed" value="1" <?php echo ($allowed == 1 ? 'checked' : '') ?> />
-				<br/>
-				<label for="admin">Administraator</label>
+				<br/><br/>
+				<label class="largeLabel"  for="admin">Administraator</label>
 				<br/>
 				<input type="checkbox" name="admin" value="2" <?php echo ($admin == 1 ? 'checked' : '') ?> />
-				<br/>
-				<input type="submit" name="confirmation" value="Submit"/>
+				<br/><br>
+				<input class="regButton" type="submit" name="confirmation" value="Submit"/><br>
 			<?php } else { ?>
-				<h1>Sellist kasutajat ei ole!</h1>
+				<div class="medText">Sellist kasutajat ei ole!</div>
 			<?php }?>
 			
 			<?php echo form_close(); ?>
+	</div>
+</div>

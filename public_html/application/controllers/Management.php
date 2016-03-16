@@ -23,7 +23,6 @@ class Management extends CI_Controller {
         		$this->load->view('templates/header', $data);
         		$this->load->view('login/admin/view_management');
         		$this->load->view('templates/footer');
-        		echo "but why?";
         	}
         	else
         	{
@@ -38,10 +37,14 @@ class Management extends CI_Controller {
         			$data['allowed'] = $data['user_info']['allowed'];
         			$data['admin'] = $data['user_info']['admin'];
         		}
+                        /*if ($this->management_model->get_matching_users($user)) {
+                                
+                                $data['user_info'] = $this->management_model->get_matching_users($user);
+                                $data['eksisteerib'] = TRUE;
+                        }*/
         		else {
         			$data['eksisteerib'] = FALSE;
         		}
-        		echo "skeem";
         		$this->update($data);
         	}
         }

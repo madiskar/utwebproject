@@ -31,5 +31,26 @@ class login_model extends CI_Model {
         		return FALSE;
         	}
         }
+
+        public function check_if_allowed() {
+        	
+        	$username = $this->input->post('username');
+        	
+        	$query = $this->db->query("SELECT allowed FROM users WHERE username='" . $username . "'");
+        	if($query->row('allowed') == 1) {
+        		return TRUE;
+        	}
+        	else {
+        		return FALSE;
+        	}
+        }
+
+        public function get_user_id() {
+        	
+        	$username = $this->input->post('username');
+        	
+        	$query = $this->db->query("SELECT id FROM users WHERE username='" . $username . "'");
+        	return $query->row('id');
+        }
 }
 ?>

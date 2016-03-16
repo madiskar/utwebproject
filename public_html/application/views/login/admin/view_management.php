@@ -1,11 +1,15 @@
-<hr>
+<div class="logOuterContainer">
+					
+					
+	<div class="logInnerContainer" align=center>
 			<?php echo validation_errors(); ?>
 
 			<?php echo form_open('management'); ?>
 			<div class="searchUsers">
-						<label for="usersearch">Otsi kasutajaid</label><br>
-						<?php echo form_input('usersearch'); ?>
-						<br/>
-						<?php echo form_submit('submit', 'OTSI')?>
+						<label class="largeLabel" for="usersearch">Otsi kasutajaid</label><br>
+						<?php echo form_input('usersearch','','class="regForm"'); ?>
+						<br/><br/>
+						<?php echo form_submit('submit', 'OTSI','class="regButton"')?>
 			</div>
-<hr>
+	</div>
+</div>

@@ -18,11 +18,12 @@ class Login extends CI_Controller {
                 $this->form_validation->set_rules('password', 'Parool', 'trim|required');
                 
                 $data['base_url'] = base_url();
+                $data['info'] = "";
                 
                 if ($this->form_validation->run() === FALSE)
                 {
                 	$this->load->view('templates/header', $data);
-                	$this->load->view('login/view_login');
+                	$this->load->view('login/view_login',$data);
                 	$this->load->view('templates/footer');
                 }
                 else
@@ -33,11 +34,13 @@ class Login extends CI_Controller {
                 		$this->session->set_userdata(array(
                 				'username' => $this->input->post('username'),
                 				'is_admin' => $this->login_model->check_if_admin(),
+                                                'allowed' => $this->login_model->check_if_allowed(),
+                                                'user_id' => $this->login_model->get_user_id(),
                 				'is_logged_in' => true
                 		));
                 		
                 		$this->load->model('games_model');
-                		$data['games'] = $this->games_model->get_games();
+                		$data['games'] = $this->games_model->get_games();     
                 		$data['title'] = 'Pelade arhiiv';
                 		$data['base_url'] = base_url();
 						
@@ -49,10 +52,9 @@ class Login extends CI_Controller {
                 		
                 	} else {
                 		
-                		$data['info'] = "sisetatud kasutajatunnus ja/või parool on vale(d)";
+                		$data['info'] = "Sisetatud kasutajatunnus ja/või parool on vale(d)";
                 		$this->load->view('templates/header', $data);
-                		$this->load->view('login/view_loginfo', $data);
-                		$this->load->view('login/view_login');
+                		$this->load->view('login/view_login', $data);
                 		$this->load->view('templates/footer');
                 	}
                 }

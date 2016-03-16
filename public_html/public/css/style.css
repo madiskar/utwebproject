@@ -12,7 +12,7 @@ div.navigationBar {
 	padding-top: 0.2em;
 	font-size: x-large;
 	font-family: Segoe UI;
-	height: 1.8em;
+	min-height: 1.8em;
 }
 
 div.gameContainer {
@@ -105,7 +105,13 @@ img.reviewPageLargeScreenshot {
 	margin-top: 2em;
 }
 
-
+img.reviewPageSmallScreenshot {
+	max-width: 15em;
+	max-height: 15em;
+	margin-left: 0.4em;
+	margin-top: 0.3em;
+	float: left;
+}
 
 div.clearFloat {
 	clear: left;
@@ -182,6 +188,19 @@ a:hover {
 	text-decoration: underline;
 }
 
+a.orange {
+	color: #d88e1f;
+	text-decoration: none;
+}
+
+a.orange:focus {
+	text-decoration: underline;
+}
+
+a.orange:hover {
+	text-decoration: underline;
+}
+
 input.searchBox{
 	background-color: #1a1c1b;
 	color: #FFFFFF;
@@ -189,3 +208,93 @@ input.searchBox{
 	border-style: solid;
 	border-width: 0.1em;
 }
+
+div.regOutContainer {
+	margin:0 auto;
+	margin-top: 1em;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	background-color: #3b3835;
+	align: center;
+	width: 30em;
+}
+div.regInContainer {
+	align: center;
+}
+
+div.medText{
+	font-size: x-large;
+	font-family: Segoe UI;
+}
+
+div.formValidationErrorText{
+	color: #ff6666;
+	font-size: large;
+	font-family: Segoe UI;
+}
+
+div.logOuterContainer {
+	margin:0 auto;
+	margin-top: 1em;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	background-color: #3b3835;
+	align: center;
+	width: 30em;
+}
+div.logInnerContainer {
+	color: #FFFFFF;
+	align: center;
+}
+label.largeLabel{
+	font-size: large;
+	font-family: Segoe UI;
+	padding-bottom: 0.3em;
+}
+
+input.regForm {
+	background-color: #1a1c1b;
+	color: #FFFFFF;
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 0.1em;
+	font-size: large;
+	font-family: Segoe UI;
+	padding-bottom: 0.3em;
+	width: 80%;
+}
+
+.regButton{
+	background-color: #d88e1f;
+	color: #FFFFFF;
+	border-color: #d88e1f;
+	border-style: solid;
+	border-width: 0.1em;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	font-size: large;
+	font-family: Segoe UI;
+	width: 80%;
+}
+
+.regButton:focus{
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 0.1em;
+}
+
+.regButton:hover{
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 0.1em;
+}
+
+
+#holder { border: 10px dashed #ccc; width: 300px; min-height: 300px; margin: 20px auto;}
+#holder.hover { border: 10px dashed #0c0; }
+#holder img { display: block; margin: 10px auto; }
+#holder p { margin: 10px; font-size: 14px; }
+progress { width: 100%; }
+progress:after { content: '%'; }
+.fail { background: #c00; padding: 2px; color: #fff; }
+.hidden { display: none !important;}

@@ -17,6 +17,11 @@ class Management_model extends CI_Model {
 			return FALSE;
 		}
 	}
+
+	public function get_matching_users($username){
+		$query = $this->db->query("SELECT username, email, allowed, admin FROM users WHERE username LIKE '%" . $username . "%'");
+		return $query->result_array();
+	}
 	
 	public function update_userinfo($username, $allowed, $admin) {
 		return $this->db->query("UPDATE users SET allowed='" . $allowed . "', admin='" . $admin . "' WHERE username='" . $username . "'");

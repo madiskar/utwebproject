@@ -20,6 +20,86 @@ class Games extends CI_Controller {
                 $this->load->view('games/index', $data);
                 $this->load->view('templates/footer');
         }
+		
+		public function add()
+        {
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+                $data['base_url'] = base_url();
+
+                $this->form_validation->set_rules('title', 'Nimi', 'required');
+                $this->form_validation->set_rules('description', 'Lühikirjeldus', 'required');
+                $this->form_validation->set_rules('mainrev', 'Arvustus', 'required');
+                $this->form_validation->set_rules('mainrating', 'Hinnang', 'required');
+
+                if (!is_dir('./public/images/'.url_title($this->input->post('title'), 'dash', TRUE).'/')) {
+                    mkdir('./public/images/'.url_title($this->input->post('title'), 'dash', TRUE).'/', 0777, TRUE);
+                }
+
+                $config['upload_path']          = './public/images/'.url_title($this->input->post('title'), 'dash', TRUE).'/';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 10000000;
+                $config['max_width']            = 9999;
+                $config['max_height']           = 9999;
+                $config['file_name']            = "thumbnail";
+
+                $this->load->library('upload', $config);
+
+                $data['title'] = "Lisa Mäng";
+                
+                if ($this->form_validation->run() === FALSE || !$this->upload->do_upload("thumbnail"))
+                {
+                    $this->load->view('templates/header', $data);
+                    $this->load->view('games/add', $data);
+                    $this->load->view('templates/footer');
+                }
+                else
+                {
+                    $thumbnail = array('data' => $this->upload->data());
+                    $this->games_model->set_games($thumbnail);
+                    $this->load->view('templates/header', $data);
+                    $this->load->view('games/add_success', $data);
+                    $this->load->view('templates/footer');
+                }
+        }
+
+        function do_upload()
+        {
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '100000';
+            $config['max_width']  = '102400';
+            $config['max_height']  = '76800';
+
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('userfile'))
+            {
+                $error = array('error' => $this->upload->display_errors());
+                    $this->load->view('pages/avaleht');
+                    $this->load->view('templates/footer');
+            }
+            else
+            {
+                $data = array('upload_data' => $this->upload->data());
+                    $this->load->view('pages/avaleht');
+                    $this->load->view('templates/footer');
+            }
+        }
+
+        private function set_upload_options()
+        {   
+            //upload an image options
+            $config = array();
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '100000';
+            $config['max_width']  = '102400';
+            $config['max_height']  = '76800';
+
+            return $config;
+        }
 
         public function view($slug = NULL)
         {

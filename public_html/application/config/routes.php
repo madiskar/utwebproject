@@ -50,6 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['games/do_upload'] = 'games/do_upload';
+$route['games/search'] = 'games/search';
 $route['games/add'] = 'games/add';
 $route['games/(:any)'] = 'games/view/$1';
 $route['games'] = 'games';

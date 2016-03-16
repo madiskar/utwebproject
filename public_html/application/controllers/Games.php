@@ -13,10 +13,31 @@ class Games extends CI_Controller {
         {
                 $data['games'] = $this->games_model->get_games();
 
-                $data['title'] = 'Pelade arhiiva';
+                $data['title'] = 'Mängud';
                 $data['base_url'] = base_url();
                 
                 $this->load->view('templates/header', $data);
+                $this->load->view('games/index', $data);
+                $this->load->view('templates/footer');
+        }
+
+        public function search()
+        {
+                $data['games'] = $this->games_model->get_games_search($this->input->post('searchQuery'));
+
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+                $data['title'] = 'Otsing';
+                $data['base_url'] = base_url();
+                $data['searchquery'] = $this->input->post('searchQuery');
+                
+                $this->load->view('templates/header', $data);
+                if (empty($data['games'])){
+                    $this->load->view('games/searchfail', $data);
+                } else {
+                    $this->load->view('games/searchresults', $data);
+                }
                 $this->load->view('games/index', $data);
                 $this->load->view('templates/footer');
         }

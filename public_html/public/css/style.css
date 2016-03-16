@@ -2,7 +2,86 @@ body {
 	background-color: #1a1c1b;
 	padding: 0;
 	margin: 0;
+	font-family: "Segoe UI";
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 2em;	
+    padding-right: 1em;	
+	font-size: x-large;
+    overflow: hidden;
+    background-color: #d88e1f;
+}
+
+li {
+    float: left;
+}
+
+li.right{
+	float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    text-decoration: none;
+    border-width: 0;
+    border-color: white;
+    border-style: solid;
+}
+
+.noPadding {
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+li.dropdown {
+    display: inline-block;
+    float: right;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #d88e1f;
+    right: 0.5em;
+    border-width: 0.1em;
+    border-color: white;
+    border-style: solid;
+}
+
+.dropdown-content a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    text-align: right;
+}
+
+
+li a:hover:not(.active) {
+    background-color: #3b3835;
+}
+
+.dropdown-content a:hover {background-color: #d88e1f}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+img.fitImage{
+	margin: -0.2em;
+	max-width: 1.4em;
+	max-height: 1.4em;
+}
+
 
 div.navigationBar {
 	background-color: #d88e1f;
@@ -71,6 +150,16 @@ div.reviewPageTitle {
 	padding-left: 2em;
 	font-size: x-large;
 	font-family: Segoe UI;
+}
+
+div.searchResultBar{
+	background-color: #3b3835;
+	color: white;
+	padding: 0;
+	padding-left: 2em;
+	font-size: x-large;
+	font-family: Segoe UI;
+	width: 80%
 }
 
 div.reviewPageContainer {
@@ -262,6 +351,18 @@ input.regForm {
 	font-family: Segoe UI;
 	padding-bottom: 0.3em;
 	width: 80%;
+}
+
+input.searchForm {
+	background-color: #1a1c1b;
+	color: #FFFFFF;
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 0.1em;
+	font-size: large;
+	font-family: Segoe UI;
+	padding-bottom: 0.3em;
+	padding-left: 0.3em;
 }
 
 .regButton{

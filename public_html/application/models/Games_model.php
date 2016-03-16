@@ -18,6 +18,13 @@ class Games_model extends CI_Model {
 				return $query->row_array();
 		}
 
+		public function get_games_search($searchquery)
+		{
+				$newQuery = str_replace(' ', '%', $searchquery);
+				$query = $this->db->query("SELECT games.id, mainrev, mainrating, slug, title, description, thmb_extension, ROUND((SUM(rating)+mainrating)/(COUNT(*)+1),2) AS average_rating FROM games LEFT JOIN reviews ON reviews.game_id = games.id GROUP BY games.id HAVING games.title LIKE '%" . $newQuery . "%'");
+						return $query->result_array();
+		}
+
 		public function get_reviews($gameid = 1)
 		{
 			$query = $this->db->query("SELECT reviews.review, reviews.rating, users.username FROM reviews INNER JOIN users ON reviews.user_id=users.id Where game_id = '" . $gameid . "'");

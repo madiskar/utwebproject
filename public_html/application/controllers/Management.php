@@ -18,15 +18,15 @@ class Management extends CI_Controller {
         	
         	$data['base_url'] = base_url();
         	
-        	if ($this->form_validation->run() === FALSE)
+        	if (!isset($_POST['submit']))
         	{
         		$this->load->view('templates/header', $data);
         		$this->load->view('login/admin/view_management');
         		$this->load->view('templates/footer');
+        		echo "but why?";
         	}
         	else
         	{
-        	
         		$user = $this->input->post('usersearch');
         		
         		if ($this->management_model->get_userinfo($user)) {
@@ -41,12 +41,29 @@ class Management extends CI_Controller {
         		else {
         			$data['eksisteerib'] = FALSE;
         		}
-        		
-        		$this->load->view('templates/header', $data);
-        		$this->load->view('login/admin/view_management');
-        		$this->load->view('login/admin/view_user', $data);
-        		$this->load->view('templates/footer');
+        		echo "skeem";
+        		$this->update($data);
         	}
+        }
+        
+        public function update($data) {
+        	$this->load->view('templates/header', $data);
+        	$this->load->view('login/admin/view_management');
+        	$this->load->view('login/admin/view_user', $data);
+        	$this->load->view('templates/footer');
         	
+        	
+        	if(isset($_POST['confirmation'])){
+        		echo "wot nagu";
+        		if(isset($_POST['allowed']) && isset($_POST['admin'])) {
+        			$this->management_model->update_userinfo($username, 1, 1);
+        		}
+        		elseif(isset($_POST['allowed'])) {
+        			$this->management_model->update_userinfo($username, 1, 0);
+        		}
+        		elseif(isset($_POST['admin'])) {
+        			$this->management_model->update_userinfo($username, 0, 1);
+        		}
+        	}
         }
 }

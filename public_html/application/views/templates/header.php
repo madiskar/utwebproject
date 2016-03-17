@@ -7,6 +7,6 @@
         </head>
         <body>
         <div class="navigationBar">
-			<a href="<?php echo $base_url; ?>index.php">AVALEHT</a> | SIRVI MÄNGE
+			<a href="<?php echo $base_url; ?>index.php">AVALEHT</a> | <a href="<?php echo $base_url; ?>index.php/browse">SIRVI MÄNGE</a>
 			<div class="clearFloat"></div>
 		</div>

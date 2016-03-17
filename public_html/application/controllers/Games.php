@@ -32,7 +32,6 @@ class Games extends CI_Controller {
                         show_404();
                 }
 
-                
                 $this->form_validation->set_rules('rating', 'Hinnang', 'required');
     			$this->form_validation->set_rules('review', 'Arvustus', 'required');
     			$this->form_validation->set_rules('game_id', 'gid', 'required');

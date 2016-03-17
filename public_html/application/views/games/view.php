@@ -25,17 +25,9 @@
 					<h2>Oma arvustuse jätmiseks logi sisse</h2>
 					<hr>
 					<?php foreach ($reviews as $review_item): ?>
-						<h2>Arvustus kasutaja <?php 
-						
-						
-						$this->load->database();
-						$query = $this->db->query("SELECT * FROM users WHERE id = '" . $review_item['user_id'] . "'");
-		                                foreach ($query->result('array') as $row)
-                                                {
-                                                 echo $row['username'];
-                                                }?> poolt:</h2>
-						<p><?php echo $review_item['review']; ?></p>
-                                                <h2> Lõpphinnang: <?php echo $review_item['rating']?></h2>
+						<h2>Arvustus kasutaja <?php echo $review_item['username']; ?> poolt:</h2>
+							<p><?php echo $review_item['review'];?></p>
+                        <h2> Lõpphinnang: <?php echo $review_item['rating']?></h2>
 						<hr>
 					<?php endforeach; ?>
 					<br>
@@ -43,3 +35,4 @@
 			</div>
 			<br>
 		</div>
+

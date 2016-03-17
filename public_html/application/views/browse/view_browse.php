@@ -1,33 +1,27 @@
 		<div class="browseBar">
 			<div class="select">
-					<label for="sort">Sorteeri: </label>
-					<select name="sort" id="sortby">
-						<option value="AZ" selected>A-Z</option>
-						<option value="ZA">Z-A</option>
-						<!--
-						<option value="bestFirst">Parimad enne</option> 
-						<option value="worstFirst">Halvimad enne</option> 
-						-->
-					</select>
-					
 					<label for="zanr">Zanr: </label>
 					<select name="zanr" id="genre">
 						<option value="all" selected>Koik</option>
 					</select>
+					
+					<label for="sort">Sorteeri: </label>
+					<select name="sort" id="sortby">
+						<option value="AZ" selected>A-Z</option>
+						<option value="ZA">Z-A</option>
+						<option value="bestFirst">Parimad enne</option> 
+						<option value="worstFirst">Halvimad enne</option> 
+					</select>
 				
-				<input class="button" type="submit" name="sorteeri" value="Sirvi" onclick="updateSelection()" />
-				
+				<input class="button" type="submit" name="sorteeri" value="Sirvi" onclick="updateSelection()" />			
 			</div>
 		</div>
 
-	<div id="games">
-		
-		
+	<div id="games">	
 		<script>
-
-			window.onload=function() {
-				updateSelection();
-			}	
+			//window.onload=function() {
+			//	updateSelection();
+			//}	
 
 			function clearItems()
 			{

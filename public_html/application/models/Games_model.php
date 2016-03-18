@@ -66,9 +66,17 @@ class Games_model extends CI_Model {
 		        'scrsht_extensions' => $trimmed_ext
 		    );
 
-		    
+		    $qry = $this->db->query("INSERT INTO games (title, slug, description, mainrev, mainrating, thmb_extension, scrsht_extensions) VALUES ('" . $data['title'] . "', '" . $data['slug'] . "', '" . $data['description'] . "', '" . $data['mainrev'] . "', " . $data['mainrating'] . ", '" . $data['thmb_extension'] . "', '" . $data['scrsht_extensions'] . "')"); 
 
-		    return $this->db->query("INSERT INTO games (title, slug, description, mainrev, mainrating, thmb_extension, scrsht_extensions) VALUES ('" . $data['title'] . "', '" . $data['slug'] . "', '" . $data['description'] . "', '" . $data['mainrev'] . "', " . $data['mainrating'] . ", '" . $data['thmb_extension'] . "', '" . $data['scrsht_extensions'] . "')"); 
+		    $query = $this->db->query("SELECT id FROM games WHERE slug='" . $slug . "'");
+        	$newId = $query->row('id');
+
+        	$genreArray = $this->input->post('genres');
+        	foreach($genreArray as $genre){
+        		$this->db->query("INSERT INTO games_to_genres(game_id, genre_id) VALUES (" . $newId . ", " . $genre . ")");
+        	}
+
+		    return $qry;
 		}
 		
 		public function set_reviews()

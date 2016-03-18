@@ -30,6 +30,17 @@
 
 						<input type="hidden" id="screenshots" name="screenshots" size="50" /><br><br>
 
+						<input type="checkbox" name="genres[]" value="1">Action<br>
+						<input type="checkbox" name="genres[]" value="2">Adventure<br>
+						<input type="checkbox" name="genres[]" value="3">Casual<br>
+						<input type="checkbox" name="genres[]" value="4">Indie<br>
+						<input type="checkbox" name="genres[]" value="5">MMO<br>
+						<input type="checkbox" name="genres[]" value="6">Racing<br>
+						<input type="checkbox" name="genres[]" value="7">RPG<br>
+						<input type="checkbox" name="genres[]" value="8">Simulation<br>
+						<input type="checkbox" name="genres[]" value="9">Sports<br>
+						<input type="checkbox" name="genres[]" value="10">Strategy<br><br>
+
 					    <label for="mainrating">Hinnang</label><br>
 					    <select name="mainrating" id="mainrating">
 						  <option value="1">1</option>

@@ -69,4 +69,12 @@ class Management extends CI_Controller {
         		}
         	}
         }
+
+        public function change_states($userid){
+
+			$this->management_model->update_userinfo($userid, $this->input->post('allowed'), $this->input->post('admin'));
+
+			$this->output->set_output('user id: ' . $userid . '|allowed: ' . $this->input->post('allowed') . "|admin: " . $this->input->post('admin'));
+   
+        }
 }

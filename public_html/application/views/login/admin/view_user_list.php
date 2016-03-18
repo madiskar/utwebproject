@@ -20,10 +20,10 @@
 				<div class="medText"><?php echo $user['email']; ?></div>
 				</td>
 				<td>
-				<input type="checkbox" name="allowed" value="1" <?php echo ($user['allowed'] == 1 ? 'checked' : '') ?> />
+				<input id="<?php echo $user['id']; ?>" type="checkbox" name="allowed" value="1" <?php echo ($user['allowed'] == 1 ? 'checked' : '') ?> />
 				</td>
 				<td>
-				<input type="checkbox" name="admin" value="2" <?php echo ($user['admin'] == 1 ? 'checked' : '') ?> />
+				<input id="<?php echo $user['id']; ?>" type="checkbox" name="admin" value="1" <?php echo ($user['admin'] == 1 ? 'checked' : '') ?> />
 				</td>
 				</tr>
 				<?php endforeach; ?>
@@ -33,3 +33,5 @@
 			
 	</div>
 </div>
+
+<script src="<?php echo $base_url; ?>/public/js/checkbox_update.js" type="text/javascript"></script>

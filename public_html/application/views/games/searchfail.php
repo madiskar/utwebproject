@@ -1,7 +1,7 @@
 <br><br>
 <div class="mainContainer">
 	<div class="searchResultBar">
-		Otsingule "<?php echo $searchquery; ?>" ei leitud ühtegi vastet
+		<?php echo $menu_search_result_fail_begin; ?> "<?php echo $searchquery; ?>" <?php echo $menu_search_result_fail_end; ?>
 	</div>
 </div>
 <br>

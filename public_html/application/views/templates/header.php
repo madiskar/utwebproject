@@ -10,19 +10,19 @@
         </head>
         <body>
 <ul>
-  <li><a href="<?php echo $base_url; ?>index.php">AVALEHT</a></li>
-  <li><a href="#news">SIRVI MANGE</a></li>
+  <li><a href="<?php echo $base_url; ?>index.php"><?php echo $nav_home; ?></a></li>
+  <li><a href="#news"><?php echo $nav_game_search; ?></a></li>
   <li class="dropdown">
 		<?php if($this->session->userdata('username') == FALSE) { ?>
 		  	<div class="nav-non-link">
 				<img class="fitImage" alt="LOGI SISSE" src="<?php echo $base_url; ?>public/images/login.png">
 					<div class="dropdown-content">
-						<a href="<?php echo $base_url; ?>index.php/login">LOGI SISSE</a>
+						<a href="<?php echo $base_url; ?>index.php/login"><?php echo $nav_login; ?></a>
 						<a href="<?php echo $base_url; ?>index.php/register_controller">
-							REGISTREERU
+							<?php echo $nav_register; ?>
 						</a>
 					</div>
-		  	</div>
+			</div>
 		<?php } else {?>
 			<a href="<?php echo $base_url; ?>index.php/login/logout">
 				<img class="fitImage" alt="LOGI VÄLJA" src="<?php echo $base_url; ?>public/images/logout.png">
@@ -31,30 +31,30 @@
 	</li>
   <li class="right">
   	<?php echo form_open('games/search')?>
-  		<input class="searchForm" type="text" id="searchQuery" name="searchQuery" size="25" placeholder="OTSING"/>
+  		<input class="searchForm" type="text" id="searchQuery" name="searchQuery" size="25" placeholder="<?php echo $nav_search; ?>"/>
 
   	</form>
   </li>
   <li class="dropdown">
 		  	<div class="nav-non-link">
-				KEEL
+				<?php echo $nav_language; ?>
 					<div class="dropdown-content" id="lang-dropdown">
-						<a href="#">EESTI</a>
-						<a href="#">ENGLISH</a>
+						<a href="<?php echo $base_url; ?>index.php/language/est">EESTI</a>
+						<a href="<?php echo $base_url; ?>index.php/language/eng">ENGLISH</a>
 					</div>
 		  	</div>
 	</li>
   <li class="right">
   	<?php if($this->session->userdata('is_admin') == TRUE) { ?>
 		<a href="<?php echo $base_url; ?>index.php/management">
-			HALDA KASUTAJAID
+			<?php echo $admin_usermanagement; ?>
 		</a>
 	<?php } ?>
    </li>
   <li class="right">
   	<?php if($this->session->userdata('is_admin') == TRUE) { ?>
 		<a href="<?php echo $base_url; ?>index.php/games/add">
-			LISA MANG
+			<?php echo $admin_addgames; ?>
 		</a>
 		<?php } ?>
 	</li>

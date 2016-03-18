@@ -4,9 +4,9 @@
 
 					<div class="logInnerContainer" align=center>
 						<div class="medText">
-							Mäng edukalt lisatud.<br><br>
-							<a href="<?php echo $base_url; ?>index.php/games/add" class="orange">Lisa uus mäng</a><br>
-							<a href="<?php echo $base_url; ?>index.php"" class="orange">Avalehele</a>
+							<?php $admin_game_add_success; ?><br><br>
+							<a href="<?php echo $base_url; ?>index.php/games/add" class="orange"><?php $admin_another_one; ?></a><br>
+							<a href="<?php echo $base_url; ?>index.php"" class="orange"><?php $admin_go_home; ?></a>
 						</div>
 						
 					</div>

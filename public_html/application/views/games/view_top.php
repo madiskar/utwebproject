@@ -28,8 +28,8 @@
 				<div class="reviewMain">
 					<br>
 					<hr>
-					<h2>Meie Arvustus</h2>
+					<h2><?php echo $game_admin_review?></h2>
 					
 
 					<p><?php echo $games_item['mainrev']; ?></p>
-					<h2>Lõpphinnang: <?php echo $games_item['mainrating']; ?>/10</h2><br>
+					<h2><?php echo $game_final_rating . " " . $games_item['mainrating']; ?>/10</h2><br>

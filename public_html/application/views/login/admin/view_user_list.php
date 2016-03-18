@@ -6,10 +6,10 @@
 			<?php if ($eksisteerib) {?>
 			<table style="width:100%">
 				 <tr>
-				    <th>Kasutajanimi</th>
-				    <th>E-Mail</th>
-				    <th>Võib arvustusi jätta</th>
-				    <th>Admin</th>
+				    <th><?php echo $admin_username; ?></th>
+				    <th><?php echo $admin_email; ?></th>
+				    <th><?php echo $admin_allowed; ?></th>
+				    <th><?php echo $admin_administrator; ?></th>
 				  </tr>
 				<?php foreach ($user_info as $user): ?>
 					<tr>
@@ -28,7 +28,7 @@
 				</tr>
 				<?php endforeach; ?>
 			<?php } else { ?>
-				<div class="medText">Sellist kasutajat ei ole!</div>
+				<div class="medText"><?php echo $admin_no_user;?></div>
 			<?php }?>
 			
 	</div>

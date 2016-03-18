@@ -1,7 +1,5 @@
 <?php
-
 class Management_model extends CI_Model {
-
 	public function __construct()
 	{
 		$this->load->database();
@@ -17,7 +15,6 @@ class Management_model extends CI_Model {
 			return FALSE;
 		}
 	}
-
 	public function get_matching_users($username){
 		$query = $this->db->query("SELECT id, username, email, allowed, admin FROM users WHERE username LIKE '%" . $username . "%'");
 		return $query->result_array();

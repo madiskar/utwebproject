@@ -12,12 +12,12 @@
 				<?php echo $games_item['description']; ?>
 			</div>
 			<br>
-                        <div class="gameRating">
+            <div class="gameRating">
 			        <?php
 						if ($games_item['average_rating'] == null){
-							echo "Hinnang: " . $games_item['mainrating'] . ".00";
+							echo $game_rating . ": " . $games_item['mainrating'] . ".00";
 						} else {
-							echo "Hinnang: " . $games_item['average_rating'];
+							echo $game_rating . ": " . $games_item['average_rating'];
 						}
 					?>
 			</div>

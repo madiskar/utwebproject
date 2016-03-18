@@ -22,11 +22,10 @@ class Browse extends CI_Controller {
 	
 	public function update_games()
 	{
-		$games = $this->games_model->get_games();
-		
 		$sortBY = $_REQUEST["sortby"];
 		$zanr = $_REQUEST["genre"];
 
+		$games = $this->games_model->get_games_browse($zanr);
 		
 		if($sortBY == "bestFirst")
 		{
@@ -34,16 +33,16 @@ class Browse extends CI_Controller {
 			$games = array_reverse($games);
 		}
 		
-		if($sortBY == "worstFirst")
+		else if($sortBY == "worstFirst")
 		{
 			usort($games, array($this, "cmpRating"));
 		}
 	
-		if($sortBY == "AZ") {
+		else if($sortBY == "AZ") {
 			usort($games, array($this, "cmpTitle"));
 		}
 	
-		if($sortBY == "ZA") {
+		else if($sortBY == "ZA") {
 			usort($games, array($this, "cmpTitle"));
 			$games = array_reverse($games);
 		}
@@ -55,6 +54,7 @@ class Browse extends CI_Controller {
 			$internalArr[] = $game['description'];
 			$internalArr[] = $game['average_rating'];
 			$internalArr[] = $game['slug'];
+			$internalArr[] = $game['thmb_extension'];
 			$toJs[] = $internalArr;
 		endforeach;
 		

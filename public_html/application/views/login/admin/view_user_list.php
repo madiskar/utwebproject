@@ -4,10 +4,28 @@
 
 	<div class="logInnerContainer" align=center>
 			<?php if ($eksisteerib) {?>
+			<table style="width:100%">
+				 <tr>
+				    <th>Kasutajanimi</th>
+				    <th>E-Mail</th>
+				    <th>Võib arvustusi jätta</th>
+				    <th>Admin</th>
+				  </tr>
 				<?php foreach ($user_info as $user): ?>
-					<div class="medText">
-						<?php echo $user['username'] ?>
-					</div>
+					<tr>
+					<td>
+					<div class="medText"><?php echo $user['username']; ?></div>
+					</td>
+					<td>
+				<div class="medText"><?php echo $user['email']; ?></div>
+				</td>
+				<td>
+				<input type="checkbox" name="allowed" value="1" <?php echo ($user['allowed'] == 1 ? 'checked' : '') ?> />
+				</td>
+				<td>
+				<input type="checkbox" name="admin" value="2" <?php echo ($user['admin'] == 1 ? 'checked' : '') ?> />
+				</td>
+				</tr>
 				<?php endforeach; ?>
 			<?php } else { ?>
 				<div class="medText">Sellist kasutajat ei ole!</div>

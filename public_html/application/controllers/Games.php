@@ -106,6 +106,7 @@ class Games extends CI_Controller {
                 $data = array('upload_data' => $this->upload->data());
                     $this->load->view('pages/avaleht');
                     $this->load->view('templates/footer');
+                    $this->output->set_output($data['upload_data']['file_name']);
             }
         }
 
@@ -139,7 +140,7 @@ class Games extends CI_Controller {
     			$this->form_validation->set_rules('game_id', 'gid', 'required');
     			$this->form_validation->set_rules('user_id', 'Afsadasvustus', 'required');
 
-                $data['reviews'] = $this->games_model->get_reviews($data['games_item']['id']);
+                //$data['reviews'] = $this->games_model->get_reviews($data['games_item']['id']);
 
                 $data['title'] = $data['games_item']['title'];
                 $data['base_url'] = base_url();
@@ -162,6 +163,11 @@ class Games extends CI_Controller {
 		            $this->load->view('games/view_bottom', $data);
 		            $this->load->view('templates/footer');
                 }
+        }
+
+        public function loadReviews($game_id, $startInt){
+            $data['reviews'] = $this->games_model->get_reviews($game_id, $startInt);
+            $this->output->set_content_type('application/json')->set_output(json_encode($data['reviews']));
         }
 
 }

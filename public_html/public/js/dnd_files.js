@@ -7,7 +7,7 @@ function previewfile(file) {
       image.width = 250; // a fake resize
       holder.appendChild(image);
       holder.innerHTML += '<p>Uploaded ' + file.name + ' ';
-      screenshots_field.value = screenshots_field.value + file.name + '|';
+      
     };
 
     reader.readAsDataURL(file);
@@ -24,7 +24,13 @@ function readfiles(files) {
 	      xhr.open('POST', 'http://[::1]/public_html/index.php/games/do_upload', true);
 
 	      xhr.send(formData);
+		  xhr.onreadystatechange = function() {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+		screenshots_field.value = screenshots_field.value + xhr.responseText + '|';
+    }
+}
 	    }
+		
       previewfile(files[i]);
     }
 }

@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['games/do_upload'] = 'games/do_upload';
 $route['games/search'] = 'games/search';
 $route['games/add'] = 'games/add';
+$route['games/loadReviews/(:any)/(:any)'] = 'games/loadReviews/$1/$2';
 $route['games/(:any)'] = 'games/view/$1';
 $route['games'] = 'games';
 $route['default_controller'] = 'pages';

@@ -25,9 +25,9 @@ class Games_model extends CI_Model {
 						return $query->result_array();
 		}
 
-		public function get_reviews($gameid = 1)
+		public function get_reviews($gameid = 1, $start)
 		{
-			$query = $this->db->query("SELECT reviews.review, reviews.rating, users.username FROM reviews INNER JOIN users ON reviews.user_id=users.id Where game_id = '" . $gameid . "'");
+			$query = $this->db->query("SELECT reviews.review, reviews.rating, users.username FROM reviews INNER JOIN users ON reviews.user_id=users.id Where game_id = '" . $gameid . " ' ORDER BY reviews.id DESC LIMIT " . $start . ",5");
 			return $query->result_array();
 		}
 		

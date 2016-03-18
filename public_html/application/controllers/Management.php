@@ -28,7 +28,7 @@ class Management extends CI_Controller {
         	{
         		$user = $this->input->post('usersearch');
         		
-        		if ($this->management_model->get_userinfo($user)) {
+        		/*if ($this->management_model->get_userinfo($user)) {
         			
         			$data['user_info'] = $this->management_model->get_userinfo($user);
         			$data['eksisteerib'] = TRUE;
@@ -36,12 +36,12 @@ class Management extends CI_Controller {
         			$data['email'] = $data['user_info']['email'];
         			$data['allowed'] = $data['user_info']['allowed'];
         			$data['admin'] = $data['user_info']['admin'];
-        		}
-                        /*if ($this->management_model->get_matching_users($user)) {
+        		}*/
+                        if ($this->management_model->get_matching_users($user)) {
                                 
                                 $data['user_info'] = $this->management_model->get_matching_users($user);
                                 $data['eksisteerib'] = TRUE;
-                        }*/
+                        }
         		else {
         			$data['eksisteerib'] = FALSE;
         		}
@@ -52,7 +52,7 @@ class Management extends CI_Controller {
         public function update($data) {
         	$this->load->view('templates/header', $data);
         	$this->load->view('login/admin/view_management');
-        	$this->load->view('login/admin/view_user', $data);
+        	$this->load->view('login/admin/view_user_list', $data);
         	$this->load->view('templates/footer');
         	
         	

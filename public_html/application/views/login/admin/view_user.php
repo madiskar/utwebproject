@@ -1,9 +1,10 @@
-<div class="logOuterContainer">
+<div id="userInfo" class="logOuterContainer">
 					
 					
 
 	<div class="logInnerContainer" align=center>
 			<?php if ($eksisteerib) {?>
+				
 				<div class="medText">Kasutajanimi: <?php echo $username; ?><br>
 				E-Posti aadress: <?php echo $email; ?></div>
 				<br/>

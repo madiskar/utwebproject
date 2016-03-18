@@ -14,7 +14,7 @@
   <li><a href="#news">SIRVI MANGE</a></li>
   <li class="dropdown">
 		<?php if($this->session->userdata('username') == FALSE) { ?>
-		  	<a href="#">
+		  	<div class="nav-non-link">
 				<img class="fitImage" alt="LOGI SISSE" src="<?php echo $base_url; ?>public/images/login.png">
 					<div class="dropdown-content">
 						<a href="<?php echo $base_url; ?>index.php/login">LOGI SISSE</a>
@@ -22,7 +22,7 @@
 							REGISTREERU
 						</a>
 					</div>
-		  	</a>
+		  	</div>
 		<?php } else {?>
 			<a href="<?php echo $base_url; ?>index.php/login/logout">
 				<img class="fitImage" alt="LOGI VÄLJA" src="<?php echo $base_url; ?>public/images/logout.png">
@@ -35,6 +35,15 @@
 
   	</form>
   </li>
+  <li class="dropdown">
+		  	<div class="nav-non-link">
+				KEEL
+					<div class="dropdown-content" id="lang-dropdown">
+						<a href="#">EESTI</a>
+						<a href="#">ENGLISH</a>
+					</div>
+		  	</div>
+	</li>
   <li class="right">
   	<?php if($this->session->userdata('is_admin') == TRUE) { ?>
 		<a href="<?php echo $base_url; ?>index.php/management">

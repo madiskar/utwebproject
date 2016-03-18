@@ -32,4 +32,4 @@
 					
 
 					<p><?php echo $games_item['mainrev']; ?></p>
-					<h2>Lõpphinnang: <?php echo $games_item['mainrating']; ?>/10</h2>
+					<h2>Lõpphinnang: <?php echo $games_item['mainrating']; ?>/10</h2><br>

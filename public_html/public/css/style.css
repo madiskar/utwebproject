@@ -36,6 +36,21 @@ li a {
     border-width: 0;
     border-color: white;
     border-style: solid;
+    position: relative;
+}
+
+div.nav-non-link{
+	display: block;
+    color: white;
+    text-align: center;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    text-decoration: none;
+    border-width: 0;
+    border-color: white;
+    border-style: solid;
 }
 
 .noPadding {
@@ -48,15 +63,6 @@ li.dropdown {
     float: right;
 }
 
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -66,21 +72,9 @@ li.dropdown {
     border-color: white;
     border-style: solid;
 }
-dropdown-content-language {
-    display: none;
-    position: absolute;
-    background-color: #d88e1f;
-    right: 0.5em;
-    border-width: 0.1em;
-    border-color: white;
-    border-style: solid;
-}
 
-.dropdown-content-language a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    text-align: right;
+#lang-dropdown{
+	right: 15em;
 }
 
 .dropdown-content a {
@@ -414,6 +408,8 @@ input.searchForm {
 	border-style: solid;
 	border-width: 0.1em;
 }
+
+tr:nth-child(even) {background-color: #1a1c1b;}
 
 
 #holder { border: 10px dashed #ccc; width: 300px; min-height: 300px; margin: 20px auto;}

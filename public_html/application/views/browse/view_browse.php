@@ -1,32 +1,33 @@
 		<div class="browseBar">
 			<div class="select">
-					<label for="zanr">Zanr: </label>
+					<label for="zanr"><?php echo $genre; ?> </label>
 					<select name="zanr" id="genre">
-						<option value="all" selected >Koik</option>
-						<option value="action">Action</option>
-						<option value="adventure">Adventure</option>
-						<option value="casual">Casual</option>
-						<option value="indie">Indie</option>
-						<option value="mmo">Massively Multiplayer</option>
-						<option value="racing">Racing</option>
-						<option value="rpg">RPG</option>
-						<option value="simulation">Simulation</option>
-						<option value="sports">Sports</option>
-						<option value="strategy">Strategy</option>
+						<option value="all" selected ><?php echo $all; ?></option>
+						<option value="action"><?php echo $action; ?></option>
+						<option value="adventure"><?php echo $adventure; ?></option>
+						<option value="casual"><?php echo $casual; ?></option>
+						<option value="indie"><?php echo $indie; ?></option>
+						<option value="mmo"><?php echo $mmo; ?></option>
+						<option value="racing"><?php echo $racing; ?></option>
+						<option value="rpg"><?php echo $rpg; ?></option>
+						<option value="simulation"><?php echo $simulation; ?></option>
+						<option value="sports"><?php echo $sports; ?></option>
+						<option value="strategy"><?php echo $strategy; ?></option>
 					</select>
 					
-					<label for="sort">Sorteeri: </label>
+					<label for="sort"><?php echo $sort; ?> </label>
 					<select name="sort" id="sortby">
 						<option value="AZ" selected>A-Z</option>
 						<option value="ZA">Z-A</option>
-						<option value="bestFirst">Parimad enne</option>
-						<option value="worstFirst">Halvimad enne</option>
+						<option value="bestFirst"><?php echo $parimad; ?></option>
+						<option value="worstFirst"><?php echo $halvimad; ?></option>
 					</select>
 				
-				<input class="button" type="submit" name="sorteeri" value="Sirvi" onclick="displaySelection()" />			
+				<input class="button" type="submit" name="sorteeri" value="<?php echo $sirvi; ?>" onclick="displaySelection()" />			
 			</div>
 		</div>
 
 	<div id="games">
-		<script src="<?php echo $base_url; ?>public/js/browsing.js"></script>
+		<?php $jsfilepath = "".$base_url."public/js/browsing_".$this->session->userdata('language').".js"; ?>
+		<script src="<?php echo $jsfilepath; ?>"></script>
 	</div>

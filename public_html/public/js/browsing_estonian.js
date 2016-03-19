@@ -1,3 +1,4 @@
+//Estonian
 function clearItems() {
 	var games = document.getElementById("games");
 	while (games.hasChildNodes()) {   

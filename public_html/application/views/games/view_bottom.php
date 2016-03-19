@@ -1,11 +1,12 @@
-					<?php foreach ($reviews as $review_item): ?>
-						<h2>Arvustus kasutaja <?php echo $review_item['username']; ?> poolt:</h2>
-							<p><?php echo $review_item['review'];?></p>
-                        <h2> Lõpphinnang: <?php echo $review_item['rating']?></h2>
-						<hr>
-					<?php endforeach; ?>
+
+				<br>
+
+					<div id="reviewPlaceHolder">
+					</div>
+					
 					<br>
-				</div>
+								</div>
 			</div>
 			<br>
 		</div>
+<script src="<?php echo $base_url; ?>/public/js/load_reviews.js" type="text/javascript" data-gameid="<?php echo $games_item['id']; ?>"></script>

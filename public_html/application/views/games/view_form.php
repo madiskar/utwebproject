@@ -1,15 +1,23 @@
 					<hr>
-					<h2>Jäta oma arvustus</h2>
 					
-
+					<?php if($this->session->userdata('username') == FALSE) { ?>
+					<h2><?php echo $game_not_logged_in; ?>
+					<a class="orange" href="<?php echo  $base_url; ?>index.php/login"><?php echo $game_log_in_to_review; ?> </a></h2>
+					<?php } else if($this->session->userdata('allowed') == 0) {?>
+					<div class="formValidationErrorText"><br>
+					<h2><?php echo $game_not_allowed; ?> :(</h2><br>
+					</div>
+					<?php } else {?>
+					<h2><?php $game_leave_review; ?></h2>
+					
 					<?php echo validation_errors(); ?>
 
 					<?php echo form_open('games/view/'.$games_item['slug']); ?>
 
-					    <label for="review">Arvustus</label><br>
+					    <label for="review"><?php echo $game_review; ?></label><br>
 					    <textarea name="review" id="review"></textarea><br><br>
 
-					    <label for="rating">Hinnang</label><br>
+					    <label for="rating"><?php echo $game_rating; ?></label><br>
 					    <select name="rating" id="rating">
 						  <option value="1">1</option>
 						  <option value="2">2</option>
@@ -24,11 +32,13 @@
 						</select>
 
 
-					    <input type="hidden" name="user_id" value="1">
+					    <input type="hidden" name="user_id" value="<?php echo $this->session->userdata('user_id'); ?>">
 
 					    <input type="hidden" name="game_id" value="<?php echo $games_item['id']; ?>">
 
-					    <input class="button" type="submit" name="submit" value="Lisa arvustus" />
+					    <input class="button" type="submit" name="submit" value="<?php echo $game_add_review ?>" />
 
 					</form>
-					<hr>
+					<?php }?>
+					
+					<hr><br>

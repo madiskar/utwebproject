@@ -15,7 +15,6 @@ class Games_model extends CI_Model {
 				$query = $this->db->query("SELECT games.id, mainrev, mainrating, slug, title, description, scrsht_extensions FROM games WHERE games.slug='" .$slug. "'");
 				return $query->row_array();
 		}
-
 		public function get_games_browse($genre)
 		{
 			if($genre == "all") 
@@ -29,7 +28,6 @@ class Games_model extends CI_Model {
 				return $query->result_array();
 			}
 		}
-
 		public function get_games_search($searchquery)
 		{
 				$newQuery = str_replace(' ', '%', $searchquery);
@@ -69,8 +67,14 @@ class Games_model extends CI_Model {
 		        'thmb_extension' => $name,
 		        'scrsht_extensions' => $trimmed_ext
 		    );
-		    
-		    return $this->db->query("INSERT INTO games (title, slug, description, mainrev, mainrating, thmb_extension, scrsht_extensions) VALUES ('" . $data['title'] . "', '" . $data['slug'] . "', '" . $data['description'] . "', '" . $data['mainrev'] . "', " . $data['mainrating'] . ", '" . $data['thmb_extension'] . "', '" . $data['scrsht_extensions'] . "')"); 
+		    $qry = $this->db->query("INSERT INTO games (title, slug, description, mainrev, mainrating, thmb_extension, scrsht_extensions) VALUES ('" . $data['title'] . "', '" . $data['slug'] . "', '" . $data['description'] . "', '" . $data['mainrev'] . "', " . $data['mainrating'] . ", '" . $data['thmb_extension'] . "', '" . $data['scrsht_extensions'] . "')"); 
+		    $query = $this->db->query("SELECT id FROM games WHERE slug='" . $slug . "'");
+        	$newId = $query->row('id');
+        	$genreArray = $this->input->post('genres');
+        	foreach($genreArray as $genre){
+        		$this->db->query("INSERT INTO games_to_genres(game_id, genre_id) VALUES (" . $newId . ", " . $genre . ")");
+        	}
+		    return $qry;
 		}
 		
 		public function set_reviews()

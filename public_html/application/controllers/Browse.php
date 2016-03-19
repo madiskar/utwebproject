@@ -115,7 +115,7 @@ class Browse extends CI_Controller {
 	
 	public function index()
 	{			
-		$this->data['title'] = 'Sirvi pelasid';
+		$this->data['title'] = $this->data["nav_game_search"];
 		$this->data['base_url'] = base_url();
 		
 		$this->load->view('templates/header', $this->data);

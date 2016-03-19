@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $lang['menu_log_in'] = 'LOG IN';
 $lang['menu_register'] = 'REGISTER';
 $lang['menu_homepage'] = 'HOME';
-$lang['menu_search_games'] = 'SEARCH GAMES';
+$lang['menu_search_games'] = 'BROWSE GAMES';
 $lang['menu_search'] = 'SEARCH';
 $lang['menu_title'] = 'Game reviews';
 $lang['menu_search_result_success'] = 'Results for ';

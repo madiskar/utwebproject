@@ -24,7 +24,7 @@ class Games_model extends CI_Model {
 			}
 			else
 			{
-				$query = $this->db->query("SELECT games.id AS game_id, games.mainrev, games.slug, games.description, games.title, games.thmb_extension, genres.genre, ROUND( (SUM(rating) + mainrating) /(COUNT(*) +1), 2 ) AS average_rating FROM games JOIN games_to_genres ON( games.id = games_to_genres.game_id ) JOIN genres ON( games_to_genres.genre_id = genres.id ) LEFT JOIN reviews ON reviews.game_id = games.id WHERE genres.genre = '".$genre."' GROUP BY games_to_genres.game_id,games_to_genres.genre_id ORDER BY `game_id` ASC");
+				$query = $this->db->query("SELECT games.id AS game_id, games.mainrating, games.mainrev, games.slug, games.description, games.title, games.thmb_extension, genres.genre, ROUND( (SUM(rating) + mainrating) /(COUNT(*) +1), 2 ) AS average_rating FROM games JOIN games_to_genres ON( games.id = games_to_genres.game_id ) JOIN genres ON( games_to_genres.genre_id = genres.id ) LEFT JOIN reviews ON reviews.game_id = games.id WHERE genres.genre = '".$genre."' GROUP BY games_to_genres.game_id,games_to_genres.genre_id ORDER BY `game_id` ASC");
 				return $query->result_array();
 			}
 		}

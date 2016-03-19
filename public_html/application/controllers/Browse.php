@@ -49,7 +49,15 @@ class Browse extends CI_Controller {
 	
 	public function cmpRating($a, $b)
 	{	
-		return strcmp($a['average_rating'], $b['average_rating']);
+		$first = floatval($a['average_rating'] == null ? $a['mainrating'] : $a['average_rating']);
+		$second = floatval($b['average_rating'] == null ? $b['mainrating'] : $b['average_rating']);
+		if ($first>$second){
+			return 1;
+		} else if ($first<$second){
+			return -1;
+		} else {
+			return 0;
+		}
 	}
 	
 	public function cmpTitle($a, $b)
@@ -89,7 +97,14 @@ class Browse extends CI_Controller {
 			$internalArr = array();
 			$internalArr[] = $game['title'];
 			$internalArr[] = $game['description'];
-			$internalArr[] = $game['average_rating'];
+			if($game['average_rating']==null)
+			{
+				$internalArr[] = $game['mainrating'].".00";
+			}
+			else
+			{
+				$internalArr[] = $game['average_rating'];
+			}
 			$internalArr[] = $game['slug'];
 			$internalArr[] = $game['thmb_extension'];
 			$toJs[] = $internalArr;

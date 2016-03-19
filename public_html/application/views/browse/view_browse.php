@@ -28,6 +28,10 @@
 		</div>
 
 	<div id="games">
-		<?php $jsfilepath = "".$base_url."public/js/browsing_".$this->session->userdata('language').".js"; ?>
+		<?php $jsfilepath = "".$base_url."public/js/browsing_".$this->session->userdata('language').".js"; 
+			if($jsfilepath == "".$base_url."public/js/browsing_.js") {
+				$jsfilepath = "".$base_url."public/js/browsing_estonian.js";
+			}
+		?>
 		<script src="<?php echo $jsfilepath; ?>"></script>
 	</div>

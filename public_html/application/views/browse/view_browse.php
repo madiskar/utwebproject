@@ -31,5 +31,5 @@
 				<input class="button" type="submit" name="sorteeri" value="<?php echo $sirvi; ?>" onclick="handleClick()" />			
 			</div>
 		</div>
-	<div id="games"></div>
+	<div id="games" class="mainContainer"></div>
 	<script src="<?php echo $jsfilepath; ?>"></script>

@@ -1,3 +1,8 @@
+		<?php $jsfilepath = "".$base_url."public/js/browsing_".$this->session->userdata('language').".js"; 
+			if($jsfilepath == "".$base_url."public/js/browsing_.js") {
+				$jsfilepath = "".$base_url."public/js/browsing_english.js";
+			}
+		?>
 		<div class="browseBar">
 			<div class="select">
 					<label for="zanr"><?php echo $genre; ?> </label>
@@ -23,15 +28,8 @@
 						<option value="worstFirst"><?php echo $halvimad; ?></option>
 					</select>
 				
-				<input class="button" type="submit" name="sorteeri" value="<?php echo $sirvi; ?>" onclick="displaySelection()" />			
+				<input class="button" type="submit" name="sorteeri" value="<?php echo $sirvi; ?>" onclick="handleClick()" />			
 			</div>
 		</div>
-
-	<div id="games">
-		<?php $jsfilepath = "".$base_url."public/js/browsing_".$this->session->userdata('language').".js"; 
-			if($jsfilepath == "".$base_url."public/js/browsing_.js") {
-				$jsfilepath = "".$base_url."public/js/browsing_estonian.js";
-			}
-		?>
-		<script src="<?php echo $jsfilepath; ?>"></script>
-	</div>
+	<div id="games"></div>
+	<script src="<?php echo $jsfilepath; ?>"></script>

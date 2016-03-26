@@ -1,4 +1,12 @@
 //English
+
+window.onload = checkHash();
+
+window.addEventListener('hashchange', function() {
+	console.log("hash has changed!");
+	checkHash();
+});
+
 function clearItems() {
 	var games = document.getElementById("games");
 	while (games.hasChildNodes()) {   
@@ -13,8 +21,8 @@ function buildHTML(gamesArray) {
     	
 	    var gameLink = document.createElement("A"); //anchor
 	    gameLink.id = "gamelink";
-	    gameLink.href = "http://wasdreviews.cs.ut.ee/index.php/games/" + gamesArray[i][3];
-	    gameLink.target = "_blank";
+	    gameLink.href = base_url_origin + "/wasdreviews/public_html/index.php/games/" + gamesArray[i][3];
+	    //gameLink.href = "http://wasdreviews.cs.ut.ee/index.php/games/" + gamesArray[i][3];
 	    
 	    var gameContainer = document.createElement("div"); //maincontainer
 	    gameContainer.id = "container";
@@ -38,13 +46,13 @@ function buildHTML(gamesArray) {
     	var thumbnail = document.createElement("IMG"); // thumbnail
     	thumbnail.className = "gameImage";
     	thumbnail.alt = gamesArray[i][0]  + " screenshot";
-    	thumbnail.src = "http://wasdreviews.cs.ut.ee/public/images/" + gamesArray[i][3] + "/" + gamesArray[i][4];
-    	
-    	var lineBreak = document.createElement("BR"); // line break 
+    	thumbnail.src = base_url_origin + "/wasdreviews/public_html/public/images/TEMP_thumbnail.png";
+    	//thumbnail.src = "http://wasdreviews.cs.ut.ee/public/images/" + gamesArray[i][3] + "/" + gamesArray[i][4];
+    	var lineBreak = document.createElement("BR"); // line break
     	
     	gameContainer.appendChild(thumbnail);
     	gameContainer.appendChild(title);
-    	gameContainer.appendChild(lineBreak);				    	
+    	gameContainer.appendChild(lineBreak);
     	gameContainer.appendChild(gameDesc);
     	gameContainer.appendChild(avgRating);
     	gameLink.appendChild(gameContainer);
@@ -52,20 +60,62 @@ function buildHTML(gamesArray) {
 	}
 }
 
-function displaySelection() {
-	clearItems();
-	var base_url = window.location.origin + window.location.pathname;
+function getParameterByName(name, string) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(string);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function handleClick() {
 	var sortValue = document.getElementById("sortby");
-	var sortBy = sortValue.options[sortValue.selectedIndex].value;
+	var sortBy = sortValue.options[sortValue.selectedIndex].value
 	
 	var genreValue = document.getElementById("genre");
 	var genreType = genreValue.options[genreValue.selectedIndex].value;
+
+	var currentSelection = [sortBy, genreType];
+	history.pushState(currentSelection, null, "#?sortby=" + sortBy + "&genre=" + genreType);
+	displaySelection(sortBy, genreType);
+}
+
+function setSelectedItems(sortby, genre) {
+	//set the correct selected items in dropdown menus
+	//based on current selection of games
+	var dm1 = document.getElementById('genre');
+	for (var i = 0; i < dm1.options.length; i++) {
+	    	if (dm1.options[i].value == genre) {
+	        	dm1.selectedIndex = i;
+	        	break;
+    		}
+	}
+	var dm2 = document.getElementById('sortby');
+	for (var j = 0; j < dm2.options.length; j++) {
+	    	if (dm2.options[j].value == sortby) {
+	        	dm2.selectedIndex = j;
+	        	break;
+	    	}
+	}
+}
+
+function checkHash() {
+	if(window.location.hash) {
+		var urlhash = window.location.hash.substring(1);
+		var loadsort = getParameterByName("sortby", urlhash);
+		var loadgenre = getParameterByName("genre", urlhash);
+		setSelectedItems(loadsort, loadgenre);
+		displaySelection(loadsort, loadgenre);
+	} else {
+		clearItems();
+	}
+}
+
+function displaySelection(sortBy, genreType) {
+	clearItems();
+	var base_url = window.location.origin + window.location.pathname;
 	
   	var xhttp = new XMLHttpRequest();
   	xhttp.onreadystatechange = function() {
 	    if (xhttp.readyState == 4 && xhttp.status == 200) {
 		    var gamesArray = JSON.parse(xhttp.responseText);
-		    //console.log(gamesArray);
 		    buildHTML(gamesArray);
 	    }
   	};

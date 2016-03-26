@@ -107,7 +107,6 @@ div.browseBar {
 	width: 42%;
 	margin-top: 1.75em;
 	padding: 0.5em;
-	height: 1.8em;
 }
 
 div.navigationBar {
@@ -349,6 +348,20 @@ div.formValidationErrorText{
 	font-family: Segoe UI;
 }
 
+div.managementOuterContainer {
+	margin:0 auto;
+	margin-top: 1em;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	background-color: #3b3835;
+	align: center;
+	width: 80%;
+}
+div.managementInnerContainer {
+	color: #FFFFFF;
+	align: center;
+}
+
 div.logOuterContainer {
 	margin:0 auto;
 	margin-top: 1em;
@@ -362,6 +375,7 @@ div.logInnerContainer {
 	color: #FFFFFF;
 	align: center;
 }
+
 label.largeLabel{
 	font-size: large;
 	font-family: Segoe UI;
@@ -418,6 +432,16 @@ input.searchForm {
 }
 
 tr:nth-child(even) {background-color: #1a1c1b;}
+
+th {
+    background-color: #d88e1f;
+	font-size: x-large;
+    color: white;
+}
+
+table {
+	width: 100%;
+}
 
 
 #holder { border: 10px dashed #ccc; width: 300px; min-height: 300px; margin: 20px auto;}

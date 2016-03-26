@@ -51,6 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['admin/update_users/(:any)'] = 'management/change_states/$1';
 $route['games/do_upload'] = 'games/do_upload';
+$route['language/(:any)'] = 'language/$1';
+$route['login/logout'] = 'login/logout';
+$route['login'] = 'login';
+$route['management'] = 'management';
 $route['games/search'] = 'games/search';
 $route['games/add'] = 'games/add';
 $route['games/loadReviews/(:any)/(:any)'] = 'games/loadReviews/$1/$2';

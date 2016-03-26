@@ -57,12 +57,13 @@ class Games_model extends CI_Model {
 				$scrsht_extensions = $scrsht_extensions . "." . end($nameParts) . " ";
 				$i += 1;
 			}
+			$newRev = nl2br($this->input->post('mainrev'));
 			$trimmed_ext = rtrim($scrsht_extensions, " ");
 		    $data = array(
 		        'title' => $this->input->post('title'),
 		        'slug' => $slug,
 		        'description' => $this->input->post('description'),
-		        'mainrev' => $this->input->post('mainrev'),
+		        'mainrev' => $newRev,
 		        'mainrating' => $this->input->post('mainrating'),
 		        'thmb_extension' => $name,
 		        'scrsht_extensions' => $trimmed_ext

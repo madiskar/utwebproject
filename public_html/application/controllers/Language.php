@@ -10,11 +10,11 @@ class Language extends CI_Controller {
         
         public function est(){
         	$this->session->set_userdata('language', 'estonian');
-        	redirect(pages);
+        	redirect('');
         }
         
         public function eng(){
         	$this->session->set_userdata('language', 'english');
-        	redirect(pages);
+        	redirect('');
         }
 }

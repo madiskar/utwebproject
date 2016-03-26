@@ -1,7 +1,8 @@
 <?php
 class Login extends CI_Controller {
-
-		var $data;
+               
+	var $fb;	
+        var $data;
         public function __construct()
         {
                 parent::__construct();
@@ -25,10 +26,96 @@ class Login extends CI_Controller {
                 
                 $this->data["admin_usermanagement"] = $this->lang->line('admin_usermanagement');
                 $this->data["admin_addgames"] = $this->lang->line('admin_addgames');
+                require_once '/webpages/wasdreviewscsut/public_html/application/vendor/autoload.php';
         }
 
         public function index()
         {	
+
+                $this->fb = new Facebook\Facebook([
+        			'app_id' => '236256526721516',
+        			'app_secret' => 'b57a708a9a383fd15a50c2d22f1e0f74',
+        			'default_graph_version' => 'v2.5',
+        	]);
+        	
+        	
+        	$helper = $this->fb->getRedirectLoginHelper();
+        	$permissions = ['email']; // optional
+        	
+        	try {
+        		if (isset($_SESSION['facebook_access_token'])) {
+        			$accessToken = $_SESSION['facebook_access_token'];
+        		} else {
+        			$accessToken = $helper->getAccessToken();
+        		}
+        	} catch(Facebook\Exceptions\FacebookResponseException $e) {
+        		// When Graph returns an error
+        		echo 'Graph returned an error: ' . $e->getMessage();
+        		exit;
+        	} catch(Facebook\Exceptions\FacebookSDKException $e) {
+        		// When validation fails or other local issues
+        		echo 'Facebook SDK returned an error: ' . $e->getMessage();
+        		exit;
+        	}
+        	
+        	if (isset($accessToken)) {
+        		if (isset($_SESSION['facebook_access_token'])) {
+        			$this->fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+        		} else {
+        			 
+        			$_SESSION['facebook_access_token'] = (string) $accessToken;
+        	
+        			$oAuth2Client = $this->fb->getOAuth2Client();
+        	
+        			$longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($_SESSION['facebook_access_token']);
+        			$_SESSION['facebook_access_token'] = (string) $longLivedAccessToken;
+        	
+        			$this->fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+        		}
+        	
+        		if (isset($_GET['code'])) {
+        			header('Location: ./');
+        		}
+        	
+        		try {
+        			$profile_request = $this->fb->get('/me?fields=name,first_name,last_name,email');
+        			$profile = $profile_request->getGraphNode()->asArray();
+        			$this->session->set_userdata(array(
+        					'username' => $profile['first_name'] . " " . $profile['last_name'],
+                                                'email' => $profile['email'],
+        					'is_admin' => FALSE,
+        					'allowed' => TRUE,
+        					'user_id' => null,
+        					'is_logged_in' => TRUE
+        			));
+        			
+
+        		} catch(Facebook\Exceptions\FacebookResponseException $e) {
+        			 
+        			echo 'Graph returned an error: ' . $e->getMessage();
+        			session_destroy();
+        			 
+        			header("Location: ./");
+        			exit;
+        		} catch(Facebook\Exceptions\FacebookSDKException $e) {
+        			 
+        			echo 'Facebook SDK returned an error: ' . $e->getMessage();
+        			exit;
+        		}
+                        if($this->login_model->get_user_fb($this->session->userdata('username')) == FALSE) {
+        	               $this->login_model->set_fbuser($this->session->userdata('username'), $this->session->userdata('email'));
+                        }
+
+                        $this->session->set_userdata('user_id', $this->login_model->get_userid($this->session->userdata('username')));
+                        $this->session->set_userdata('allowed', $this->login_model->get_fb_user_is_allowed($this->session->userdata('username')));
+                        $this->session->set_userdata('is_admin', $this->login_model->get_fb_user_is_admin($this->session->userdata('username')));
+        		redirect('');
+        		
+        	
+        	} else {
+        		$this->data['loginUrl'] = $helper->getLoginUrl('http://wasdreviews.cs.ut.ee/index.php/login', $permissions);
+        	
+        	}
         	   
                 $this->load->helper('form');
                 $this->load->library('form_validation');
@@ -53,6 +140,7 @@ class Login extends CI_Controller {
                 {
                 	$this->load->view('templates/header', $this->data);
                 	$this->load->view('login/view_login',$this->data);
+                        $this->load->view('login/view_facebook', $this->data);
                 	$this->load->view('templates/footer');
                 }
                 else
@@ -88,8 +176,8 @@ class Login extends CI_Controller {
                 }
         }
         public function logout() {
-        	$this->session->unset_userdata(array('username','is_admin','is_logged_in'));
-        	redirect(pages);
+        	$this->session->unset_userdata(array('username','is_admin','is_logged_in','facebook_access_token')); 
+        	redirect('');
         }
 }
 ?>

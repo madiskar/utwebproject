@@ -55,6 +55,15 @@ class Register_controller extends CI_Controller {
                 	
                 		$this->data['info'] = $this->lang->line('register_success');
                 		
+                		$this->lang->load('login_lang',$this->session->userdata('language'));
+
+                                $this->data["login_username"] = $this->lang->line('login_username');
+                                $this->data["login_password"] = $this->lang->line('login_password');
+                                $this->data["login_forgot_pass"] = $this->lang->line('login_forgot_pass');
+                                $this->data["login_login"] = $this->lang->line('login_login');
+                                $this->data["login_noaccount"] = $this->lang->line('login_noaccount');
+                                $this->data["login_register"] = $this->lang->line('login_register');
+                		
                 		$this->load->view('templates/header', $this->data);
                 		$this->load->view('login/view_login');
                 		$this->load->view('templates/footer');

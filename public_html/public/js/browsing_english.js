@@ -44,7 +44,7 @@ function buildHTML(gamesArray) {
 	
 	    	var thumbnail = document.createElement("IMG"); // thumbnail
 	    	thumbnail.className = "gameImage";
-	    	thumbnail.alt = gamesArray[i][0]  + " screenshot";
+	    	thumbnail.alt = gamesArray[i].title  + " screenshot";
 	    	thumbnail.src = base_url_origin + "/wasdreviews/public_html/public/images/TEMP_thumbnail.png";
 	    	//thumbnail.src = "http://wasdreviews.cs.ut.ee/public/images/" + gamesArray[i].slug + "/" + gamesArray[i].thmb_extension;
 	    	var lineBreak = document.createElement("BR"); // line break

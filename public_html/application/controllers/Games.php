@@ -23,6 +23,8 @@ class Games extends CI_Controller {
                 
                 $this->data["admin_usermanagement"] = $this->lang->line('admin_usermanagement');
                 $this->data["admin_addgames"] = $this->lang->line('admin_addgames');
+            
+                $this->session->set_userdata('redirect', $this->uri->uri_string());
         }
 
         public function index()

@@ -26,11 +26,13 @@ class Login extends CI_Controller {
                 
                 $this->data["admin_usermanagement"] = $this->lang->line('admin_usermanagement');
                 $this->data["admin_addgames"] = $this->lang->line('admin_addgames');
-                require_once '/webpages/wasdreviewscsut/public_html/application/vendor/autoload.php';
+                require_once 'application/vendor/autoload.php';
         }
 
         public function index()
         {	
+        	$this->load->library('user_agent');
+        	$this->session->set_userdata('redirect_back', $this->agent->referrer() );
 
                 $this->fb = new Facebook\Facebook([
         			'app_id' => '236256526721516',
@@ -156,14 +158,14 @@ class Login extends CI_Controller {
                 				'is_logged_in' => true
                 		));
                 		
-                		$this->load->model('games_model');
-                		$this->data['games'] = $this->games_model->get_games();     
-                		$this->data['title'] = $this->lang->line('login_title');
-						
-                		$this->load->view('templates/header', $this->data);
-                		$this->load->view('games/index', $this->data);
-                		$this->load->view('templates/footer');
-                		
+                	if($this->session->userdata('redirect')) {
+   						$redirect = $this->session->userdata('redirect');  // grab value and put into a temp variable so we unset the session value
+   						$this->session->unset_userdata('redirect');
+    					redirect($redirect);
+					}
+					else {
+						redirect(pages);
+					}
                 		
                 		
                 	} else {
@@ -176,7 +178,7 @@ class Login extends CI_Controller {
                 }
         }
         public function logout() {
-        	$this->session->unset_userdata(array('username','is_admin','is_logged_in','facebook_access_token')); 
+        	$this->session->unset_userdata(array('username','is_admin','is_logged_in','facebook_access_token','redirect')); 
         	redirect('');
         }
 }

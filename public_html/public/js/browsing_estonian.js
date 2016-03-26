@@ -13,7 +13,7 @@ function buildHTML(gamesArray) {
     	
 	    var gameLink = document.createElement("A"); //anchor
 	    gameLink.id = "gamelink";
-	    gameLink.href = base_url_origin + "/public_html/index.php/games/" + gamesArray[i][3];
+	    gameLink.href ="http://wasdreviews.cs.ut.ee/index.php/games/" + gamesArray[i][3];
 	    gameLink.target = "_blank";
 	    
 	    var gameContainer = document.createElement("div"); //maincontainer
@@ -38,7 +38,7 @@ function buildHTML(gamesArray) {
     	var thumbnail = document.createElement("IMG"); // thumbnail
     	thumbnail.className = "gameImage";
     	thumbnail.alt = gamesArray[i][0]  + " ekraanipilt";
-    	thumbnail.src = base_url_origin + "/public_html/public/images/" + gamesArray[i][3] + "/" + gamesArray[i][4];
+    	thumbnail.src = "http://wasdreviews.cs.ut.ee/public/images/" + gamesArray[i][3] + "/" + gamesArray[i][4];
     	
     	var lineBreak = document.createElement("BR"); // line break 
     	

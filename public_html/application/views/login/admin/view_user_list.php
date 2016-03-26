@@ -1,10 +1,10 @@
-<div class="managementOuterContainer" align=center>
+<div class="logOuterContainer">
 					
 					
 
-	<div class="managementInnerContainer" align=center>
+	<div class="logInnerContainer" align=center>
 			<?php if ($eksisteerib) {?>
-			<table>
+			<table style="width:100%">
 				 <tr>
 				    <th><?php echo $admin_username; ?></th>
 				    <th><?php echo $admin_email; ?></th>

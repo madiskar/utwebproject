@@ -118,6 +118,8 @@ class Browse extends CI_Controller {
 		$this->data['title'] = $this->data["nav_game_search"];
 		$this->data['base_url'] = base_url();
 		
+		$this->session->set_userdata('redirect', $this->uri->uri_string());
+		
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('browse/view_browse', $this->data);
 		$this->load->view('templates/footer');			

@@ -21,7 +21,7 @@ function readfiles(files) {
       if (tests.formdata) formData.append('userfile', files[i]);
       if (tests.formdata) {
 	      var xhr = new XMLHttpRequest();
-	      xhr.open('POST', 'http://[::1]/public_html/index.php/games/do_upload', true);
+	      xhr.open('POST', 'http://wasdreviews.cs.ut.ee/index.php/games/do_upload', true);
 
 	      xhr.send(formData);
 		  xhr.onreadystatechange = function() {

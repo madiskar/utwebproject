@@ -6,6 +6,6 @@ $("input[type='checkbox']").change(function() {
 	formData.append('allowed', allowed);
 	formData.append('admin', admin);
     var xhr = new XMLHttpRequest();
-	xhr.open('POST', 'http://[::1]/public_html/index.php/admin/update_users/' + id, true);
+	xhr.open('POST', 'http://wasdreviews.cs.ut.ee/index.php/admin/update_users/' + id, true);
 	xhr.send(formData);
 });

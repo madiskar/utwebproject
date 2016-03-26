@@ -11,7 +11,7 @@ $(window).load(function(){
 
 function loadData(){
 	var xmlhttp = new XMLHttpRequest();
-	var url = "http://[::1]/public_html/index.php/games/loadReviews/" + gameId + "/" + startIndex;
+	var url = "http://wasdreviews.cs.ut.ee/index.php/games/loadReviews/" + gameId + "/" + startIndex;
 
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {

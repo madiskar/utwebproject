@@ -27,16 +27,16 @@ class Browse extends CI_Controller {
         $this->data["sirvi"] = $this->lang->line('sirvi');
         //Genres
         $this->data["all"] = $this->lang->line('all');
-		$this->data["action"] = $this->lang->line('action');
-		$this->data["adventure"] = $this->lang->line('adventure');
-		$this->data["casual"] = $this->lang->line('casual');
-		$this->data["indie"] = $this->lang->line('indie');
-		$this->data["mmo"] = $this->lang->line('mmo');
-		$this->data["racing"] = $this->lang->line('racing');
-		$this->data["rpg"] = $this->lang->line('rpg');
-		$this->data["simulation"] = $this->lang->line('simulation');
-		$this->data["sports"] = $this->lang->line('sports');
-		$this->data["strategy"] = $this->lang->line('strategy');
+	$this->data["action"] = $this->lang->line('action');
+	$this->data["adventure"] = $this->lang->line('adventure');
+	$this->data["casual"] = $this->lang->line('casual');
+	$this->data["indie"] = $this->lang->line('indie');
+	$this->data["mmo"] = $this->lang->line('mmo');
+	$this->data["racing"] = $this->lang->line('racing');
+	$this->data["rpg"] = $this->lang->line('rpg');
+	$this->data["simulation"] = $this->lang->line('simulation');
+	$this->data["sports"] = $this->lang->line('sports');
+	$this->data["strategy"] = $this->lang->line('strategy');
 
         $this->data['base_url'] = base_url();
                 
@@ -92,25 +92,19 @@ class Browse extends CI_Controller {
 			$games = array_reverse($games);
 		}
 		
-		$toJs = array();
+		$dataset = array();
 		foreach($games as $game):
-			$internalArr = array();
-			$internalArr[] = $game['title'];
-			$internalArr[] = $game['description'];
+			$aver_rtg;
 			if($game['average_rating']==null)
 			{
-				$internalArr[] = $game['mainrating'].".00";
+				$aver_rtg = $game['mainrating'].".00";
+			} else {
+				$aver_rtg = $game['average_rating'];
 			}
-			else
-			{
-				$internalArr[] = $game['average_rating'];
-			}
-			$internalArr[] = $game['slug'];
-			$internalArr[] = $game['thmb_extension'];
-			$toJs[] = $internalArr;
+			$dataset[] = array('title' => $game['title'], 'description' => $game['description'], 'average_rating' => $aver_rtg, 'slug' => $game['slug'], 'thmb_extension' => $game['thmb_extension']);
 		endforeach;
 		
-		echo json_encode($toJs);
+		echo json_encode($dataset);
 	}
 	
 	public function index()

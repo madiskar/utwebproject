@@ -3,7 +3,6 @@
 window.onload = checkHash();
 
 window.addEventListener('hashchange', function() {
-	console.log("hash has changed!");
 	checkHash();
 });
 
@@ -21,8 +20,8 @@ function buildHTML(gamesArray) {
     	
 	    var gameLink = document.createElement("A"); //anchor
 	    gameLink.id = "gamelink";
-	    gameLink.href = base_url_origin + "/wasdreviews/public_html/index.php/games/" + gamesArray[i][3];
-	    //gameLink.href = "http://wasdreviews.cs.ut.ee/index.php/games/" + gamesArray[i][3];
+	    gameLink.href = base_url_origin + "/wasdreviews/public_html/index.php/games/" + gamesArray[i].slug;
+	    //gameLink.href = "http://wasdreviews.cs.ut.ee/index.php/games/" + gamesArray[i].slug;
 	    
 	    var gameContainer = document.createElement("div"); //maincontainer
 	    gameContainer.id = "container";
@@ -31,23 +30,23 @@ function buildHTML(gamesArray) {
 	   	var title = document.createElement("div"); //title
 	   	title.id = "titleid";
 	    title.className = "gameTitle";
-    	title.innerHTML = gamesArray[i][0];
+    	title.innerHTML = gamesArray[i].title;
     	
     	var gameDesc = document.createElement("div"); //description
     	gameDesc.id = "gamedesc";
     	gameDesc.className = "gameDescription";
-    	gameDesc.innerHTML = gamesArray[i][1];
+    	gameDesc.innerHTML = gamesArray[i].description;
 
     	var avgRating = document.createElement("div"); // average rating
     	avgRating.id = "avgrating";
     	avgRating.className = "gameRating";
-    	avgRating.innerHTML = "Hinnang: " + gamesArray[i][2];
+    	avgRating.innerHTML = "Hinnang: " + gamesArray[i].average_rating;
 
     	var thumbnail = document.createElement("IMG"); // thumbnail
     	thumbnail.className = "gameImage";
-    	thumbnail.alt = gamesArray[i][0]  + " ekraanipilt";
+    	thumbnail.alt = gamesArray[i].title  + " ekraanipilt";
     	thumbnail.src = base_url_origin + "/wasdreviews/public_html/public/images/TEMP_thumbnail.png";
-    	//thumbnail.src = "http://wasdreviews.cs.ut.ee/public/images/" + gamesArray[i][3] + "/" + gamesArray[i][4];
+    	//thumbnail.src = "http://wasdreviews.cs.ut.ee/public/images/" + gamesArray[i].slug + "/" + gamesArray[i].thmb_extension;
     	var lineBreak = document.createElement("BR"); // line break
     	
     	gameContainer.appendChild(thumbnail);

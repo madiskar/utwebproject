@@ -71,9 +71,9 @@ function handleClick() {
 	var genreValue = document.getElementById("genre");
 	var genreType = genreValue.options[genreValue.selectedIndex].value;
 
-	var currentSelection = [sortBy, genreType];
+	//var currentSelection = [sortBy, genreType];
 	displaySelection(sortBy, genreType);
-	history.pushState(currentSelection, null, "#?sortby=" + sortBy + "&genre=" + genreType);
+	history.pushState(null, null, "#?sortby=" + sortBy + "&genre=" + genreType);
 }
 
 function setSelectedItems(sortby, genre) {

@@ -31,7 +31,7 @@
 	</li>
   <li class="right">
   	<?php echo form_open('games/search')?>
-  		<label class="largeLabel" for "searchQuery"><?php echo $nav_search; ?></label>
+  		<label class="largeLabel" for="searchQuery"><?php echo $nav_search; ?></label>
   		<input class="searchForm" type="text" id="searchQuery" name="searchQuery" size="25" placeholder="<?php echo $nav_search; ?>"/>
 
   	</form>

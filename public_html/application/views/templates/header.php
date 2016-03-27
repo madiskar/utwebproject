@@ -25,13 +25,13 @@
 			</div>
 		<?php } else {?>
 			<a href="<?php echo $base_url; ?>index.php/login/logout">
-				<img class="fitImage" alt="LOGI VÄLJA" src="<?php echo $base_url; ?>public/images/logout.png">
+				<img class="fitImage" alt="LOGI VÃ„LJA" src="<?php echo $base_url; ?>public/images/logout.png">
 			</a>
 		<?php }?>
 	</li>
   <li class="right">
   	<?php echo form_open('games/search')?>
-  		<label class="largeLabel" for="searchQuery"><?php echo $nav_search; ?></label>
+  		<label class="largeLabel" for="searchQuery">&nbsp;</label>
   		<input class="searchForm" type="text" id="searchQuery" name="searchQuery" size="25" placeholder="<?php echo $nav_search; ?>"/>
 
   	</form>

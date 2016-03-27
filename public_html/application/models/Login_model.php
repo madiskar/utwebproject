@@ -8,19 +8,19 @@ class login_model extends CI_Model {
         
         public function set_fbuser($username,$email){
         	 
-        	return $this->db->query("INSERT INTO users (email, username, password, allowed, admin) VALUES ('" . $this->session->userdata('email') . "', '" . $this->session->userdata('username') . "',                    '', 1, 0)");
+        	return $this->db->query("CALL set_fbuser_procedure('" . $this->session->userdata('email') . "', '" . $this->session->userdata('username') . "')");
         	 
         }
 
         public function get_userid($username){
-                $query = $this->db->query("SELECT id FROM users WHERE username='" . $username . "'");
+                $query = $this->db->query("SELECT id FROM view_user_info WHERE username='" . $username . "'");
                 if($query->num_rows() == 1) {
                          return $query->row('id');
                 }
         }
         
         public function get_fb_user_is_admin($username){
-        	$query = $this->db->query("SELECT admin FROM users WHERE username='" . $username . "'");
+        	$query = $this->db->query("SELECT admin FROM view_user_info WHERE username='" . $username . "'");
         	if($query->row('admin') == 1) {
         		return TRUE;
         	}
@@ -31,7 +31,7 @@ class login_model extends CI_Model {
         
         public function get_fb_user_is_allowed($username) {
         	
-        	$query = $this->db->query("SELECT allowed FROM users WHERE username='" . $username . "'");
+        	$query = $this->db->query("SELECT allowed FROM view_user_info WHERE username='" . $username . "'");
         	if($query->row('allowed') == 1) {
         		return TRUE;
         	}
@@ -44,7 +44,7 @@ class login_model extends CI_Model {
         	
         	$username = $this->input->post('username');
         	
-        	$query = $this->db->query("SELECT password FROM users WHERE username='" . $username . "'");
+        	$query = $this->db->query("SELECT password FROM view_user_passwords WHERE username='" . $username . "'");
         	if($query->num_rows() > 0) {
         		$pass = $query->row("password");
         		return $pass;
@@ -55,7 +55,7 @@ class login_model extends CI_Model {
 
        public function get_user_fb($username){
         
-        	$query = $this->db->query("SELECT username FROM users WHERE username='" . $username . "'");
+        	$query = $this->db->query("SELECT username FROM view_user_info WHERE username='" . $username . "'");
         	if($query->num_rows() == 1) {
         		return TRUE;
         	} else {
@@ -67,7 +67,7 @@ class login_model extends CI_Model {
         	
         	$username = $this->input->post('username');
         	
-        	$query = $this->db->query("SELECT admin FROM users WHERE username='" . $username . "'");
+        	$query = $this->db->query("SELECT admin FROM view_user_info WHERE username='" . $username . "'");
         	if($query->row('admin') == 1) {
         		return TRUE;
         	}
@@ -80,7 +80,7 @@ class login_model extends CI_Model {
         	
         	$username = $this->input->post('username');
         	
-        	$query = $this->db->query("SELECT allowed FROM users WHERE username='" . $username . "'");
+        	$query = $this->db->query("SELECT allowed FROM view_user_info WHERE username='" . $username . "'");
         	if($query->row('allowed') == 1) {
         		return TRUE;
         	}
@@ -93,7 +93,7 @@ class login_model extends CI_Model {
         	
         	$username = $this->input->post('username');
         	
-        	$query = $this->db->query("SELECT id FROM users WHERE username='" . $username . "'");
+        	$query = $this->db->query("SELECT id FROM view_user_info WHERE username='" . $username . "'");
         	return $query->row('id');
         }
 }

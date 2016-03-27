@@ -31,8 +31,6 @@ class Login extends CI_Controller {
 
         public function index()
         {	
-        	$this->load->library('user_agent');
-        	$this->session->set_userdata('redirect_back', $this->agent->referrer() );
 
                 $this->fb = new Facebook\Facebook([
         			'app_id' => '236256526721516',
@@ -111,7 +109,14 @@ class Login extends CI_Controller {
                         $this->session->set_userdata('user_id', $this->login_model->get_userid($this->session->userdata('username')));
                         $this->session->set_userdata('allowed', $this->login_model->get_fb_user_is_allowed($this->session->userdata('username')));
                         $this->session->set_userdata('is_admin', $this->login_model->get_fb_user_is_admin($this->session->userdata('username')));
-        		redirect('');
+        		if($this->session->userdata('redirect')) {
+                $redirect = $this->session->userdata('redirect');  // grab value and put into a temp variable so we unset the session value
+                $this->session->unset_userdata('redirect');
+                    redirect($redirect);
+            }
+            else {
+                redirect('');
+            }
         		
         	
         	} else {
@@ -158,14 +163,14 @@ class Login extends CI_Controller {
                 				'is_logged_in' => true
                 		));
                 		
-                	if($this->session->userdata('redirect')) {
-   						$redirect = $this->session->userdata('redirect');  // grab value and put into a temp variable so we unset the session value
-   						$this->session->unset_userdata('redirect');
-    					redirect($redirect);
-					}
-					else {
-						redirect(pages);
-					}
+                	   if($this->session->userdata('redirect')) {
+                    $redirect = $this->session->userdata('redirect');  // grab value and put into a temp variable so we unset the session value
+                    $this->session->unset_userdata('redirect');
+                        redirect($redirect);
+                }
+                else {
+                    redirect('');
+                }
                 		
                 		
                 	} else {
@@ -178,7 +183,7 @@ class Login extends CI_Controller {
                 }
         }
         public function logout() {
-        	$this->session->unset_userdata(array('username','is_admin','is_logged_in','facebook_access_token','redirect')); 
+        	$this->session->unset_userdata(array('username','is_admin','is_logged_in','facebook_access_token')); 
         	redirect('');
         }
 }

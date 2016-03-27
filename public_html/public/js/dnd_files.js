@@ -1,10 +1,12 @@
+//baseerub osaliselt http://html5demos.com/dnd-upload
+
 function previewfile(file) {
   if (tests.filereader === true && acceptedTypes[file.type] === true) {
     var reader = new FileReader();
     reader.onload = function (event) {
       var image = new Image();
       image.src = event.target.result;
-      image.width = 250; // a fake resize
+      image.width = 250;
       holder.appendChild(image);
       holder.innerHTML += '<p>Uploaded ' + file.name + ' ';
       

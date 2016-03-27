@@ -111,7 +111,7 @@ div.browseBar {
 
 label.largeLabelSearch{
 	font-size: large;
-	font-family: Segoe UI;
+	font-family: "Segoe UI";
 	padding-bottom: 0.3em;
 	margin-left: 2em;
 }
@@ -123,7 +123,7 @@ div.navigationBar {
 	padding-left: 2em;
 	padding-top: 0.2em;
 	font-size: x-large;
-	font-family: Segoe UI;
+	font-family: "Segoe UI";
 	min-height: 1.8em;
 }
 
@@ -182,7 +182,7 @@ div.reviewPageTitle {
 	padding: 0;
 	padding-left: 2em;
 	font-size: x-large;
-	font-family: Segoe UI;
+	font-family: "Segoe UI";
 }
 
 div.searchResultBar{
@@ -191,7 +191,7 @@ div.searchResultBar{
 	padding: 0;
 	padding-left: 2em;
 	font-size: x-large;
-	font-family: Segoe UI;
+	font-family: "Segoe UI";
 	width: 80%
 }
 
@@ -337,22 +337,22 @@ div.regOutContainer {
 	padding-top: 2em;
 	padding-bottom: 2em;
 	background-color: #3b3835;
-	align: center;
 	width: 30em;
 }
 div.regInContainer {
-	align: center;
+	position:relative;
+	text-align: center;
 }
 
 div.medText{
 	font-size: x-large;
-	font-family: Segoe UI;
+	font-family: "Segoe UI";
 }
 
 div.formValidationErrorText{
 	color: #ff6666;
 	font-size: large;
-	font-family: Segoe UI;
+	font-family: "Segoe UI";
 }
 
 div.managementOuterContainer {
@@ -361,12 +361,12 @@ div.managementOuterContainer {
 	padding-top: 2em;
 	padding-bottom: 2em;
 	background-color: #3b3835;
-	align: center;
 	width: 80%;
 }
 div.managementInnerContainer {
 	color: #FFFFFF;
-	align: center;
+	position:relative;
+	text-align: center;
 }
 
 div.logOuterContainer {
@@ -375,17 +375,17 @@ div.logOuterContainer {
 	padding-top: 2em;
 	padding-bottom: 2em;
 	background-color: #3b3835;
-	align: center;
 	width: 30em;
 }
 div.logInnerContainer {
 	color: #FFFFFF;
-	align: center;
+	position:relative;
+	text-align: center;
 }
 
 label.largeLabel{
 	font-size: large;
-	font-family: Segoe UI;
+	font-family: "Segoe UI";
 	padding-bottom: 0.3em;
 }
 
@@ -396,7 +396,7 @@ input.regForm {
 	border-style: solid;
 	border-width: 0.1em;
 	font-size: large;
-	font-family: Segoe UI;
+	font-family: "Segoe UI";
 	padding-bottom: 0.3em;
 	width: 80%;
 }
@@ -408,7 +408,7 @@ input.searchForm {
 	border-style: solid;
 	border-width: 0.1em;
 	font-size: large;
-	font-family: Segoe UI;
+	font-family: "Segoe UI";
 	padding-bottom: 0.3em;
 	padding-left: 0.3em;
 }
@@ -422,7 +422,7 @@ input.searchForm {
 	padding-top: 0.2em;
 	padding-bottom: 0.2em;
 	font-size: large;
-	font-family: Segoe UI;
+	font-family: "Segoe UI";
 	width: 80%;
 }
 
@@ -445,7 +445,7 @@ input.searchForm {
 	border-style: solid;
 	border-width: 0.1em;	
 	font-size: large;
-	font-family: Segoe UI;
+	font-family: "Segoe UI";
 	margin-left:2.2em;
 }
 
@@ -475,13 +475,13 @@ table {
 
 
 #holder {
-	border: 1em dashed #ccc;
+	border: 0.1em dashed #ccc;
 	width: 50%;
 	min-height: 30em;
-	margin: 2em auto;
+	margin: 0.1em auto;
 }
 #holder.hover {
-	border: 1em dashed #d88e1f;
+	border: 0.1em dashed #d88e1f;
 }
 #holder img {
 	display: block;
@@ -489,7 +489,7 @@ table {
 }
 #holder p {
 	margin: 2em;
-	font-size: normal;
+	font-size: 100%;
 }
 .fail { 
 	background: #c00;

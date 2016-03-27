@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['genre'] = 'Zanr: ';
-$lang['sort'] = 'Sorteeri';
-$lang['sirvi'] = 'Sirvi';
+$lang['genre'] = 'ZANR: ';
+$lang['sort'] = 'SORTEERI: ';
+$lang['sirvi'] = 'SIRVI';
 
 $lang['parimad'] = 'Parimad enne';
 $lang['halvimad'] = 'Halvimad enne';

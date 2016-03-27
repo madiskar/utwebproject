@@ -5,7 +5,7 @@
 		?>
 		<div class="browseBar">
 			<div class="select">
-					<label class="largeLabelSearch" for="zanr"><?php echo $genre; ?> </label>
+					<label class="largeLabelSearch" for="genre"><?php echo $genre; ?> </label>
 					<select name="zanr" id="genre">
 						<option value="all" selected ><?php echo $all; ?></option>
 						<option value="action"><?php echo $action; ?></option>
@@ -20,7 +20,7 @@
 						<option value="strategy"><?php echo $strategy; ?></option>
 					</select>
 					
-					<label class="largeLabelSearch" for="sort"><?php echo $sort; ?> </label>
+					<label class="largeLabelSearch" for="sortby"><?php echo $sort; ?> </label>
 					<select name="sort" id="sortby">
 						<option value="AZ" selected>A-Z</option>
 						<option value="ZA">Z-A</option>

@@ -17,7 +17,7 @@
 					    <textarea name="description" id="description"></textarea><br><br>
 
 					    <label for="thumbnail"><?php echo $admin_game_tmb; ?></label><br>
-					    <input type="file" name="thumbnail" size="20" /><br><br>
+					    <input id="thumbnail" type="file" name="thumbnail" size="20" /><br><br>
 
 					    <div id="holder">
 						  </div> 
@@ -28,18 +28,19 @@
 					    <label for="mainrev"><?php echo $admin_game_review; ?></label><br>
 					    <textarea name="mainrev" id="mainrev"></textarea><br><br>
 
-						<input type="hidden" id="screenshots" name="screenshots" size="50" /><br><br>
+						<input type="hidden" id="screenshots" name="screenshots"/><br><br>
 						
-						<input type="checkbox" name="genres[]" value="1">Action<br>
-						<input type="checkbox" name="genres[]" value="2">Adventure<br>
-						<input type="checkbox" name="genres[]" value="3">Casual<br>
-						<input type="checkbox" name="genres[]" value="4">Indie<br>
-						<input type="checkbox" name="genres[]" value="5">MMO<br>
-						<input type="checkbox" name="genres[]" value="6">Racing<br>
-						<input type="checkbox" name="genres[]" value="7">RPG<br>
-						<input type="checkbox" name="genres[]" value="8">Simulation<br>
-						<input type="checkbox" name="genres[]" value="9">Sports<br>
-						<input type="checkbox" name="genres[]" value="10">Strategy<br><br>
+
+						<input id="genreAction" type="checkbox" name="genres[]" value="1"><label for="genreAction">Action</label><br>
+						<input id="genreAdventure" type="checkbox" name="genres[]" value="2"><label for="genreAdventure">Adventure</label><br>
+						<input id="genreCasual" type="checkbox" name="genres[]" value="3"><label for="genreCasual">Casual</label><br>
+						<input id="genreIndie" type="checkbox" name="genres[]" value="4"><label for="genreIndie">Indie</label><br>
+						<input id="genreMMO" type="checkbox" name="genres[]" value="5"><label for="genreMMO">MMO</label><br>
+						<input id="genreRacing" type="checkbox" name="genres[]" value="6"><label for="genreRacing">Racing</label><br>
+						<input id="genreRPG" type="checkbox" name="genres[]" value="7"><label for="genreRPG">RPG</label><br>
+						<input id="genreSimulation" type="checkbox" name="genres[]" value="8"><label for="genreSimulation">Simulation</label><br>
+						<input id="genreSports" type="checkbox" name="genres[]" value="9"><label for="genreSports">Sports</label><br>
+						<input id="genreStrategy" type="checkbox" name="genres[]" value="10"><label for="genreStrategy">Strategy</label><br><br>
 
 					    <label for="mainrating"><?php echo $admin_game_rating; ?></label><br>
 					    <select name="mainrating" id="mainrating">

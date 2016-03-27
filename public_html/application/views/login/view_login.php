@@ -2,14 +2,14 @@
 					
 
 					<?php echo form_open('login'); ?>
-					<div class="logInnerContainer" align=center>
+					<div class="logInnerContainer">
 						<label class="largeLabel" for="username"><?php echo $login_username; ?></label><br>
-						<?php echo form_input('username','','class="regForm"'); ?>
+						<?php echo form_input('username','','class="regForm" id="username"'); ?>
 						<br/><br>
 						<label class="largeLabel" for="password"><?php echo $login_password; ?></label><br>
-						<?php echo form_password('password','','class="regForm"'); ?>
+						<?php echo form_password('password','','class="regForm" id="password"'); ?>
 						<br><br>
-						<div class="formValidationErrorText")>
+						<div class="formValidationErrorText">
 							<?php echo validation_errors(); ?>
 							<?php echo $info; ?>
 						</div>
@@ -21,7 +21,8 @@
 						<hr><br>
 						<div class="medText"><?php echo $login_noaccount; ?></div><br>
 						<?php echo anchor('register_controller', $login_register, 'class="orange"')?>
-						<?php echo form_close(); ?>
+						
 						
 					</div>
+					<?php echo form_close(); ?>
 				</div>

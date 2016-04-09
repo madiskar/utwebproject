@@ -20,7 +20,7 @@
 		<?php if($this->session->userdata('username') == FALSE) { ?>
 		  	<div class="nav-non-link">
 				<img class="fitImage" alt="LOGI SISSE" src="<?php echo $base_url; ?>public/images/login.png">
-					<div class="dropdown-content">
+					<div class="dropdown-content" id="login-dropdown">
 						<a href="<?php echo $base_url; ?>index.php/login"><?php echo $nav_login; ?></a>
 						<a href="<?php echo $base_url; ?>index.php/register_controller">
 							<?php echo $nav_register; ?>
@@ -41,13 +41,11 @@
   	</form>
   </li>
   <li class="dropdown">
-		  	<div class="nav-non-link">
-				<?php echo $nav_language; ?>
+		  	<a href="#" class="dropbtn"><?php echo $nav_language; ?></a>
 					<div class="dropdown-content" id="lang-dropdown">
 						<a href="<?php echo $base_url; ?>index.php/language/est">EESTI</a>
 						<a href="<?php echo $base_url; ?>index.php/language/eng">ENGLISH</a>
 					</div>
-		  	</div>
 	</li>
   <li class="right">
   	<?php if($this->session->userdata('is_admin') == TRUE) { ?>

@@ -26,7 +26,6 @@ function checkConnection(buttonName) {
   }
 }
 function saveData(buttonName) {
-	//alert("ops");
 	localStorage.setItem('form', buttonName);
 	if (buttonName == 'reviewSubmit') {
 		localStorage.setItem('review', $("#review").val());
@@ -60,25 +59,16 @@ function saveData(buttonName) {
 		localStorage.setItem('genreStrategy', $("#genreStrategy").val());
 		localStorage.setItem('mainrating', $("#mainrating").val());
 	}
-	//if (buttonName == 'changeAdmin' || buttonName == 'changeAllowed') {
-	//	localStorage.setItem('user', $("#user_id").val());
-	//	//alert("skeem");
-	//	if ($('.allowed').is(":checked")) {
-	//		alert("lappes");
-		
-	
-	//		localStorage.setItem(allowed, 1);
-	//	}
-	//	else {
-	//		localStorage.setItem(allowed, 0);
-	//	}
-	//	if ($("input.admin:checkbox").is(":checked") {
-	//		localStorage.setItem(admin, 1);
-	//	}
-	//	else {
-	//		localStorage.setItem(admin, 0);
-	//	}
-	//}
+	if (buttonName == 'changeAdmin' || buttonName == 'changeAllowed') {
+		localStorage.removeItem('user');
+		localStorage.setItem('user', $("#user_id").val());
+		var admin = $("input[id|='" + $(this).attr("id") + "'][name|='admin']").is(':checked')==true ? "1" : "0";
+		localStorage.setItem('admin',admin);
+		var allowed = $("input[id|='" + $(this).attr("id") + "'][name|='allowed']").is(':checked')==true ? "1" : "0";
+		localStorage.setItem('allowed',allowed);
+		var id = $(this).attr("id");
+		localStorage.setItem('id',id);	
+	}
 }
 
 function setData() {
@@ -169,21 +159,17 @@ function setData() {
 			localStorage.removeItem('genreStrategy');
 			localStorage.removeItem('mainrating');
     	}
-    	//if (localStorage.getItem('form') == 'changeAllowed' || localStorage.getItem('form') == 'changeAdmin') {
-    	//	var formData =  new FormData();
-      	//	formData.append($(localStorage.getItem('user') + ".allowed:checkbox", localStorage.getItem('allowed'));
-      	//	formData.append($(localStorage.getItem('user') + ".admin:checkbox", localStorage.getItem('admin'));
-      	//	var xhr = new XMLHttpRequest();
-	//	xhr.open('POST', 'http://wasdreviews.cs.ut.ee/index.php/games/add', true);
-	//	xhr.send(formData);
-        //	xhr.onreadystatechange = function() {
-    	//	if (xhr.readyState == XMLHttpRequest.DONE) {
-        //
-        //	}
-    	//	}
-    	//	localStorage.removeItem('form');
-    	//	localStorage.removeItem('allowed');
-	//	localStorage.removeItem('admin');
-	//	localStorage.removeItem('user');
-    	//}	
+    	if (localStorage.getItem('form') == 'changeAllowed' || localStorage.getItem('form') == 'changeAdmin') {
+    		var formData =  new FormData();
+      		formData.append('allowed', localStorage.getItem('allowed'));
+		formData.append('admin', localStorage.getItem('admin'));
+	    	var xhr = new XMLHttpRequest();
+		xhr.open('POST', 'http://wasdreviews.cs.ut.ee/index.php/admin/update_users/' + localStorage.getItem('id'), true);
+		xhr.send(formData);
+    		localStorage.removeItem('form');
+    		localStorage.removeItem('allowed');
+		localStorage.removeItem('admin');
+		localStorage.removeItem('user');
+		localStorage.removeItem('id');
+    	}	
 }

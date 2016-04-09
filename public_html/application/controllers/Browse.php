@@ -13,6 +13,7 @@ class Browse extends CI_Controller {
         $this->lang->load('browse_lang',$this->session->userdata('language'));
         $this->data["nav_home"] = $this->lang->line('menu_homepage');
         $this->data["nav_login"] = $this->lang->line('menu_log_in');
+        $this->data["nav_about"] = $this->lang->line('menu_about');
         $this->data["nav_register"] = $this->lang->line('menu_register');
         $this->data["nav_search"] = $this->lang->line('menu_search');
         $this->data["nav_game_search"] = $this->lang->line('menu_search_games');

@@ -104,9 +104,10 @@ img.fitImage{
 
 div.browseBar {
 	margin: 0 auto;
-	background-color: #3b3835;
-	width: 86.7%;
+	background-color: #1a1c1b;
+	width: 90%;
 	margin-top: 1.75em;
+	text-align: center;
 	padding: 0.5em;
 }
 

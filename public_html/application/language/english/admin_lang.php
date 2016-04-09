@@ -24,3 +24,6 @@ $lang['admin_formdata_info'] = "XHR2's FormData is not supported";
 $lang['admin_game_add_success'] = 'Game successfully added.';
 $lang['admin_another_one'] = 'Add new game';
 $lang['admin_go_home'] = 'Homepage';
+$lang['admin_remove_success'] = 'Game successfully removed';
+$lang['admin_remove_denied'] = 'You don\'t  have permission to remove games';
+$lang['admin_remove_game'] = 'DELETE';

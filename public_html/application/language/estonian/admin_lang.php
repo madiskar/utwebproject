@@ -24,3 +24,6 @@ $lang['admin_formdata_info'] = "XHR2 FormData ei ole toetatud.";
 $lang['admin_game_add_success'] = 'M√§ng edukalt lisatud.';
 $lang['admin_another_one'] = 'Lisa uus m√§ng';
 $lang['admin_go_home'] = 'Avalehele';
+$lang['admin_remove_success'] = 'M‰ng edukalt eemaldatud';
+$lang['admin_remove_denied'] = 'Sul ei ole lubatud m‰nge eemaldada';
+$lang['admin_remove_game'] = 'EEMALDA';

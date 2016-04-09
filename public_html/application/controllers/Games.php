@@ -24,7 +24,7 @@ class Games extends CI_Controller {
                 $this->data["admin_usermanagement"] = $this->lang->line('admin_usermanagement');
                 $this->data["admin_addgames"] = $this->lang->line('admin_addgames');
             
-				if (strpos($this->uri->uri_string(), 'loadReviews') == false)
+				if (strpos($this->uri->uri_string(), 'loadReviews') == false && strpos($this->uri->uri_string(), 'get_new_game_event') == false && strpos($this->uri->uri_string(), 'get_newest_game') == false)
 					$this->session->set_userdata('redirect', $this->uri->uri_string());
         }
 
@@ -121,6 +121,55 @@ class Games extends CI_Controller {
                     $this->load->view('templates/footer');
                 }
         }
+        
+        function get_new_game_event()
+        {
+            $this->data['data'] = $this->games_model->get_newest_slug();
+            $this->load->view('event/new_game', $this->data);
+        }
+
+        function get_newest_game($game_slug){
+            $game = $this->games_model->get_newest_game($game_slug);
+            $internalArr = array();
+            $internalArr[] = $game['title'];
+            $internalArr[] = $game['description'];
+            if($game['average_rating']==null)
+            {
+                $internalArr[] = $game['mainrating'].".00";
+            }
+            else
+            {
+                $internalArr[] = $game['average_rating'];
+            }
+            $internalArr[] = $game['slug'];
+            $internalArr[] = $game['thmb_extension'];
+            $toJs[] = $internalArr;
+
+            echo json_encode($toJs);
+        }
+        
+        function remove_game($game_id)
+        {
+            $this->data['title'] = "Removal";
+            $this->lang->load('admin_lang',$this->session->userdata('language'));
+                
+                $this->data["admin_remove_success"] = $this->lang->line('admin_remove_success');
+                $this->data["admin_remove_denied"] = $this->lang->line('admin_remove_denied');
+                $this->data["admin_go_home"] = $this->lang->line('admin_go_home');
+            if($this->session->userdata('is_admin') == TRUE)
+            {
+                $this->games_model->remove_games($game_id);
+                    $this->load->view('templates/header', $this->data);
+                    $this->load->view('games/remove_success', $this->data);
+                    $this->load->view('templates/footer');
+            }
+            else
+            {
+                $this->load->view('templates/header', $this->data);
+                    $this->load->view('games/remove_fail', $this->data);
+                    $this->load->view('templates/footer');
+            }
+        }
 
         function do_upload()
         {
@@ -178,6 +227,10 @@ class Games extends CI_Controller {
    				$this->data["game_review"] = $this->lang->line('game_review');
    				$this->data["game_rating"] = $this->lang->line('game_rating');
    				$this->data["game_add_review"] = $this->lang->line('game_add_review');
+
+
+                $this->lang->load('admin_lang',$this->session->userdata('language'));
+                $this->data["admin_remove_game"] = $this->lang->line('admin_remove_game');
    					
    				
    				

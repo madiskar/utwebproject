@@ -3,6 +3,14 @@
 			<div class="reviewPageContainer">
 				<div class="reviewPageTitle">
 					<?php echo $games_item['title']; ?>
+					<?php if($this->session->userdata('is_admin') == TRUE) { ?>
+						<a id="deleteForReal" href="<?php echo site_url('games/remove_game/'.$games_item['id']); ?>">
+							<?php echo $admin_remove_game; ?>
+						</a>
+						<a id="deleteButton" href="#void" onclick="showDelete();">
+							X
+						</a>
+					<?php } ?>
 				</div>
 				<div class="reviewPageLargeScreenshotContainer">
 					<img alt="Ekraanipilt" id="reviewPageGameImage" src="<?php

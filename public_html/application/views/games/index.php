@@ -25,4 +25,10 @@
 	</a>
 <?php endforeach; ?>
 
+<?php $jsfilepath = "".$base_url."public/js/get_new_game_".$this->session->userdata('language').".js"; 
+			if($jsfilepath == "".$base_url."public/js/get_new_game_.js") {
+				$jsfilepath = "".$base_url."public/js/get_new_game_estonian.js";
+			}
+		?>
+<script src="<?php echo $jsfilepath; ?>" type="text/javascript"></script>
 </div>

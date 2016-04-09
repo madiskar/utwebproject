@@ -9,7 +9,7 @@ class Games_model extends CI_Model {
 		{
 				if ($slug === FALSE)
 				{
-						$query = $this->db->query("SELECT * FROM view_games");
+						$query = $this->db->query("SELECT * FROM view_games ORDER BY id DESC LIMIT 20");
 						return $query->result_array();
 				}
 				$query = $this->db->query("SELECT * FROM view_game_page WHERE slug='" .$slug. "'");
@@ -27,6 +27,15 @@ class Games_model extends CI_Model {
 				$query = $this->db->query("SELECT * FROM view_games_by_genres WHERE genre = '".$genre."'");
 				return $query->result_array();
 			}
+		}
+		public function get_newest_game($slug = FALSE){
+			$query = $this->db->query("SELECT * FROM view_games WHERE slug='" .$slug. "'");
+			return $query->row_array();
+		}
+
+		public function get_newest_slug(){
+			$query = $this->db->query("SELECT slug FROM view_games ORDER BY id DESC LIMIT 1");
+			return $query->row_array();
 		}
 		public function get_games_search($searchquery)
 		{
@@ -76,6 +85,12 @@ class Games_model extends CI_Model {
         		$this->db->query("CALL set_games_to_genres_procedure('". $newId."', '". $genre ."')");
         	}
 		    return $qry;
+		}
+
+		public function remove_games($id)
+		{
+			$qry = $this->db->query("CALL remove_game(".$id.")");
+			return $qry;
 		}
 		
 		public function set_reviews()

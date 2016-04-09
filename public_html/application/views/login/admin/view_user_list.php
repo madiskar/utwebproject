@@ -20,10 +20,11 @@
 				<div class="medText"><?php echo $user['email']; ?></div>
 				</td>
 				<td>
-				<input id="<?php echo $user['id']; ?>" type="checkbox" name="allowed" value="1" <?php echo ($user['allowed'] == 1 ? 'checked' : '') ?> />
+				<input type="hidden" name="user_id" id="user_id" value="<?php echo $user['id']; ?>">
+				<input id="<?php echo $user['id']; ?>" type="checkbox" class="allowed" name="allowed" value="1" <?php echo ($user['allowed'] == 1 ? 'checked' : '') ?> onclick="checkConnection('changeAllowed');" />
 				</td>
 				<td>
-				<input id="<?php echo $user['id']; ?>" type="checkbox" name="admin" value="1" <?php echo ($user['admin'] == 1 ? 'checked' : '') ?> />
+				<input id="<?php echo $user['id']; ?>" type="checkbox" class="admin" name="admin" value="1" <?php echo ($user['admin'] == 1 ? 'checked' : '') ?> onclick="checkConnection('changeAdmin');"/>
 				</td>
 				</tr>
 				<?php endforeach; ?>

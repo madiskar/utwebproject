@@ -1,6 +1,22 @@
 <?xml version="1.0"?>
 <stats>
-  <gamecount>7</gamecount>
+  <genrecount>
+    <total_count>5</total_count>
+    <action_count>3</action_count>
+    <adventure_count>0</adventure_count>
+    <casual_count>0</casual_count>
+    <indie_count>0</indie_count>
+    <mmo_count>0</mmo_count>
+    <racing_count>3</racing_count>
+    <rpg_count>1</rpg_count>
+    <simulation_count>2</simulation_count>
+    <sports_count>0</sports_count>
+    <strategy_count>0</strategy_count>
+  </genrecount>
   <reviewcount>16</reviewcount>
   <usercount>9</usercount>
+  <mostactive>
+    <username>Madis Kariler</username>
+    <userreviewcount>10</userreviewcount>
+  </mostactive>
 </stats>

@@ -21,7 +21,7 @@
 
 					    <div id="holder">
 						  </div> 
-						  <p id="upload" class="hidden"><label><?php $admin_upload_info; ?>:<br><input type="file"></label></p>
+						  <p id="upload" class="hidden"><label><?php $admin_upload_info; ?>:<br><input type="file" id="file"></label></p>
 						  <p id="filereader"><?php $admin_filereader_info; ?></p>
 						  <p id="formdata"><?php $admin_formdata_info; ?></p>
 	
@@ -30,7 +30,7 @@
 
 						<input type="hidden" id="screenshots" name="screenshots"/><br><br>
 						
-
+						
 						<input id="genreAction" type="checkbox" name="genres[]" value="1"><label for="genreAction">Action</label><br>
 						<input id="genreAdventure" type="checkbox" name="genres[]" value="2"><label for="genreAdventure">Adventure</label><br>
 						<input id="genreCasual" type="checkbox" name="genres[]" value="3"><label for="genreCasual">Casual</label><br>
@@ -58,7 +58,7 @@
 
 
 
-					    <input class="button" type="submit" name="submit" value="<?php echo $admin_addgames; ?>" />
+					    <input class="button" type="submit" name="submit" value="<?php echo $admin_addgames; ?>" onclick="checkConnection('addSubmit');" />
 
 					</form>
 					<br>

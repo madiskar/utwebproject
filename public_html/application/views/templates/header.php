@@ -15,7 +15,7 @@
 <ul>
   <li><a href="<?php echo $base_url; ?>index.php"><?php echo $nav_home; ?></a></li>
   <li><a href="<?php echo $base_url; ?>index.php/browse"><?php echo $nav_game_search; ?></a></li>
-  <li><a href="<?php echo $base_url; ?>index.php/about"><?php echo "ABOUT"?></a></li>
+  <li><a href="<?php echo $base_url; ?>index.php/about"><?php echo $nav_about; ?></a></li>
   <li class="dropdown">
 		<?php if($this->session->userdata('username') == FALSE) { ?>
 		  	<div class="nav-non-link">

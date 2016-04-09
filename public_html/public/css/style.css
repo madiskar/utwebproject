@@ -111,8 +111,20 @@ div.browseBar {
 
 div.mapItem {
 	margin: 0 auto;
-	margin-top: 5.5em;
+	margin-top: 0.1em;
 	width: 86.7%;
+}
+
+div.headLineItem {
+	margin: 0 auto;
+	background-color: #1a1c1b;
+	font-size: x-large;
+	font-family: "Segoe UI";
+	text-align: center;
+	color: white;
+	width: 90%;
+	margin-top: 0.5em;
+	padding: 0.5em;
 }
 
 div.statItem {
@@ -122,8 +134,20 @@ div.statItem {
 	font-family: "Segoe UI";
 	text-align: center;
 	color: white;
-	width: 26.7%;
-	margin-top: 1.75em;
+	width: 36.7%;
+	margin-top: 1.2em;
+	padding: 0.5em;
+}
+
+div.substatItem {
+	margin: 0 auto;
+	background-color: #3b3835;
+	font-size: medium;
+	font-family: "Segoe UI";
+	text-align: center;
+	color: white;
+	width: 36.7%;
+	margin-top: 1.2em;
 	padding: 0.5em;
 }
 

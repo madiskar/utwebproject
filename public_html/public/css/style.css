@@ -109,6 +109,25 @@ div.browseBar {
 	padding: 0.5em;
 }
 
+div.mapItem {
+	margin: 0 auto;
+	margin-top: 5.5em;
+	width: 86.7%;
+}
+
+div.statItem {
+	margin: 0 auto;
+	background-color: #3b3835;
+	font-size: medium;
+	font-family: "Segoe UI";
+	text-align: center;
+	color: white;
+	width: 26.7%;
+	margin-top: 1.75em;
+	padding: 0.5em;
+}
+
+
 label.largeLabelSearch{
 	font-size: large;
 	font-family: "Segoe UI";
@@ -498,4 +517,17 @@ table {
 }
 .hidden {
 	display: none !important;
+}
+
+a#deleteButton {
+	float: right;
+	margin-right: 1em;
+	background-color: #c92929;
+}
+
+a#deleteForReal {
+	display: none;
+	float: right;
+	margin-right: 1em;
+	background-color: #c92929;
 }

@@ -24,7 +24,7 @@ li.right{
 	float: right;
 }
 
-li a {
+li a, .dropbtn {
     display: block;
     color: white;
     text-align: center;
@@ -67,14 +67,15 @@ li.dropdown {
     display: none;
     position: absolute;
     background-color: #d88e1f;
-    right: 0.5em;
+
     border-width: 0.1em;
     border-color: white;
     border-style: solid;
+    z-index: 1;
 }
 
-#lang-dropdown{
-	right: 15em;
+#login-dropdown{
+	right: 0.5em;
 }
 
 .dropdown-content a {

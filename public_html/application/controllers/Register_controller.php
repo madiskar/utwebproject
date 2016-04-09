@@ -14,6 +14,7 @@ class Register_controller extends CI_Controller {
                 $this->data["nav_login"] = $this->lang->line('menu_log_in');
                 $this->data["nav_register"] = $this->lang->line('menu_register');
                 $this->data["nav_search"] = $this->lang->line('menu_search');
+                $this->data["nav_about"] = $this->lang->line('menu_about');
                 $this->data["nav_game_search"] = $this->lang->line('menu_search_games');
                 $this->data["nav_language"] = $this->lang->line('menu_language');
                 $this->data["title"] = $this->lang->line('menu_title');

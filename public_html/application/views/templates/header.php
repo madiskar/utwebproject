@@ -5,10 +5,11 @@
                 <title>WASDreviews | <?php echo $title; ?></title>
                 <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>public/css/style.css">
                 
-                <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-		<script src="<?php echo $base_url; ?>public/js/jqueryFallback.js"></script>
-		
-                <script src="<?php echo $base_url; ?>public/js/script.js" type="text/javascript"></script>
+                <<script src="<?php echo $base_url; ?>public/js/script.js" type="text/javascript"></script>                
+               	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script src="<?php echo $base_url; ?>public/js/jqueryFallback.js"></script>           	
+                <script src="<?php echo $base_url; ?>public/js/connection.js" type="text/javascript"></script>
+                <script src="<?php echo $base_url; ?>public/js/connectionChecker.js" type="text/javascript"></script>
         </head>
         <body>
 <ul>

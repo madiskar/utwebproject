@@ -1,4 +1,4 @@
-					<hr>
+				<hr>
 					
 					<?php if($this->session->userdata('username') == FALSE) { ?>
 					<h2><?php echo $game_not_logged_in; ?>
@@ -31,12 +31,14 @@
 						  <option value="10">10</option>
 						</select>
 
+					
+					    <input type="hidden" name="game_slug" id="game_slug" value="<?php echo $games_item['slug']; ?>">
 
-					    <input type="hidden" name="user_id" value="<?php echo $this->session->userdata('user_id'); ?>">
+					    <input type="hidden" name="user_id" id="user_id" value="<?php echo $this->session->userdata('user_id'); ?>">
 
-					    <input type="hidden" name="game_id" value="<?php echo $games_item['id']; ?>">
+					    <input type="hidden" name="game_id" id="game_id" value="<?php echo $games_item['id']; ?>">
 
-					    <input class="button" type="submit" name="submit" value="<?php echo $game_add_review ?>" />
+					    <input class="button" type="submit" name="reviewSubmit" value="<?php echo $game_add_review ?>" onclick="checkConnection('reviewSubmit');"/>
 
 					</form>
 					<?php }?>

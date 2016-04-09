@@ -1,4 +1,4 @@
-				<div class="regOutContainer">
+			<div class="regOutContainer">
 					
 					
 
@@ -19,7 +19,7 @@
 						<div class="formValidationErrorText">
 						<?php echo validation_errors(); ?>
 						</div><br/>
-						<?php echo form_submit('submit', $register_createaccount,'class="regButton"')?>
+						<?php echo form_submit('submit', $register_createaccount,'class="regButton" onclick="checkConnection(\'registerSubmit\');"')?>
 
 						
 						

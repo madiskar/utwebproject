@@ -47,6 +47,7 @@ class About extends CI_Controller {
 			$this->session->set_userdata('redirect', $this->uri->uri_string());
 	}
 	
+	
 	public function index() {
 		$this->load->library('googlemaps');
 		$config['center'] = '58.380116, 26.7224966';

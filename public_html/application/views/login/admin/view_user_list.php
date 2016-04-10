@@ -27,6 +27,7 @@
 				<input id="<?php echo $user['id']; ?>" type="checkbox" class="admin" name="admin" value="1" <?php echo ($user['admin'] == 1 ? 'checked' : '') ?> onclick="checkConnection('changeAdmin');"/>
 				</td>
 				</tr>
+				</table>
 				<?php endforeach; ?>
 			<?php } else { ?>
 				<div class="medText"><?php echo $admin_no_user;?></div>

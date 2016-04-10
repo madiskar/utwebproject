@@ -125,27 +125,28 @@ class Games extends CI_Controller {
         
         function get_new_game_event()
         {
-            $this->data['data'] = $this->games_model->get_newest_slug();
+            $this->data['data'] = $this->games_model->get_newest_id();
             $this->load->view('event/new_game', $this->data);
         }
 
-        function get_newest_game($game_slug){
-            $game = $this->games_model->get_newest_game($game_slug);
+        function get_newest_game($game_id){
+            $games = $this->games_model->get_newest_game($game_id);
             $internalArr = array();
-            $internalArr[] = $game['title'];
-            $internalArr[] = $game['description'];
-            if($game['average_rating']==null)
-            {
-                $internalArr[] = $game['mainrating'].".00";
-            }
-            else
-            {
-                $internalArr[] = $game['average_rating'];
-            }
-            $internalArr[] = $game['slug'];
-            $internalArr[] = $game['thmb_extension'];
-            $toJs[] = $internalArr;
-
+            foreach($games as $game):
+	            $internalArr[] = $game['title'];
+	            $internalArr[] = $game['description'];
+	            if($game['average_rating']==null)
+	            {
+	                $internalArr[] = $game['mainrating'].".00";
+	            }
+	            else
+	            {
+	                $internalArr[] = $game['average_rating'];
+	            }
+	            $internalArr[] = $game['slug'];
+	            $internalArr[] = $game['thmb_extension'];
+	            $toJs[] = $internalArr;
+            endforeach;
             echo json_encode($toJs);
         }
         

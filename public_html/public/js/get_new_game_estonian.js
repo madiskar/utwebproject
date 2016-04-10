@@ -13,7 +13,7 @@ if(typeof(EventSource) !== "undefined") {
 					    buildHTML(gamesArray);
 				    }
 			  	};
-			  	xhttp.open("GET", "http://wasdreviews.cs.ut.ee/index.php/games/get_newest_game/" + event.data, true);
+			  	xhttp.open("GET", "http://wasdreviews.cs.ut.ee/index.php/games/get_newest_game/" + prevMessage, true);
 			  	xhttp.send();
 				prevMessage = event.data;
 			}

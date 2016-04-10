@@ -28,13 +28,13 @@ class Games_model extends CI_Model {
 				return $query->result_array();
 			}
 		}
-		public function get_newest_game($slug = FALSE){
-			$query = $this->db->query("SELECT * FROM view_games WHERE slug='" .$slug. "'");
-			return $query->row_array();
+		public function get_newest_game($id = FALSE){
+			$query = $this->db->query("SELECT * FROM view_games WHERE id>'" .$id. "'");
+			return $query->result_array();
 		}
 
-		public function get_newest_slug(){
-			$query = $this->db->query("SELECT slug FROM view_games ORDER BY id DESC LIMIT 1");
+		public function get_newest_id(){
+			$query = $this->db->query("SELECT id FROM view_games ORDER BY id DESC LIMIT 1");
 			return $query->row_array();
 		}
 		public function get_games_search($searchquery)

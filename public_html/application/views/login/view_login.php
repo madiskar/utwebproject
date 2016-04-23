@@ -16,7 +16,7 @@
 						<br>
 						<?php echo form_submit('submit', $login_login ,'class="regButton"')?>
 						<br><br>
-						<a href="#void" class="orange"><?php echo $login_forgot_pass; ?></a>
+						<a href="login/forgot_password" class="orange"><?php echo $login_forgot_pass; ?></a>
 						<br><br>
 						<hr><br>
 						<div class="medText"><?php echo $login_noaccount; ?></div><br>

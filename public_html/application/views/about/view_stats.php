@@ -1,5 +1,4 @@
 <div class="mainContainer">
-<hr>
 <div class="headLineItem"><h3> <?php echo $statstuff; ?> </h3></div>
 <?php $xml = simplexml_load_file('/webpages/wasdreviewscsut/public_html/public/xml/stats.xml'); ?>
 
@@ -48,5 +47,4 @@
 		<?php echo $mostactive . " - " . $xml->mostactive->username . " (" . $xml->mostactive->userreviewcount . " " . $howmany . ")"; ?>
 	</div>
 	<br>
-	<hr>
 </div>

@@ -32,4 +32,4 @@
 			</div>
 		</div>
 	<div id="games" class="mainContainer"></div>
-	<script src="<?php echo $jsfilepath; ?>"></script>
+	<script defer src="<?php echo $jsfilepath; ?>"></script>

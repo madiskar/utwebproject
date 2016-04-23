@@ -1,4 +1,3 @@
-
 				<br>
 
 					<div id="reviewPlaceHolder">
@@ -15,4 +14,4 @@
 				$jsfilepath = "".$base_url."public/js/load_reviews_estonian.js";
 			}
 		?>
-		<script src="<?php echo $jsfilepath; ?>" data-gameid="<?php echo $games_item['id']; ?>"></script>
+		<script defer src="<?php echo $jsfilepath; ?>" data-gameid="<?php echo $games_item['id']; ?>"></script>

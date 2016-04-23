@@ -12,8 +12,8 @@ class Games extends CI_Controller {
                 $this->data["nav_home"] = $this->lang->line('menu_homepage');
                 $this->data["nav_login"] = $this->lang->line('menu_log_in');
                 $this->data["nav_register"] = $this->lang->line('menu_register');
-                $this->data["nav_search"] = $this->lang->line('menu_search');
                 $this->data["nav_about"] = $this->lang->line('menu_about');
+                $this->data["nav_search"] = $this->lang->line('menu_search');
                 $this->data["nav_game_search"] = $this->lang->line('menu_search_games');
                 $this->data["nav_language"] = $this->lang->line('menu_language');
                 $this->data["title"] = $this->lang->line('menu_title');
@@ -125,52 +125,55 @@ class Games extends CI_Controller {
         
         function get_new_game_event()
         {
-            $this->data['data'] = $this->games_model->get_newest_id();
+        	$this->data['data'] = $this->games_model->get_newest_id();
             $this->load->view('event/new_game', $this->data);
         }
 
         function get_newest_game($game_id){
-            $games = $this->games_model->get_newest_game($game_id);
-            $internalArr = array();
-            foreach($games as $game):
-	            $internalArr[] = $game['title'];
-	            $internalArr[] = $game['description'];
-	            if($game['average_rating']==null)
-	            {
-	                $internalArr[] = $game['mainrating'].".00";
-	            }
-	            else
-	            {
-	                $internalArr[] = $game['average_rating'];
-	            }
-	            $internalArr[] = $game['slug'];
-	            $internalArr[] = $game['thmb_extension'];
-	            $toJs[] = $internalArr;
-            endforeach;
-            echo json_encode($toJs);
+        	$games = $this->games_model->get_newest_game($game_id);
+        	$internalArr = array();
+        	foreach($games as $game):
+			$internalArr[] = $game['title'];
+			$internalArr[] = $game['description'];
+			if($game['average_rating']==null)
+			{
+				$internalArr[] = $game['mainrating'].".00";
+			}
+			else
+			{
+				$internalArr[] = $game['average_rating'];
+			}
+			$internalArr[] = $game['slug'];
+			$internalArr[] = $game['thmb_extension'];
+			$toJs[] = $internalArr;
+		endforeach;
+		
+		echo json_encode($toJs);
         }
         
         function remove_game($game_id)
         {
-            $this->data['title'] = "Removal";
-            $this->lang->load('admin_lang',$this->session->userdata('language'));
+        	
+        	$this->lang->load('admin_lang',$this->session->userdata('language'));
                 
                 $this->data["admin_remove_success"] = $this->lang->line('admin_remove_success');
                 $this->data["admin_remove_denied"] = $this->lang->line('admin_remove_denied');
                 $this->data["admin_go_home"] = $this->lang->line('admin_go_home');
-            if($this->session->userdata('is_admin') == TRUE)
-            {
-                $this->games_model->remove_games($game_id);
+                $this->data['title'] = $this->lang->line('admin_remove_game');
+                
+        	if($this->session->userdata('is_admin') == TRUE)
+        	{
+        	    $this->games_model->remove_games($game_id);
                     $this->load->view('templates/header', $this->data);
                     $this->load->view('games/remove_success', $this->data);
                     $this->load->view('templates/footer');
-            }
-            else
-            {
-                $this->load->view('templates/header', $this->data);
+        	}
+        	else
+        	{
+        	    $this->load->view('templates/header', $this->data);
                     $this->load->view('games/remove_fail', $this->data);
                     $this->load->view('templates/footer');
-            }
+        	}
         }
 
         function do_upload()
@@ -229,9 +232,14 @@ class Games extends CI_Controller {
    				$this->data["game_review"] = $this->lang->line('game_review');
    				$this->data["game_rating"] = $this->lang->line('game_rating');
    				$this->data["game_add_review"] = $this->lang->line('game_add_review');
-
-
-                $this->lang->load('admin_lang',$this->session->userdata('language'));
+   				$this->data["game_change_review"] = $this->lang->line('game_change_review');
+   				$this->data["game_update_review"] = $this->lang->line('game_update_review');
+   				$this->data["game_delete_review"] = $this->lang->line('game_delete_review');
+   				$this->data["game_delete_review_confirm"] = $this->lang->line('game_delete_review_confirm');
+   				$this->data["game_review_added"] = $this->lang->line('game_review_added');
+   				
+   				
+        	$this->lang->load('admin_lang',$this->session->userdata('language'));
                 $this->data["admin_remove_game"] = $this->lang->line('admin_remove_game');
    					
    				
@@ -251,6 +259,21 @@ class Games extends CI_Controller {
                 //$this->data['reviews'] = $this->games_model->get_reviews($this->data['games_item']['id']);
 
                 $this->data['title'] = $this->data['games_item']['title'];
+                if ($this->session->userdata('username') == FALSE){
+                	$this->data['userHasLeftReview'] = FALSE;
+                } else {
+                	$review_array = $this->games_model->get_has_user_reviewed($this->data['games_item']['id'], $this->session->userdata('username'));
+                	if ($review_array == FALSE) {
+                		$this->data['userHasLeftReview'] = FALSE;
+                		$this->data['prev_review'] = array(
+				        'review' => "",
+				        'rating' => "5"
+				    );
+                	} else {
+                		$this->data['userHasLeftReview'] = TRUE;
+                		$this->data['prev_review'] = $review_array;
+                	}
+                }
 
                 
                 if ($this->form_validation->run() === FALSE)
@@ -263,9 +286,21 @@ class Games extends CI_Controller {
 	            }
 	            else
                 {
-                	$this->games_model->set_reviews();
-                	$this->load->view('templates/header', $this->data);
+		            if ($this->input->post('is_remove')=='0'){
+		            	if (($this->input->post('is_update')=='0' && $this->data['userHasLeftReview'] == FALSE) || $this->input->post('is_update')=='1'){
+	                		$this->games_model->set_reviews();
+	                	}
+	                    } else {
+	                	$this->games_model->remove_reviews();
+	                    }
+                	    $this->load->view('templates/header', $this->data);
 		            $this->load->view('games/view_top', $this->data);
+		            if ($this->input->post('is_update')=='1'){
+   				$this->data["game_review_added"] = $this->lang->line('game_review_updated');
+		            }
+		            if ($this->input->post('is_remove')=='1'){
+   				$this->data["game_review_added"] = $this->lang->line('game_review_removed');
+		            }
 		            $this->load->view('games/view_success', $this->data);
 		            $this->load->view('games/view_bottom', $this->data);
 		            $this->load->view('templates/footer');

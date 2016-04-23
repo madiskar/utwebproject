@@ -30,5 +30,5 @@
 				$jsfilepath = "".$base_url."public/js/get_new_game_estonian.js";
 			}
 		?>
-<script src="<?php echo $jsfilepath; ?>" type="text/javascript"></script>
+<script defer src="<?php echo $jsfilepath; ?>" type="text/javascript"></script>
 </div>

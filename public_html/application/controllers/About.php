@@ -47,7 +47,6 @@ class About extends CI_Controller {
 			$this->session->set_userdata('redirect', $this->uri->uri_string());
 	}
 	
-	
 	public function index() {
 		$this->load->library('googlemaps');
 		$config['center'] = '58.380116, 26.7224966';
@@ -59,7 +58,7 @@ class About extends CI_Controller {
 		$marker = array();
 		$marker['position'] = '58.380116, 26.7224966';
 		$marker['animation'] = 'BOUNCE';
-		$marker['infowindow_content'] = 'raekoja plats';
+		$marker['infowindow_content'] = 'Raekoja plats';
 		$this->googlemaps->add_marker($marker);
 		$this->data['map'] = $this->googlemaps->create_map();
 		

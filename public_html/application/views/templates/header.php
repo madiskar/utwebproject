@@ -1,21 +1,23 @@
 <!DOCTYPE html> 
 <html lang="et">
-        <head>
-        		<meta charset="utf-8"/>
+        <head><meta charset="utf-8"/>
+        		
                 <title>WASDreviews | <?php echo $title; ?></title>
                 <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>public/css/style.css">
+          
                 
-                <script src="<?php echo $base_url; ?>public/js/script.js" type="text/javascript"></script>                
-               	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-		<script src="<?php echo $base_url; ?>public/js/jqueryFallback.js"></script>           	
-                <script src="<?php echo $base_url; ?>public/js/connection.js" type="text/javascript"></script>
-                <script src="<?php echo $base_url; ?>public/js/connectionChecker.js" type="text/javascript"></script>
+               	<script defer src="<?php echo $base_url; ?>public/js/script.js" type="text/javascript"></script>                
+               	<script defer type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script defer src="<?php echo $base_url; ?>public/js/jqueryFallback.js"></script>           	
+                <script defer src="<?php echo $base_url; ?>public/js/connection.js" type="text/javascript"></script>
+                <script defer src="<?php echo $base_url; ?>public/js/connectionChecker.js" type="text/javascript"></script>
+                
         </head>
         <body>
 <ul>
   <li><a href="<?php echo $base_url; ?>index.php"><?php echo $nav_home; ?></a></li>
   <li><a href="<?php echo $base_url; ?>index.php/browse"><?php echo $nav_game_search; ?></a></li>
-  <li><a href="<?php echo $base_url; ?>index.php/about"><?php echo $nav_about; ?></a></li>
+    <li><a href="<?php echo $base_url; ?>index.php/about"><?php echo $nav_about; ?></a></li>
   <li class="dropdown">
 		<?php if($this->session->userdata('username') == FALSE) { ?>
 		  	<div class="nav-non-link">
@@ -29,7 +31,7 @@
 			</div>
 		<?php } else {?>
 			<a href="<?php echo $base_url; ?>index.php/login/logout">
-				<img class="fitImage" alt="LOGI VÄLJA" src="<?php echo $base_url; ?>public/images/logout.png">
+				<img class="fitImage" alt="LOGI V�LJA" src="<?php echo $base_url; ?>public/images/logout.png">
 			</a>
 		<?php }?>
 	</li>
@@ -42,10 +44,11 @@
   </li>
   <li class="dropdown">
 		  	<a href="#" class="dropbtn"><?php echo $nav_language; ?></a>
-					<div class="dropdown-content" id="lang-dropdown">
+					<div class="dropdown-content">
 						<a href="<?php echo $base_url; ?>index.php/language/est">EESTI</a>
 						<a href="<?php echo $base_url; ?>index.php/language/eng">ENGLISH</a>
 					</div>
+		  	
 	</li>
   <li class="right">
   	<?php if($this->session->userdata('is_admin') == TRUE) { ?>

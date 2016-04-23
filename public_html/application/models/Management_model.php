@@ -7,7 +7,7 @@ class Management_model extends CI_Model {
 	
 	public function get_userinfo($username) {
 		
-		$query = $this->db->query("SELECT * FROM view_user_info WHERE username='" . $username . "'");
+		$query = $this->db->query("SELECT * FROM view_user_info WHERE username='" . addslashes($username) . "'");
 		if($query->num_rows() == 1) {
 			return $query->row_array();
 		}
@@ -16,7 +16,7 @@ class Management_model extends CI_Model {
 		}
 	}
 	public function get_matching_users($username){
-		$query = $this->db->query("SELECT * FROM view_user_info WHERE username LIKE '%" . $username . "%'");
+		$query = $this->db->query("SELECT * FROM view_user_info WHERE username LIKE '%" . addslashes($username) . "%'");
 		return $query->result_array();
 	}
 	

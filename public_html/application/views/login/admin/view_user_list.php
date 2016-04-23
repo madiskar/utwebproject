@@ -27,8 +27,8 @@
 				<input id="<?php echo $user['id']; ?>" type="checkbox" class="admin" name="admin" value="1" <?php echo ($user['admin'] == 1 ? 'checked' : '') ?> onclick="checkConnection('changeAdmin');"/>
 				</td>
 				</tr>
-				</table>
 				<?php endforeach; ?>
+				</table>
 			<?php } else { ?>
 				<div class="medText"><?php echo $admin_no_user;?></div>
 			<?php }?>
@@ -36,4 +36,4 @@
 	</div>
 </div>
 
-<script src="<?php echo $base_url; ?>/public/js/checkbox_update.js" type="text/javascript"></script>
+<script defer src="<?php echo $base_url; ?>/public/js/checkbox_update.js" type="text/javascript"></script>

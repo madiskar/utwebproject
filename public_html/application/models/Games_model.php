@@ -40,13 +40,22 @@ class Games_model extends CI_Model {
 		public function get_games_search($searchquery)
 		{
 				$newQuery = str_replace(' ', '%', $searchquery);
-				$query = $this->db->query("SELECT * FROM view_search WHERE title LIKE '%" . $newQuery . "%'");
+				$query = $this->db->query("SELECT * FROM view_search WHERE title LIKE '%" . addslashes($newQuery) . "%'");
 						return $query->result_array();
 		}
 		public function get_reviews($gameid = 1, $start)
 		{
 			$query = $this->db->query("SELECT * FROM view_reviews_by_game WHERE game_id = '" . $gameid . " ' ORDER BY id DESC LIMIT " . $start . ",5");
 			return $query->result_array();
+		}
+		
+		public function get_has_user_reviewed($gameid = 1, $username){
+			$query = $this->db->query("SELECT * FROM view_reviews_by_game WHERE game_id = '" . $gameid . "' AND username = '" . $username . "' ORDER BY id DESC");
+			if($query->num_rows() == 0) {
+				return FALSE;
+			} else {
+				return $query->row_array();
+			}
 		}
 		
 		public function set_games($thumbnail)
@@ -77,8 +86,8 @@ class Games_model extends CI_Model {
 		        'thmb_extension' => $name,
 		        'scrsht_extensions' => $trimmed_ext
 		    );
-		    $qry = $this->db->query("CALL set_games_procedure('". $data['title'] ."','". $data['slug'] ."', '". $data['description'] ."','". $data['mainrev'] ."','". $data['mainrating'] ."','". $data['thmb_extension'] ."', '". $data['scrsht_extensions'] ."')"); 
-		    $query = $this->db->query("SELECT id FROM games WHERE slug='" . $slug . "'");
+		    $qry = $this->db->query("CALL set_games_procedure('". addslashes($data['title']) ."','". addslashes($data['slug']) ."', '". addslashes($data['description']) ."','". addslashes($data['mainrev']) ."','". $data['mainrating'] ."','". $data['thmb_extension'] ."', '". $data['scrsht_extensions'] ."')"); 
+		    $query = $this->db->query("SELECT id FROM games WHERE slug='" . addslashes($slug) . "'");
         	$newId = $query->row('id');
         	$genreArray = $this->input->post('genres');
         	foreach($genreArray as $genre){
@@ -86,7 +95,7 @@ class Games_model extends CI_Model {
         	}
 		    return $qry;
 		}
-
+		
 		public function remove_games($id)
 		{
 			$qry = $this->db->query("CALL remove_game(".$id.")");
@@ -97,11 +106,26 @@ class Games_model extends CI_Model {
 		{
 		    $this->load->helper('url');
 		    $data = array(
-		        'review' => $this->input->post('review'),
+		        'review' => nl2br($this->input->post('review')),
 		        'rating' => $this->input->post('rating'),
 		        'user_id' => $this->input->post('user_id'),
 		        'game_id' => $this->input->post('game_id')
 		    );
-		    return $this->db->query("CALL set_reviews_procedure('". $data['review'] ."', '". $data['rating'] ."','". $data['user_id'] ."', '". $data['game_id'] ."')");
+		    if ($this->input->post('is_update')=='0'){
+		    	return $this->db->query("CALL set_reviews_procedure('". addslashes($data['review']) ."', '". $data['rating'] ."','". $data['user_id'] ."', '". $data['game_id'] ."')");
+		    } else {
+		    	return $this->db->query("CALL update_reviews_procedure('". addslashes($data['review']) ."', '". $data['rating'] ."','". $data['user_id'] ."', '". $data['game_id'] ."')");
+		    }
+		}
+		
+		public function remove_reviews()
+		{
+		    $this->load->helper('url');
+		    $data = array(
+		        'user_id' => $this->input->post('user_id'),
+		        'game_id' => $this->input->post('game_id')
+		    );
+		    
+		    return $this->db->query("CALL remove_reviews_procedure('". $data['user_id'] ."', '". $data['game_id'] ."')");
 		}
 }

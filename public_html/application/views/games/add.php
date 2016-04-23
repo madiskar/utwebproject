@@ -66,4 +66,4 @@
 			</div>
 </div>
 <br><br><br>
-<script src="<?php echo $base_url; ?>/public/js/dnd_files.js" type="text/javascript"></script>
+<script defer src="<?php echo $base_url; ?>/public/js/dnd_files.js" type="text/javascript"></script>

@@ -14,12 +14,12 @@ class Register_model extends CI_Model {
         			'password' => $this->input->post('password'),
         	);
         	
-        	return $this->db->query("CALL set_users_procedure('". $data['username'] ."','". $data['email'] ."', '". password_hash($data['password'], PASSWORD_DEFAULT) ."')");
+        	return $this->db->query("CALL set_users_procedure('". addslashes($data['username']) ."','". addslashes($data['email']) ."', '". password_hash(addslashes($data['password']), PASSWORD_DEFAULT) ."')");
         	
         }
         
         public function get_user($username){
-        	$query = $this->db->query("SELECT * FROM view_user_info WHERE username = '" . $username . "'");
+        	$query = $this->db->query("SELECT * FROM view_user_info WHERE username = '" . addslashes($username) . "'");
         	 if($query->num_rows() < 1) {
         	 	return true;
         	 }
@@ -29,7 +29,7 @@ class Register_model extends CI_Model {
         }
         
         public function get_email($email) {
-        	$query = $this->db->query("SELECT * FROM view_user_info WHERE email = '" . $email . "'");
+        	$query = $this->db->query("SELECT * FROM view_user_info WHERE email = '" . addslashes($email) . "'");
         	if($query->num_rows() < 1) {
         		return true;
         	}

@@ -27,6 +27,7 @@ class Login extends CI_Controller {
                 
                 $this->data["admin_usermanagement"] = $this->lang->line('admin_usermanagement');
                 $this->data["admin_addgames"] = $this->lang->line('admin_addgames');
+                $this->data["admin_go_home"] = $this->lang->line('admin_go_home');
                 require_once 'application/vendor/autoload.php';
         }
 
@@ -124,18 +125,19 @@ class Login extends CI_Controller {
         		$this->data['loginUrl'] = $helper->getLoginUrl('http://wasdreviews.cs.ut.ee/index.php/login', $permissions);
         	
         	}
-        	   
+        	$this->lang->load('login_lang',$this->session->userdata('language'));
+        	
+        	$this->config->set_item('language', $this->session->userdata('language'));
                 $this->load->helper('form');
                 $this->load->library('form_validation');
                 $this->lang->load('form_validation',$this->session->userdata('language'));
                 
-                $this->form_validation->set_rules('username', 'Kasutajanimi', 'trim|required');
-                $this->form_validation->set_rules('password', 'Parool', 'trim|required');
+                $this->form_validation->set_rules('username', $this->lang->line('login_username'), 'trim|required');
+                $this->form_validation->set_rules('password', $this->lang->line('login_password'), 'trim|required');
                 
                 
                 $this->data['info'] = "";
                 
-                $this->lang->load('login_lang',$this->session->userdata('language'));
                 
                 $this->data["login_username"] = $this->lang->line('login_username');
                 $this->data["login_password"] = $this->lang->line('login_password');
@@ -154,7 +156,7 @@ class Login extends CI_Controller {
                 else
                 {
                 	$password = $this->input->post('password');
-                	if(password_verify($password, $this->login_model->get_user())) {
+                	if(password_verify(addslashes($password), $this->login_model->get_user())) {
                 		
                 		$this->session->set_userdata(array(
                 				'username' => $this->input->post('username'),
@@ -186,6 +188,93 @@ class Login extends CI_Controller {
         public function logout() {
         	$this->session->unset_userdata(array('username','is_admin','is_logged_in','facebook_access_token')); 
         	redirect('');
+        }
+        
+        public function forgot_password(){
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                $this->lang->load('register_lang',$this->session->userdata('language'));
+                $this->data['register_email'] = $this->lang->line('register_email');
+                $this->form_validation->set_rules('email', $this->lang->line('register_email'), 'trim|required');
+                
+        	if ($this->form_validation->run() === FALSE)
+                {
+                	$this->lang->load('login_lang',$this->session->userdata('language'));
+                	$this->data['recovery_title'] = $this->lang->line('recovery_title');
+                	$this->data['recovery_button'] = $this->lang->line('recovery_button');
+                	$this->load->view('templates/header', $this->data);
+                	$this->load->view('login/view_forgot_password',$this->data);
+                	$this->load->view('templates/footer');
+                }
+                else
+                {
+                	$this->lang->load('login_lang',$this->session->userdata('language'));
+                	$email = $this->input->post('email');
+                	$this->load->helper('string');
+                	if ($this->login_model->get_user_by_email($email)!=""){
+                		$this->data['recovery_text'] = $this->lang->line('recovery_sent') . $email;
+	                	$this->load->library('email');
+				$this->email->from('recovery@wasdreviews.cs.ut.ee', 'WASDreviews');
+				$this->email->to($email);
+			
+				$recovery_key = random_string('alnum', 64);
+				$user_id = $this->login_model->get_userid($this->login_model->get_user_by_email($email));
+				
+				$this->login_model->set_recovery_key($user_id, $recovery_key);
+				
+				$this->email->subject($this->lang->line('recovery_email_subject'));
+				$this->email->message($this->lang->line('recovery_email_title') . $this->login_model->get_user_by_email($email) . $this->lang->line('recovery_email_body') . '
+{unwrap}http://wasdreviews.cs.ut.ee/index.php/login/recover_password/'.$user_id.'/'.$recovery_key.'/{/unwrap}
+				
+WASDreviews');
+				$this->email->send();
+			} else {
+				$this->data['recovery_text'] = $this->lang->line('recovery_send_fail_begin') . $email . $this->lang->line('recovery_send_fail_end');
+			}
+			
+                	$this->load->view('templates/header', $this->data);
+                	$this->load->view('login/view_forget_sent', $this->data);
+                	$this->load->view('templates/footer');
+                }
+        }
+        
+        public function recover_password($user_id, $rec_key){
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                $this->lang->load('register_lang',$this->session->userdata('language'));
+                $this->data['register_email'] = $this->lang->line('register_email');
+                $this->data["register_password"] = $this->lang->line('register_password');
+                $this->data["register_pass_repeat"] = $this->lang->line('register_pass_repeat');
+                
+                $this->data['user_id'] = $user_id;
+                $this->data['rec_key'] = $rec_key;
+                
+                $this->form_validation->set_rules('password', $this->lang->line('register_password'), 'trim|required|min_length[8]|max_length[30]');
+                $this->form_validation->set_rules('passConfirm', $this->lang->line('register_pass_repeat'), 'trim|required|matches[password]');
+                
+        	if ($this->form_validation->run() === FALSE)
+                {
+                	$this->lang->load('login_lang',$this->session->userdata('language'));
+                	$this->data['recovery_change_title'] = $this->lang->line('recovery_change_title');
+                	$this->data['recovery_change_button'] = $this->lang->line('recovery_change_button');
+                	$this->load->view('templates/header', $this->data);
+                	$this->load->view('login/view_recover_password',$this->data);
+                	$this->load->view('templates/footer');
+                }
+                else
+                {	
+                	$this->lang->load('login_lang',$this->session->userdata('language'));
+                	$this->data['recovery_success'] = $this->lang->line('recovery_success');
+                	$this->data['recovery_fail'] = $this->lang->line('recovery_fail');
+                	$this->load->view('templates/header', $this->data);
+                	if (password_verify($rec_key, $this->login_model->get_current_recovery_key($user_id))){
+                		$this->login_model->set_new_password($user_id, $this->input->post('password'));
+                		$this->load->view('login/view_recover_success',$this->data);
+                	} else {
+                		$this->load->view('login/view_recover_invalid_key',$this->data);
+                	}
+                	$this->load->view('templates/footer');
+                }
         }
 }
 ?>

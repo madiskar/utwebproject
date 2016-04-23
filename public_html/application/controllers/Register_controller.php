@@ -28,13 +28,16 @@ class Register_controller extends CI_Controller {
 
         public function index()
         {
+                $this->config->set_item('language', $this->session->userdata('language'));
                 $this->load->helper('form');
                 $this->load->library('form_validation');
                 
-                $this->form_validation->set_rules('username', 'Kasutajanimi', 'trim|required|min_length[4]|max_length[30]');
-                $this->form_validation->set_rules('email', 'E-Posti aadress', 'trim|required');
-                $this->form_validation->set_rules('password', 'Parool', 'trim|required|min_length[8]|max_length[30]');
-                $this->form_validation->set_rules('passConfirm', 'Korda parooli', 'trim|required|matches[password]');
+                $this->lang->load('register_lang',$this->session->userdata('language'));
+                
+                $this->form_validation->set_rules('username', $this->lang->line('register_username'), 'trim|required|min_length[4]|max_length[30]');
+                $this->form_validation->set_rules('email', $this->lang->line('register_email'), 'trim|required');
+                $this->form_validation->set_rules('password', $this->lang->line('register_password'), 'trim|required|min_length[8]|max_length[30]');
+                $this->form_validation->set_rules('passConfirm', $this->lang->line('register_pass_repeat'), 'trim|required|matches[password]');
                 
                 $this->lang->load('register_lang',$this->session->userdata('language'));
                 
@@ -44,16 +47,19 @@ class Register_controller extends CI_Controller {
                 $this->data["register_pass_repeat"] = $this->lang->line('register_pass_repeat');
                 $this->data["register_createaccount"] = $this->lang->line('register_createaccount');
                 
+                $this->data['info'] = '';
+                
                 if ($this->form_validation->run() === FALSE)
                 {
                 	$this->load->view('templates/header', $this->data);
-                	$this->load->view('registration/register');
+                	$this->load->view('registration/register', $this->data);
                 	$this->load->view('templates/footer');
                 }
                 else
                 {
-                	if ($query = $this->register_model->set_users()) {
+                	if ($this->register_model->get_user($this->input->post('username')) && $this->register_model->get_email($this->input->post('email'))) {
                 	
+                		$query = $this->register_model->set_users();
                 		$this->data['info'] = $this->lang->line('register_success');
                 		
                 		$this->lang->load('login_lang',$this->session->userdata('language'));

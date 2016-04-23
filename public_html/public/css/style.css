@@ -115,6 +115,13 @@ div.mapItem {
 	margin: 0 auto;
 	margin-top: 0.1em;
 	width: 86.7%;
+	height: 400px;
+}
+
+div.breakItem {
+	margin: 0 auto;
+	margin-top: 0.1em;
+	width: 86.7%;
 }
 
 div.headLineItem {

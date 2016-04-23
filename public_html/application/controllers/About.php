@@ -48,23 +48,23 @@ class About extends CI_Controller {
 	}
 	
 	public function index() {
-		$this->load->library('googlemaps');
-		$config['center'] = '58.380116, 26.7224966';
-		$config['zoom'] = '15';
-		$this->googlemaps->initialize($config);
+		//$this->load->library('googlemaps');
+		//$config['center'] = '58.380116, 26.7224966';
+		//$config['zoom'] = '15';
+		//$this->googlemaps->initialize($config);
 		
 		$this->statsToXML();
 		
-		$marker = array();
-		$marker['position'] = '58.380116, 26.7224966';
-		$marker['animation'] = 'BOUNCE';
-		$marker['infowindow_content'] = 'Raekoja plats';
-		$this->googlemaps->add_marker($marker);
-		$this->data['map'] = $this->googlemaps->create_map();
+		//$marker = array();
+		//$marker['position'] = '58.380116, 26.7224966';
+		//$marker['animation'] = 'BOUNCE';
+		//$marker['infowindow_content'] = 'Raekoja plats';
+		//$this->googlemaps->add_marker($marker);
+		//$this->data['map'] = $this->googlemaps->create_map();
 		
 		$this->load->view('templates/header', $this->data);
-		$this->load->view('about/view_map', $this->data);
 		$this->load->view('about/view_stats', $this->data);
+		$this->load->view('about/view_map', $this->data);
 		$this->load->view('templates/footer');
 	}
 	

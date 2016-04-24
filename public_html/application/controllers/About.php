@@ -53,6 +53,7 @@ class About extends CI_Controller {
 		//$config['zoom'] = '15';
 		//$this->googlemaps->initialize($config);
 		
+		
 		$this->statsToXML();
 		
 		//$marker = array();

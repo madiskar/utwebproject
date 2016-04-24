@@ -1,9 +1,1 @@
-var base_url = "http://[::1]/public_html/"
-
-function changeLargeImage(img_url){
-	$('#reviewPageGameImage').attr("src",img_url);
-}
-
-function showDelete(){
-	$("#deleteForReal").slideToggle(500);
-}
+function changeLargeImage(e){$("#reviewPageGameImage").attr("src",e)}function showDelete(){$("#deleteForReal").slideToggle(500)}function showReviewDelete(){$("#reviewDelete").slideToggle(500)}function setDelete(){$("#is_remove").val("1")}var base_url="http://[::1]/public_html/";

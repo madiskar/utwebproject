@@ -47,22 +47,15 @@
 					    <input type="hidden" name="is_remove" id="is_remove" value="0">
 
 					    <input class="button" type="submit" name="reviewSubmit" value="<?php echo $userHasLeftReview==TRUE ? $game_update_review : $game_add_review ?>" onclick="checkConnection('reviewSubmit');"/>
-
-					</form>
-					<?php if($userHasLeftReview) {?>
-					<?php echo form_open('games/view/'.$games_item['slug']); ?>
-					
-					<input type="hidden" name="review" id="review" value="-">
-					<input type="hidden" name="rating" id="rating" value="5">
-					<input type="hidden" name="user_id" id="user_id" value="<?php echo $this->session->userdata('user_id'); ?>">
-					<input type="hidden" name="game_id" id="game_id" value="<?php echo $games_item['id']; ?>">
-					<input type="hidden" name="is_remove" id="is_remove" value="1"><br>
+					    <?php if($userHasLeftReview) {?>
 					<a id="deleteReviewButton" href="#void" onclick="showReviewDelete();">
 						<?php echo $game_delete_review; ?>
 					</a><br><br>
-					<input class="button_red" type="submit" id="reviewDelete" name="reviewDelete" value="<?php echo $game_delete_review_confirm; ?>" onclick="checkConnection('reviewSubmit');"/>
-					</form>
+					<input class="button_red" type="submit" id="reviewDelete" name="reviewDelete" value="<?php echo $game_delete_review_confirm; ?>" onclick="setDelete();"/>
 					<?php }?>
+
+					</form>
+					
 					<?php }?>
 					
 					<hr><br>

@@ -115,13 +115,6 @@ div.mapItem {
 	margin: 0 auto;
 	margin-top: 0.1em;
 	width: 86.7%;
-	height: 400px;
-}
-
-div.breakItem {
-	margin: 0 auto;
-	margin-top: 0.1em;
-	width: 86.7%;
 }
 
 div.headLineItem {
@@ -349,6 +342,30 @@ select {
 	font-size: 120%;
 }
 
+.button_red{
+	display: none;
+	background-color: #c92929;
+	color: #FFFFFF;
+	border-color: #c92929;
+	border-style: solid;
+	border-width: 0.1em;
+	font-size: 120%;
+}
+
+.button_red:focus{
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 0.1em;
+	font-size: 120%;
+}
+
+.button_red:hover{
+	border-color: #FFFFFF;
+	border-style: solid;
+	border-width: 0.1em;
+	font-size: 120%;
+}
+
 a {
 	color: white;
 	text-decoration: none;
@@ -555,6 +572,10 @@ table {
 a#deleteButton {
 	float: right;
 	margin-right: 1em;
+	background-color: #c92929;
+}
+
+a#deleteReviewButton {
 	background-color: #c92929;
 }
 

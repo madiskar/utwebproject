@@ -10,3 +10,4 @@ $lang['register_success'] = 'Kasutaja loomine &otildennestus!';
 $lang['register_fail_user'] = 'Kasutaja loomine eba&otildennestus.<br/>Soovitud kasutajatunnus on juba kasutuses.';
 $lang['register_fail_user_and_email'] = 'Kasutaja loomine eba&otildennestus.<br/>Soovitud kasutajatunnus ja e-posti aadress on juba kasutuses.';
 $lang['register_fail_email'] = 'Kasutaja loomine eba&otildennestus.<br/>Soovitud e-posti aadress on juba kasutuses.';
+$lang['register_fail_email2'] = 'Sisestatud e-posti aadress pole valiidne.';

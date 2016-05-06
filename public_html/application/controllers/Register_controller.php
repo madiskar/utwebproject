@@ -6,6 +6,7 @@ class Register_controller extends CI_Controller {
                 parent::__construct();
                 $this->load->model('register_model');
                 $this->load->helper('url_helper');
+                $this->load->helper('email');
                 $this->load->helper('url');
                 
                 $this->lang->load('menu_lang',$this->session->userdata('language'));
@@ -59,7 +60,7 @@ class Register_controller extends CI_Controller {
                 }
                 else
                 {
-                	if ($this->register_model->get_user($this->input->post('username')) && $this->register_model->get_email($this->input->post('email'))) {
+                	if ($this->register_model->get_user($this->input->post('username')) && $this->register_model->get_email($this->input->post('email')) && preg_match('/^([a-zäöüõ0-9]+([_\.\-]{1}[a-zäöüõ0-9]+)*){1}([@]){1}([a-zäöüõ0-9]+([_\-]{1}[a-zäöüõ0-9]+)*)+(([\.]{1}[a-zäöüõ]{2,6}){0,3}){1}$/i', $this->input->post('email')) == 1) {
                 	
                 		$query = $this->register_model->set_users();
                 		$this->data['info'] = $this->lang->line('register_success');
@@ -91,6 +92,9 @@ class Register_controller extends CI_Controller {
                 		}
                 		elseif (! $this->callback_checkemail($email)) {
                 			$this->data['info'] = $this->lang->line('register_fail_email');
+                		}
+                		elseif (preg_match('/^([a-zäöüõ0-9]+([_\.\-]{1}[a-zäöüõ0-9]+)*){1}([@]){1}([a-zäöüõ0-9]+([_\-]{1}[a-zäöüõ0-9]+)*)+(([\.]{1}[a-zäöüõ]{2,6}){0,3}){1}$/i', $this->input->post('email')) != 1){
+                			$this->data['info'] = $this->lang->line('register_fail_email2');
                 		}
                 		
                 		$this->load->view('templates/header', $this->data);

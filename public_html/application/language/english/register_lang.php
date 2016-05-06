@@ -9,4 +9,4 @@ $lang['register_createaccount'] = 'CREATE ACCOUNT';
 $lang['register_success'] = 'Kasutaja loomine &otildennestus!';
 $lang['register_fail_user'] = 'Failed to create account.<br/>The entered username is already taken.';
 $lang['register_fail_user_and_email'] = 'Failed to create account.<br/>The entered username and email are already taken.';
-$lang['register_fail_email'] = 'Failed to create account.<br/>The entered email is already taken.';
+$lang['register_fail_email2'] = 'Invalid email';

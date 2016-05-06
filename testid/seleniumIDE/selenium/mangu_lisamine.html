@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://wasdreviews.cs.ut.ee/" />
+<title>Mängu lisamine</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Mängu lisamine</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/index.php</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=LOG IN</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>seleniumiTest</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>seleniumiTest</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=ADD GAME</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=title</td>
+	<td>The Binding of Isaac</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=description</td>
+	<td>Loem ipsum dolor sit amet.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=thumbnail</td>
+	<td>C:\Users\Kalle\Desktop\selenium\pisi.jpg</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=file</td>
+	<td>C:\Users\Kalle\Desktop\selenium\pilt1.jpg</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=file</td>
+	<td>C:\Users\Kalle\Desktop\selenium\pilt2.jpg</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=mainrev</td>
+	<td>Arvustus seleniumi poolt</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=genreCasual</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=genreSimulation</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=mainrating</td>
+	<td>label=8</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Homepage</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.gameTitle</td>
+	<td>The Binding of Isaac</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=div.gameContainer</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=p</td>
+	<td>Arvustus seleniumi poolt</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//h2[2]</td>
+	<td>Final rating 8/10</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=deleteButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=deleteForReal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Homepage</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotText</td>
+	<td>css=div.gameTitle</td>
+	<td>The Binding of Isaac</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img.fitImage</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

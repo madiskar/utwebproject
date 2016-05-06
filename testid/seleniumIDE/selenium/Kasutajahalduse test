@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://wasdreviews.cs.ut.ee/" />
+<title>UserManagementTest</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">UserManagementTest</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=LOG IN</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>seleniumiTest</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>seleniumiTest</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=MANAGE USERS</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=usersearch</td>
+	<td>selenium</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>id=36</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=36</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img.fitImage</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=LOG IN</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>seleniumRe</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>seleniumRe</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@alt='Counter-Strike: Global Offensive ekraanipilt']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.formValidationErrorText</td>
+	<td>You are not allowed to leave a review. :(</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img.fitImage</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=LOG IN</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>seleniumiTest</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>seleniumiTest</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=MANAGE USERS</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=usersearch</td>
+	<td>selenium</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotChecked</td>
+	<td>id=36</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=36</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img.fitImage</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=LOG IN</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=username</td>
+	<td>seleniumRe</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>seleniumRe</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//img[@alt='Counter-Strike: Global Offensive ekraanipilt']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertEditable</td>
+	<td>id=review</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img.fitImage</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

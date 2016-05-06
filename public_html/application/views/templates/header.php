@@ -4,21 +4,20 @@
         		
                 <title>WASDreviews | <?php echo $title; ?></title>
                 <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>public/css/style.css">
-          
                 
                	<script defer src="<?php echo $base_url; ?>public/js/script.js" type="text/javascript"></script>                
-               	<script defer type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	        <script defer type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 		<script defer src="<?php echo $base_url; ?>public/js/jqueryFallback.js"></script>           	
-                <script defer src="<?php echo $base_url; ?>public/js/connection.js" type="text/javascript"></script>
-                <script defer src="<?php echo $base_url; ?>public/js/connectionChecker.js" type="text/javascript"></script>
-                
+	        <script defer src="<?php echo $base_url; ?>public/js/connection.js" type="text/javascript"></script>
+	        <script defer src="<?php echo $base_url; ?>public/js/connectionChecker.js" type="text/javascript"></script>
+             
         </head>
         <body>
 <ul>
-  <li><a href="<?php echo $base_url; ?>index.php"><?php echo $nav_home; ?></a></li>
-  <li><a href="<?php echo $base_url; ?>index.php/browse"><?php echo $nav_game_search; ?></a></li>
-    <li><a href="<?php echo $base_url; ?>index.php/about"><?php echo $nav_about; ?></a></li>
-  <li class="dropdown">
+  <li><a href="<?php echo $base_url; ?>index.php" <?php if($active_tab==1) echo 'id="activeTab"'; ?>><?php echo $nav_home; ?></a></li>
+  <li><a href="<?php echo $base_url; ?>index.php/browse" <?php if($active_tab==2) echo 'id="activeTab"'; ?>><?php echo $nav_game_search; ?></a></li>
+    <li><a href="<?php echo $base_url; ?>index.php/about" <?php if($active_tab==3) echo 'id="activeTab"'; ?>><?php echo $nav_about; ?></a></li>
+  <li class="dropdown" <?php if($active_tab==6) echo 'id="activeTab"'; ?>>
 		<?php if($this->session->userdata('username') == FALSE) { ?>
 		  	<div class="nav-non-link">
 				<img class="fitImage" alt="LOGI SISSE" src="<?php echo $base_url; ?>public/images/login.png">
@@ -50,14 +49,14 @@
 					</div>
 		  	
 	</li>
-  <li class="right">
+  <li class="right" <?php if($active_tab==5) echo 'id="activeTab"'; ?>>
   	<?php if($this->session->userdata('is_admin') == TRUE) { ?>
 		<a href="<?php echo $base_url; ?>index.php/management">
 			<?php echo $admin_usermanagement; ?>
 		</a>
 	<?php } ?>
    </li>
-  <li class="right">
+  <li class="right" <?php if($active_tab==4) echo 'id="activeTab"'; ?>>
   	<?php if($this->session->userdata('is_admin') == TRUE) { ?>
 		<a href="<?php echo $base_url; ?>index.php/games/add">
 			<?php echo $admin_addgames; ?>

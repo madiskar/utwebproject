@@ -24,6 +24,8 @@ class Register_controller extends CI_Controller {
                 
                 $this->data["admin_usermanagement"] = $this->lang->line('admin_usermanagement');
                 $this->data["admin_addgames"] = $this->lang->line('admin_addgames');
+                
+                $this->data["active_tab"] = 6;
         }
 
         public function index()

@@ -6,6 +6,9 @@ class Language extends CI_Controller {
                 parent::__construct();
                 $this->load->helper('url_helper');
                 $this->load->helper('url');
+                
+                
+                $this->data["active_tab"] = 0;
         }
         
         public function est(){

@@ -45,6 +45,8 @@ class About extends CI_Controller {
 
 		if (strpos($this->uri->uri_string(), 'loadReviews') == false)
 			$this->session->set_userdata('redirect', $this->uri->uri_string());
+                
+                $this->data["active_tab"] = 3;
 	}
 	
 	public function index() {
@@ -52,7 +54,6 @@ class About extends CI_Controller {
 		//$config['center'] = '58.380116, 26.7224966';
 		//$config['zoom'] = '15';
 		//$this->googlemaps->initialize($config);
-		
 		
 		$this->statsToXML();
 		

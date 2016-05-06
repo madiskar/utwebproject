@@ -36,6 +36,8 @@ class Pages extends CI_Controller {
                 if (!isset($_GET['rand'])){
                 $this->session->set_userdata('redirect', $this->uri->uri_string());
                 }
+                
+                $this->data["active_tab"] = 1;
         }
 
         public function index()

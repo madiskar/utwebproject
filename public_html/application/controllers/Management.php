@@ -41,6 +41,8 @@ class Management extends CI_Controller {
                 $this->data["admin_game_review"] = $this->lang->line('admin_game_review');
                 $this->data["admin_game_rating"] = $this->lang->line('admin_game_rating');
                 $this->data["admin_no_user"] = $this->lang->line('admin_no_user');
+                
+                $this->data["active_tab"] = 5;
         }
 
         public function index()

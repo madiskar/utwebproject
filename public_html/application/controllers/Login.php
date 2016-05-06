@@ -29,6 +29,8 @@ class Login extends CI_Controller {
                 $this->data["admin_addgames"] = $this->lang->line('admin_addgames');
                 $this->data["admin_go_home"] = $this->lang->line('admin_go_home');
                 require_once 'application/vendor/autoload.php';
+                
+                $this->data["active_tab"] = 6;
         }
 
         public function index()

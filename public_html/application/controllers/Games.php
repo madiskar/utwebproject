@@ -27,6 +27,8 @@ class Games extends CI_Controller {
             
 				if (strpos($this->uri->uri_string(), 'loadReviews') == false && strpos($this->uri->uri_string(), 'get_new_game_event') == false && strpos($this->uri->uri_string(), 'get_newest_game') == false)
 					$this->session->set_userdata('redirect', $this->uri->uri_string());
+                
+                $this->data["active_tab"] = 0;
         }
 
         public function index()
@@ -67,6 +69,8 @@ class Games extends CI_Controller {
 		
 		public function add()
         {
+                $this->data["active_tab"] = 4;
+                
                 $this->load->helper('form');
                 $this->load->library('form_validation');
                 

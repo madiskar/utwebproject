@@ -35,7 +35,7 @@ class Games extends CI_Controller {
         {
                 $this->data['games'] = $this->games_model->get_games();
 
-                $this->data['title'] = 'Mängud';
+                $this->data['title'] = 'M채ngud';
                 
                 $this->load->view('templates/header', $data);
                 $this->load->view('games/index', $data);
@@ -71,6 +71,7 @@ class Games extends CI_Controller {
         {
                 $this->data["active_tab"] = 4;
                 
+                $this->config->set_item('language', $this->session->userdata('language'));
                 $this->load->helper('form');
                 $this->load->library('form_validation');
                 
@@ -88,11 +89,16 @@ class Games extends CI_Controller {
                 $this->data["admin_another_one"] = $this->lang->line('admin_another_one');
                 $this->data["admin_go_home"] = $this->lang->line('admin_go_home');
 
-
-                $this->form_validation->set_rules('title', 'Nimi', 'required');
-                $this->form_validation->set_rules('description', 'Lühikirjeldus', 'required');
-                $this->form_validation->set_rules('mainrev', 'Arvustus', 'required');
-                $this->form_validation->set_rules('mainrating', 'Hinnang', 'required');
+		$this->lang->load('game_lang',$this->session->userdata('language'));
+		$this->data["game_screenshot_text"] = $this->lang->line('game_screenshot_text');
+		
+                $this->form_validation->set_rules('title', $this->lang->line('game_empty_title'), 'required');
+                $this->form_validation->set_rules('description', $this->lang->line('game_empty_description'), 'required');
+                $this->form_validation->set_rules('mainrev', $this->lang->line('game_empty_mainrev'), 'required');
+                $this->form_validation->set_rules('mainrating', $this->lang->line('game_empty_mainrating'), 'required');
+                $this->form_validation->set_rules('screenshots', $this->lang->line('game_empty_screenshots'), 'required');
+                $this->form_validation->set_rules('genres[]', $this->lang->line('game_empty_genres'), 'required');
+                //$this->form_validation->set_rules('thumbnail', $this->lang->line('game_empty_thumbnail'), 'required');
 
                 if (!is_dir('./public/images/'.url_title($this->input->post('title'), 'dash', TRUE).'/')) {
                     mkdir('./public/images/'.url_title($this->input->post('title'), 'dash', TRUE).'/', 0777, TRUE);
@@ -189,7 +195,7 @@ class Games extends CI_Controller {
             $config['max_height']  = '76800';
 
             $this->load->library('upload', $config);
-
+            
             if (!is_dir('./uploads/')) {
                     mkdir('./uploads/', 0777, TRUE);
                 }

@@ -230,6 +230,7 @@ class Games extends CI_Controller {
 
         public function view($slug = NULL)
         {
+         $this->config->set_item('language', $this->session->userdata('language'));
                 $this->load->helper('form');
    				$this->load->library('form_validation');
    				$this->lang->load('game_lang',$this->session->userdata('language'));
@@ -264,9 +265,9 @@ class Games extends CI_Controller {
                         show_404();
                 }
 
-                
-                $this->form_validation->set_rules('rating', 'Hinnang', 'required');
-    			$this->form_validation->set_rules('review', 'Arvustus', 'required');
+                $this->lang->load('game_lang',$this->session->userdata('language'));
+                $this->form_validation->set_rules('rating', $this->lang->line('game_rating'), 'required');
+    			$this->form_validation->set_rules('review', $this->lang->line('game_review'), 'required');
     			$this->form_validation->set_rules('game_id', 'gid', 'required');
     			$this->form_validation->set_rules('user_id', 'Afsadasvustus', 'required');
 

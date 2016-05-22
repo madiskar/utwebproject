@@ -9,14 +9,14 @@ $lang['parimad'] = 'Parimad enne';
 $lang['halvimad'] = 'Halvimad enne';
 
 //game categories
-$lang['all'] = 'Koik';
-$lang['action'] = 'Action';
+$lang['all'] = 'K&otilde;ik';
+$lang['action'] = 'M&auml;rul';
 $lang['adventure'] = 'Seiklus';
 $lang['casual'] = 'Casual';
 $lang['indie'] = 'Indie';
 $lang['mmo'] = 'MMO';
-$lang['racing'] = 'Võidusõit';
+$lang['racing'] = 'V&otilde;idus&otilde;it';
 $lang['rpg'] = 'RPG';
-$lang['simulation'] = 'Simuleerimine';
+$lang['simulation'] = 'Simulatsioon';
 $lang['sports'] = 'Sport';
 $lang['strategy'] = 'Strateegia';

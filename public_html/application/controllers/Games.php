@@ -35,7 +35,7 @@ class Games extends CI_Controller {
         {
                 $this->data['games'] = $this->games_model->get_games();
 
-                $this->data['title'] = 'M채ngud';
+                $this->data['title'] = 'M&auml;ngud';
                 
                 $this->load->view('templates/header', $data);
                 $this->load->view('games/index', $data);
@@ -76,6 +76,7 @@ class Games extends CI_Controller {
                 $this->load->library('form_validation');
                 
                 $this->lang->load('admin_lang',$this->session->userdata('language'));
+                $this->lang->load('browse_lang',$this->session->userdata('language'));
                 
                 $this->data["admin_game_name"] = $this->lang->line('admin_game_name');
                 $this->data["admin_game_description"] = $this->lang->line('admin_game_description');
@@ -88,6 +89,17 @@ class Games extends CI_Controller {
                 $this->data["admin_game_add_success"] = $this->lang->line('admin_game_add_success');
                 $this->data["admin_another_one"] = $this->lang->line('admin_another_one');
                 $this->data["admin_go_home"] = $this->lang->line('admin_go_home');
+                //zanrid
+                $this->data["action"] = $this->lang->line('action');
+		$this->data["adventure"] = $this->lang->line('adventure');
+		$this->data["casual"] = $this->lang->line('casual');
+		$this->data["indie"] = $this->lang->line('indie');
+		$this->data["mmo"] = $this->lang->line('mmo');
+		$this->data["racing"] = $this->lang->line('racing');
+		$this->data["rpg"] = $this->lang->line('rpg');
+		$this->data["simulation"] = $this->lang->line('simulation');
+		$this->data["sports"] = $this->lang->line('sports');
+		$this->data["strategy"] = $this->lang->line('strategy');
 
 		$this->lang->load('game_lang',$this->session->userdata('language'));
 		$this->data["game_screenshot_text"] = $this->lang->line('game_screenshot_text');
@@ -117,19 +129,28 @@ class Games extends CI_Controller {
                 
                 $this->data['title'] = $this->lang->line('admin_addgames');
                 
-                if ($this->form_validation->run() === FALSE || !$this->upload->do_upload("thumbnail"))
+                if ($this->form_validation->run() === FALSE)
                 {
+                    $this->data['custom_error'] = '';
                     $this->load->view('templates/header', $this->data);
                     $this->load->view('games/add', $this->data);
                     $this->load->view('templates/footer');
                 }
                 else
                 {
-                    $thumbnail = array('data' => $this->upload->data());
-                    $this->games_model->set_games($thumbnail);
-                    $this->load->view('templates/header', $this->data);
-                    $this->load->view('games/add_success', $this->data);
-                    $this->load->view('templates/footer');
+                    if (!$this->upload->do_upload("thumbnail")) {
+                    	
+                    $this->data['custom_error'] = $this->lang->line('game_empty_thumbnail');
+                    	$this->load->view('templates/header', $this->data);
+	                    $this->load->view('games/add', $this->data);
+	                    $this->load->view('templates/footer');
+                    } else {
+	                    $thumbnail = array('data' => $this->upload->data());
+	                    $this->games_model->set_games($thumbnail);
+	                    $this->load->view('templates/header', $this->data);
+	                    $this->load->view('games/add_success', $this->data);
+	                    $this->load->view('templates/footer');
+                    }
                 }
         }
         
@@ -230,7 +251,7 @@ class Games extends CI_Controller {
 
         public function view($slug = NULL)
         {
-         $this->config->set_item('language', $this->session->userdata('language'));
+        $this->config->set_item('language', $this->session->userdata('language'));
                 $this->load->helper('form');
    				$this->load->library('form_validation');
    				$this->lang->load('game_lang',$this->session->userdata('language'));
@@ -265,9 +286,9 @@ class Games extends CI_Controller {
                         show_404();
                 }
 
-                $this->lang->load('game_lang',$this->session->userdata('language'));
-                $this->form_validation->set_rules('rating', $this->lang->line('game_rating'), 'required');
-    			$this->form_validation->set_rules('review', $this->lang->line('game_review'), 'required');
+			$this->lang->load('game_lang',$this->session->userdata('language'));
+			$this->form_validation->set_rules('rating', $this->lang->line('game_rating'), 'required');
+			$this->form_validation->set_rules('review', $this->lang->line('game_review'), 'required');
     			$this->form_validation->set_rules('game_id', 'gid', 'required');
     			$this->form_validation->set_rules('user_id', 'Afsadasvustus', 'required');
 

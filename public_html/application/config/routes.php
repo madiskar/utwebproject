@@ -57,7 +57,6 @@ $route['login/recover_password/(:any)/(:any)'] = 'login/recover_password/$1/$2';
 $route['login/logout'] = 'login/logout';
 $route['login'] = 'login';
 $route['management'] = 'management';
-$route['games/remove_game/(:any)'] = 'games/remove_game/$1'
 $route['games/get_new_game_event'] = 'games/get_new_game_event';
 $route['games/get_newest_game/(:any)'] = 'games/get_newest_game/$1';
 $route['games/search'] = 'games/search';

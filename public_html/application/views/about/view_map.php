@@ -6,10 +6,8 @@
 		<div id="map-div" class="mapItem">
 			<script defer src="http://wasdreviews.cs.ut.ee/public/js/googlemapstuff.js"></script>
 		</div>
-		
 		<br>
 		<br>
 	<div class="breakItem">
 		<hr>		
 	</div>
-

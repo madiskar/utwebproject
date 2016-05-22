@@ -45,6 +45,6 @@
 	</div>
 	<div class="statItem">
 		<?php echo $mostactive . " - " . $xml->mostactive->username . " (" . $xml->mostactive->userreviewcount . " " . $howmany . ")"; ?>
-	</div> 
+	</div>
 	<br>
 </div>

@@ -18,12 +18,12 @@ class Management extends CI_Controller {
                 $this->data["nav_about"] = $this->lang->line('menu_about');
                 $this->data["nav_game_search"] = $this->lang->line('menu_search_games');
                 $this->data["nav_language"] = $this->lang->line('menu_language');
-                $this->data["title"] = $this->lang->line('menu_title');
                 $this->data["game_rating"] = $this->lang->line('menu_rating');
                 $this->data['base_url'] = base_url();
                 
                 $this->lang->load('admin_lang',$this->session->userdata('language'));
                 
+                $this->data["title"] = $this->lang->line('admin_usermanagement');
                 $this->data["admin_usermanagement"] = $this->lang->line('admin_usermanagement');
                 $this->data["admin_addgames"] = $this->lang->line('admin_addgames');
                 $this->data["admin_searchusers"] = $this->lang->line('admin_searchusers');

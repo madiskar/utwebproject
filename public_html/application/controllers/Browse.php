@@ -18,7 +18,7 @@ class Browse extends CI_Controller {
         $this->data["nav_search"] = $this->lang->line('menu_search');
         $this->data["nav_game_search"] = $this->lang->line('menu_search_games');
         $this->data["nav_language"] = $this->lang->line('menu_language');
-        $this->data["title"] = $this->lang->line('menu_title');
+        $this->data["title"] = $this->lang->line('menu_search_games');
         $this->data["game_rating"] = $this->lang->line('menu_rating');
         //browse bar & sort
         $this->data["genre"] = $this->lang->line('genre');
@@ -113,7 +113,6 @@ class Browse extends CI_Controller {
 	
 	public function index()
 	{			
-		$this->data['title'] = $this->data["nav_game_search"];
 		$this->data['base_url'] = base_url();
 		
 		$this->session->set_userdata('redirect', $this->uri->uri_string());

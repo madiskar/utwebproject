@@ -25,5 +25,5 @@ $lang['game_empty_mainrev'] = 'Review';
 $lang['game_empty_mainrating'] = 'Rating';
 $lang['game_empty_screenshots'] = 'Screenshots';
 $lang['game_empty_genres'] = 'Genres';
-$lang['game_empty_thumbnail'] = 'Thumbnail';
+$lang['game_empty_thumbnail'] = 'The Thumbnail field is required.';
 $lang['game_screenshot_text'] = 'Screenshots (Drag-and-drop the files(.jpg/.png/.gif)):';

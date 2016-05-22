@@ -6,6 +6,7 @@
 				</div>
 				<div class="reviewMain">
 
+					<?php echo $custom_error; ?>
 					<?php echo validation_errors(); ?>
 
 					<?php echo form_open_multipart('games/add')?>
@@ -19,6 +20,7 @@
 					    <label for="thumbnail"><?php echo $admin_game_tmb; ?></label><br>
 					    <input id="thumbnail" type="file" name="thumbnail" size="20" /><br><br>
 
+					     <?php echo $game_screenshot_text; ?>
 					    <div id="holder">
 						  </div> 
 						  <p id="upload" class="hidden"><label><?php $admin_upload_info; ?>:<br><input type="file" id="file"></label></p>
@@ -31,16 +33,16 @@
 						<input type="hidden" id="screenshots" name="screenshots"/><br><br>
 						
 						
-						<input id="genreAction" type="checkbox" name="genres[]" value="1"><label for="genreAction">Action</label><br>
-						<input id="genreAdventure" type="checkbox" name="genres[]" value="2"><label for="genreAdventure">Adventure</label><br>
-						<input id="genreCasual" type="checkbox" name="genres[]" value="3"><label for="genreCasual">Casual</label><br>
-						<input id="genreIndie" type="checkbox" name="genres[]" value="4"><label for="genreIndie">Indie</label><br>
-						<input id="genreMMO" type="checkbox" name="genres[]" value="5"><label for="genreMMO">MMO</label><br>
-						<input id="genreRacing" type="checkbox" name="genres[]" value="6"><label for="genreRacing">Racing</label><br>
-						<input id="genreRPG" type="checkbox" name="genres[]" value="7"><label for="genreRPG">RPG</label><br>
-						<input id="genreSimulation" type="checkbox" name="genres[]" value="8"><label for="genreSimulation">Simulation</label><br>
-						<input id="genreSports" type="checkbox" name="genres[]" value="9"><label for="genreSports">Sports</label><br>
-						<input id="genreStrategy" type="checkbox" name="genres[]" value="10"><label for="genreStrategy">Strategy</label><br><br>
+						<input id="genreAction" type="checkbox" name="genres[]" value="1"><label for="genreAction"><?php echo $action; ?></label><br>
+						<input id="genreAdventure" type="checkbox" name="genres[]" value="2"><label for="genreAdventure"><?php echo $adventure; ?></label><br>
+						<input id="genreCasual" type="checkbox" name="genres[]" value="3"><label for="genreCasual"><?php echo $casual; ?></label><br>
+						<input id="genreIndie" type="checkbox" name="genres[]" value="4"><label for="genreIndie"><?php echo $indie; ?></label><br>
+						<input id="genreMMO" type="checkbox" name="genres[]" value="5"><label for="genreMMO"><?php echo $mmo; ?></label><br>
+						<input id="genreRacing" type="checkbox" name="genres[]" value="6"><label for="genreRacing"><?php echo $racing; ?></label><br>
+						<input id="genreRPG" type="checkbox" name="genres[]" value="7"><label for="genreRPG"><?php echo $rpg; ?></label><br>
+						<input id="genreSimulation" type="checkbox" name="genres[]" value="8"><label for="genreSimulation"><?php echo $simulation; ?></label><br>
+						<input id="genreSports" type="checkbox" name="genres[]" value="9"><label for="genreSports"><?php echo $sports; ?></label><br>
+						<input id="genreStrategy" type="checkbox" name="genres[]" value="10"><label for="genreStrategy"><?php echo $strategy; ?></label><br><br>
 
 					    <label for="mainrating"><?php echo $admin_game_rating; ?></label><br>
 					    <select name="mainrating" id="mainrating">

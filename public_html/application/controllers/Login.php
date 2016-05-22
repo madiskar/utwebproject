@@ -19,7 +19,7 @@ class Login extends CI_Controller {
                 $this->data["nav_about"] = $this->lang->line('menu_about');
                 $this->data["nav_search"] = $this->lang->line('menu_search');
                 $this->data["nav_game_search"] = $this->lang->line('menu_search_games');
-                $this->data["title"] = $this->lang->line('menu_title');
+                $this->data["title"] = $this->lang->line('menu_log_in');
                 $this->data["game_rating"] = $this->lang->line('menu_rating');
                 $this->data['base_url'] = base_url();
                 
@@ -193,15 +193,17 @@ class Login extends CI_Controller {
         }
         
         public function forgot_password(){
+        	$this->config->set_item('language', $this->session->userdata('language'));
                 $this->load->helper('form');
                 $this->load->library('form_validation');
                 $this->lang->load('register_lang',$this->session->userdata('language'));
+                $this->lang->load('login_lang',$this->session->userdata('language'));
+                $this->data["title"] = $this->lang->line('recovery_button');
                 $this->data['register_email'] = $this->lang->line('register_email');
                 $this->form_validation->set_rules('email', $this->lang->line('register_email'), 'trim|required');
                 
         	if ($this->form_validation->run() === FALSE)
                 {
-                	$this->lang->load('login_lang',$this->session->userdata('language'));
                 	$this->data['recovery_title'] = $this->lang->line('recovery_title');
                 	$this->data['recovery_button'] = $this->lang->line('recovery_button');
                 	$this->load->view('templates/header', $this->data);
@@ -210,7 +212,6 @@ class Login extends CI_Controller {
                 }
                 else
                 {
-                	$this->lang->load('login_lang',$this->session->userdata('language'));
                 	$email = $this->input->post('email');
                 	$this->load->helper('string');
                 	if ($this->login_model->get_user_by_email($email)!=""){

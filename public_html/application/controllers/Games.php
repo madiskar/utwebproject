@@ -190,6 +190,10 @@ class Games extends CI_Controller {
 
             $this->load->library('upload', $config);
 
+            if (!is_dir('./uploads/')) {
+                    mkdir('./uploads/', 0777, TRUE);
+                }
+
             if ( ! $this->upload->do_upload('userfile'))
             {
                 $error = array('error' => $this->upload->display_errors());

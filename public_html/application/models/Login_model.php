@@ -8,7 +8,7 @@ class login_model extends CI_Model {
         
         public function set_fbuser($username,$email){
         	 
-        	return $this->db->query("CALL set_fbuser_procedure('" . $this->session->userdata('email') . "', '" . $this->session->userdata('username') . "')");
+        	return $this->db->query("CALL set_fbuser_procedure('" . $this->session->userdata('username') . "', '" . $this->session->userdata('email') . "')");
         	 
         }
 

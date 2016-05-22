@@ -3,6 +3,8 @@
         <head><meta charset="utf-8"/>
         		
                 <title>WASDreviews | <?php echo $title; ?></title>
+                
+                <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
                 <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>public/css/style.css">
                 
                	<script defer src="<?php echo $base_url; ?>public/js/script.js" type="text/javascript"></script>                
